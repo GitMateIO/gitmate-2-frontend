@@ -1,6 +1,7 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+This is the frontend for [GitMate-2](https://gitlab.com/gitmate/gitmate-2).
+The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
 
