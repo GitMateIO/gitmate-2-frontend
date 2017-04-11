@@ -10,7 +10,7 @@ export class ApiService {
   apiurl = 'http://localhost:8000'
 
   getUser() {
-    return this.http.get(this.apiurl + '/api/me/').map(response => <UserModel>response.json());
+    return this.http.get(this.apiurl + '/api/me/', { withCredentials: true }).map(response => <UserModel>response.json());
   }
 
   getRepos() {

@@ -32,9 +32,13 @@ import { ApiService } from './api/api.service';
     ApiService,
     {
       provide: XSRFStrategy,
-      useValue: new CookieXSRFStrategy('csrftoken', 'X-CSRFToken')
+      useFactory: xsrfFactory
     }
     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function xsrfFactory() {
+      return new CookieXSRFStrategy('csrftoken', 'X-CSRFToken');
+}
