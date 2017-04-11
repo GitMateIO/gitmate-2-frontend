@@ -3,6 +3,10 @@
 This is the frontend for [GitMate-2](https://gitlab.com/gitmate/gitmate-2).
 The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
+## Setup
+
+You need Angular CLI to run this frontend. Install it globally with `npm install -g @angular/cli`. Run `npm install` to install other prerequisite packages.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
