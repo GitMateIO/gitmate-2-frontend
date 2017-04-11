@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
@@ -11,6 +11,8 @@ import {MdMenuModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+
+import { ApiService } from './api/api.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,13 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MdToolbarModule,
     MdMenuModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    {
+      provide: XSRFStrategy,
+      useValue: new CookieXSRFStrategy('csrftoken', 'X-CSRFToken')
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

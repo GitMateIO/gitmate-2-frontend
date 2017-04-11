@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-//import { ApiService } from './../../services';
+import { ApiService } from './../api/api.service';
 import { UserModel } from './../models';
 
 @Component({
@@ -10,21 +10,21 @@ import { UserModel } from './../models';
 })
 export class ToolbarComponent {
   user: UserModel;
-//  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {}
 
- // ngOnInit() {
- //   this.apiService.getUser().subscribe(user => this.user = user);
- // }
+  ngOnInit() {
+    this.apiService.getUser().subscribe(user => this.user = user);
+  }
 
   userDefined() {
     return !(this.user == null);
   }
 
   loginGitHub() {
-//    window.location.href = '/auth/login/github';
+    window.location.href = 'http://localhost:8000/auth/login/github';
   }
 
   logout() {
-//    window.location.href = '/logout';
+    window.location.href = 'http://localhost:8000/logout';
   }
 }
