@@ -23,6 +23,7 @@ export class ToolbarComponent {
 
   loginGitHub() {
     window.open('http://localhost:8000/auth/login/github/');
+    close();
   }
 
   logout() {
