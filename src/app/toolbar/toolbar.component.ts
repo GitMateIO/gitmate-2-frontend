@@ -22,8 +22,7 @@ export class ToolbarComponent {
   }
 
   loginGitHub() {
-    window.open('http://localhost:8000/auth/login/github/');
-    close();
+    window.location.href = 'http://localhost:8000/auth/login/github/';
   }
 
   logout() {
