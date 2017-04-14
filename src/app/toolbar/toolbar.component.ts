@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { ApiService } from './../api/api.service';
 import { UserModel } from './../models';
@@ -11,7 +10,7 @@ import { UserModel } from './../models';
 })
 export class ToolbarComponent {
   user: UserModel;
-  constructor(private apiService: ApiService, private http: Http) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.apiService.getUser().subscribe(user => this.user = user);
@@ -22,8 +21,7 @@ export class ToolbarComponent {
   }
 
   loginGitHub() {
-    window.open('http://localhost:8000/auth/login/github/');
-    close();
+    window.location.href = 'http://localhost:8000/auth/login/github/';
   }
 
   logout() {
