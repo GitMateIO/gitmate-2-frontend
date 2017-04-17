@@ -10,6 +10,7 @@ import { MdButtonModule } from '@angular/material';
 import { MdToolbarModule} from '@angular/material';
 import { MdMenuModule} from '@angular/material';
 import { MdIconModule  } from '@angular/material';
+import { MdCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -20,6 +21,8 @@ import { HomeViewComponent } from './home-view/home-view.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { RepositoriesViewComponent } from './repositories-view/repositories-view.component';
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
+import { PluginsComponent } from './plugins/plugins.component';
+import { RepositoryComponent } from './repository/repository.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -36,7 +39,9 @@ const appRoutes: Routes = [
     HomeViewComponent,
     ProfileViewComponent,
     RepositoriesViewComponent,
-    NotFoundViewComponent
+    NotFoundViewComponent,
+    PluginsComponent,
+    RepositoryComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdToolbarModule,
     MdMenuModule,
-    MdIconModule
+    MdIconModule,
+    MdCardModule
   ],
   providers: [
     ApiService,
