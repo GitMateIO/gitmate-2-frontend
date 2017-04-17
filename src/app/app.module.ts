@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 import 'hammerjs';
 
 import { MdButtonModule } from '@angular/material';
@@ -15,16 +16,34 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { ApiService } from './api/api.service';
 
+import { HomeViewComponent } from './home-view/home-view.component';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { RepositoriesViewComponent } from './repositories-view/repositories-view.component';
+import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
+
+const appRoutes: Routes = [
+  {path: 'home', component: HomeViewComponent},
+  {path: 'profile', component: ProfileViewComponent},
+  {path: 'repositories', component: RepositoriesViewComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '**', component: NotFoundViewComponent},
+];
+
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    HomeViewComponent,
+    ProfileViewComponent,
+    RepositoriesViewComponent,
+    NotFoundViewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes),
     MdButtonModule,
     MdToolbarModule,
     MdMenuModule,
