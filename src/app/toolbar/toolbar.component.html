@@ -16,6 +16,10 @@
   <a class="toolbar-title" [routerLink]="['']" [routerLinkActive]="['router-link-active']"
     [routerLinkActiveOptions]="{exact:true}">GitMate</a>
 
+  <button *ngIf="userDefined()" md-button routerLink="/home" routerLinkActive="active" class="nav-button" >
+    HOME
+  </button>
+
   <button *ngIf="userDefined()" md-button routerLink="/repositories" routerLinkActive="active" class="nav-button" >
     REPOSITORIES
   </button>
