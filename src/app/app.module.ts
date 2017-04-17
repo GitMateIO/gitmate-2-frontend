@@ -6,8 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 import { MdButtonModule } from '@angular/material';
-import {MdToolbarModule} from '@angular/material';
-import {MdMenuModule} from '@angular/material';
+import { MdToolbarModule} from '@angular/material';
+import { MdMenuModule} from '@angular/material';
+import { MdIconModule  } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -26,7 +27,8 @@ import { ApiService } from './api/api.service';
     BrowserAnimationsModule,
     MdButtonModule,
     MdToolbarModule,
-    MdMenuModule
+    MdMenuModule,
+    MdIconModule
   ],
   providers: [
     ApiService,
