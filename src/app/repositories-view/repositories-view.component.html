@@ -1,1 +1,10 @@
-<app-repository *ngFor="let repo of repos" [repo]="repo"></app-repository>
+<md-card class="repo_card">
+  <md-input-container color="accent" style="width:100%">
+    <input mdInput  [(ngModel)]="filter_term" placeholder="filter repositories">
+  </md-input-container>
+  <md-checkbox [(ngModel)]="filter_active_only">enabled only</md-checkbox>
+</md-card>
+
+  <div *ngFor="let repo of repos">
+      <app-repository *ngIf="valid(repo)" [repo]="repo"></app-repository>
+  </div>
