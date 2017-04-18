@@ -6,5 +6,5 @@
 </md-card>
 
   <div *ngFor="let repo of repos">
-      <app-repository *ngIf="valid(repo)" [repo]="repo"></app-repository>
+      <app-repository *ngIf="valid(repo)" [repo]="repo" (active_toggled)="update_repos()"></app-repository>
   </div>
