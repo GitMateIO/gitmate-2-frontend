@@ -25,7 +25,13 @@ export class ApiService {
     return this.http.patch(url, {'active': false}, {withCredentials: true}).map(response => <RepoModel>response.json());
   }
 
-  getPlugins(repo_plugin_url: string) {
-    return this.http.get(repo_plugin_url, {withCredentials: true}).map(response => <PluginModel[]>response.json().plugins);
+  getPlugins(id: number) {
+    return this.http.get(this.apiurl + '/api/plugins/' + id + '/', {withCredentials: true})
+    .map(response => <PluginModel[]>response.json().plugins);
+  }
+
+  getRepo(id: number) {
+    return this.http.get(this.apiurl + '/api/repos/' + id + '/', {withCredentials: true})
+    .map(response => <RepoModel>response.json());
   }
 }

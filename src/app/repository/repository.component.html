@@ -7,7 +7,7 @@
 
   <div class="repo_actions">
     <md-spinner *ngIf="spin"></md-spinner>
-    <button md-icon-button *ngIf="(repo.active && !spin)">
+    <button md-icon-button *ngIf="(repo.active && !spin)" md-button [routerLink]="['/repo', repo.id.split('/').reverse()[1]]" routerLinkActive="active" >
       <md-icon>
         settings
       </md-icon>

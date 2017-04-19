@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
   {path: 'profile', component: ProfileViewComponent},
   {path: 'repositories', component: RepositoriesViewComponent},
+  {path: 'repo/:id', component: PluginsComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
