@@ -1,8 +1,8 @@
-<md-card class="repo_card">
+<md-card >
   <div>
     <md-card-title>{{title}}
     </md-card-title>
-    <md-card-subtitle class="repo_subtitle">{{repo.provider}}/{{user}}</md-card-subtitle>
+    <md-card-subtitle >{{repo.provider}}/{{user}}</md-card-subtitle>
   </div>
 
   <div class="repo_actions">
@@ -12,6 +12,6 @@
         settings
       </md-icon>
     </button>
-    <md-slide-toggle class="repo_toggle" [checked]="repo.active" (change)="toggle()"></md-slide-toggle>
+    <md-slide-toggle [checked]="repo.active" (change)="toggle()"></md-slide-toggle>
   </div>
 </md-card>

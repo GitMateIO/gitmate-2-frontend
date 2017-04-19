@@ -1,4 +1,4 @@
-.repo_card{
+md-card{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@
   width: 50%;
 }
 
-.repo_subtitle{
+md-card-subtitle{
   margin-bottom: 0px;
 }
 
@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.repo_toggle{
+md-slide-toggle{
   margin-left: 14px;
   margin-top: 12px;
 }
