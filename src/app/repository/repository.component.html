@@ -1,13 +1,16 @@
 <md-card class="repo_card">
-  <md-card-title>full_name: {{repo.full_name}}</md-card-title>
-  <md-card-content>provider: {{repo.provider}}</md-card-content>
-  <md-card-content>id: {{repo.id}}</md-card-content>
-  <md-card-content>active: {{repo.active}}</md-card-content>
-  <md-card-content>user: {{repo.user}}</md-card-content>
-  <md-card-actions>
-    <button md-button *ngIf="!repo.active" (click)="enable()" >ADD</button>
-    <button md-button *ngIf="repo.active" (click)="disable()" >REMOVE</button>
-    <button md-button>SETTINGS</button>
-  </md-card-actions>
-  <app-plugins [repoid]="repo.plugin"></app-plugins>
+  <div>
+    <md-card-title>{{title}}
+    </md-card-title>
+    <md-card-subtitle class="repo_subtitle">{{repo.provider}}/{{user}}</md-card-subtitle>
+  </div>
+
+  <div class="repo_actions">
+    <button md-icon-button *ngIf="repo.active">
+      <md-icon>
+        settings
+      </md-icon>
+    </button>
+    <md-slide-toggle class="repo_toggle" [checked]="repo.active" (change)="toggle()"></md-slide-toggle>
+  </div>
 </md-card>

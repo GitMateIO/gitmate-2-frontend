@@ -1,7 +1,24 @@
 .repo_card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   min-width: 400px;
   width: 50%;
+}
+
+.repo_subtitle{
+  margin-bottom: 0px;
+}
+
+.repo_actions{
+  display: flex;
+  align-items: center;
+}
+
+.repo_toggle{
+  margin-left: 14px;
+  margin-top: 12px;
 }

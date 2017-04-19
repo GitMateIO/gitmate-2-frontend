@@ -15,18 +15,23 @@ export class RepositoryComponent implements OnInit {
   @Input()
   repo: RepoModel;
 
+  user: string;
+  title: string;
+
   constructor(private apiService: ApiService) { }
 
-  enable() {
-    this.apiService.addRepo(this.repo.id).subscribe(repo => this.repo = repo);
-    this.active_toggled.emit('enabled');
-  }
-
-  disable() {
-    this.apiService.removeRepo(this.repo.id).subscribe(repo => this.repo = repo);
-    this.active_toggled.emit('disabled');
+  toggle() {
+    if (!this.repo.active) {
+      this.apiService.addRepo(this.repo.id).subscribe(repo => this.repo = repo);
+      this.active_toggled.emit('enabled');
+    } else {
+      this.apiService.removeRepo(this.repo.id).subscribe(repo => this.repo = repo);
+      this.active_toggled.emit('disabled');
+    }
   }
 
   ngOnInit() {
+    this.user = this.repo.full_name.split('/')[0];
+    this.title = this.repo.full_name.split('/')[1];
   }
 }

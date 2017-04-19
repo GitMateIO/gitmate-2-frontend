@@ -13,6 +13,7 @@ import { MdIconModule  } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdCheckboxModule } from '@angular/material';
+import { MdSlideToggleModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     MdCardModule,
     MdInputModule,
     MdCheckboxModule,
+    MdSlideToggleModule,
   ],
   providers: [
     ApiService,
