@@ -22,3 +22,8 @@
   margin-left: 14px;
   margin-top: 12px;
 }
+
+md-spinner{
+  height: 40px;
+  width: 40px;
+}

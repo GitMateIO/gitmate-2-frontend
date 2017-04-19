@@ -6,7 +6,8 @@
   </div>
 
   <div class="repo_actions">
-    <button md-icon-button *ngIf="repo.active">
+    <md-spinner *ngIf="spin"></md-spinner>
+    <button md-icon-button *ngIf="(repo.active && !spin)">
       <md-icon>
         settings
       </md-icon>
