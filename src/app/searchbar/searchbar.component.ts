@@ -71,7 +71,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   filterStates(val: string) {
-    return val ? this.states.filter(s => new RegExp(`^${val}`, 'gi').test(s))
+    return val ? this.states.filter(s => new RegExp(`${val}`, 'gi').test(s))
                : this.states;
   }
 

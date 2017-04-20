@@ -1,11 +1,14 @@
-<form hu>
-<md-input-container color="accent">
-  <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
-</md-input-container>
+<md-card style="padding:0;">
+    <md-input-container color="accent" floatPlaceholder="never" style="margin:-0.5em 0">
+      <input mdInput #search placeholder="&nbsp;Search GitMate" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+      <!-- <span mdPrefix><md-icon [class.primary]="email.focused">email</md-icon>&nbsp;</span> -->
+      <!-- <span mdPrefix><md-icon [class.primary]="search.focused">search</md-icon>&nbsp;</span> -->
+      <!-- <span mdSuffix><md-icon [class.primary]="search.focused">search</md-icon>&nbsp;</span> -->
+    </md-input-container>
 
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let state of filteredStates | async" [value]="state">
-    {{ state }}
-  </md-option>
-</md-autocomplete>
-</form>
+    <md-autocomplete #auto="mdAutocomplete">
+      <md-option *ngFor="let state of filteredStates | async" [value]="state">
+        {{ state }}
+      </md-option>
+    </md-autocomplete>
+</md-card>
