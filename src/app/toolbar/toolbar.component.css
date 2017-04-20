@@ -22,12 +22,37 @@
   display: none;
 }
 
-@media screen and (max-width: 480px){
+.box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-left > span { margin-right: auto; }
+.box-right > span { margin-left: auto;  }
+
+app-searchbar{
+  width: 100%;
+  min-width: 400px;
+}
+
+@media screen and (max-width: 868px){
   .nav-button {
     display:none;
   }
   .toolbar-menu {
     display:unset;
   }
+}
 
+@media screen and (max-width: 660px){
+  .toolbar-title {
+    display: none;
+  }
+  app-searchbar{
+    min-width: 100px;
+  }
+  .box-center{
+    flex: 3;
+  }
 }
