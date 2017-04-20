@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +15,7 @@ import { MdInputModule } from '@angular/material';
 import { MdCheckboxModule } from '@angular/material';
 import { MdSlideToggleModule } from '@angular/material';
 import { MdProgressSpinnerModule } from '@angular/material';
+import { MdAutocompleteModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -27,6 +28,7 @@ import { RepositoriesViewComponent } from './repositories-view/repositories-view
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
 import { PluginsComponent } from './plugins/plugins.component';
 import { RepositoryComponent } from './repository/repository.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -46,11 +48,13 @@ const appRoutes: Routes = [
     RepositoriesViewComponent,
     NotFoundViewComponent,
     PluginsComponent,
-    RepositoryComponent
+    RepositoryComponent,
+    SearchbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
@@ -63,6 +67,7 @@ const appRoutes: Routes = [
     MdCheckboxModule,
     MdSlideToggleModule,
     MdProgressSpinnerModule,
+    MdAutocompleteModule,
   ],
   providers: [
     ApiService,
