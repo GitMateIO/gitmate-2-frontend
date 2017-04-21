@@ -10,6 +10,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./plugins.component.css']
 })
 export class PluginsComponent implements OnInit {
+  stupid: "string was";
   repoid: number;
   plugins: PluginModel[];
   repo: RepoModel;
@@ -29,8 +30,14 @@ export class PluginsComponent implements OnInit {
     this.apiService.getRepo(this.repoid).subscribe(repo => this.repo = repo);
   }
 
-  toggle(plugin){
-    plugin.active = !plugin.active;
-    this.apiService.setPluginSettings(plugin, this.repoid).subscribe(plugins => this.plugins = plugins);
+  setting_change(plugin_name: string, setting_name: string, setting_value: any) {
+    console.log('stuff');
+    this.apiService.setPluginSetting(plugin_name, this.repoid, setting_name, setting_value).subscribe(plugins => this.plugins = plugins);
+
   }
+  toggle(plugin) {
+    plugin.active = !plugin.active;
+    this.apiService.setPluginActive(plugin, this.repoid).subscribe(plugins => this.plugins = plugins);
+  }
+
 }

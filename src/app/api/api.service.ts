@@ -35,7 +35,7 @@ export class ApiService {
     .map(response => <RepoModel>response.json());
   }
 
-  setPluginSettings(plugin: PluginModel, repoid: number){
+  setPluginActive(plugin: PluginModel, repoid: number) {
     return this.http.patch(this.apiurl + '/api/plugins/' + repoid + '/',
                            [
                              {
@@ -43,7 +43,24 @@ export class ApiService {
                                'active': plugin.active,
                              }
                            ]
-                           ,{withCredentials: true})
+                           , {withCredentials: true})
     .map(response => <PluginModel[]>response.json().plugins);
   }
+
+  setPluginSetting(plugin_name: string, repoid: number, setting_name: string, setting_value: string) {
+    console.log('deep stuff');
+    console.log(plugin_name, repoid, setting_name, setting_value);
+    var obj ={};
+    obj[setting_name] = setting_value;
+    return this.http.patch(this.apiurl + '/api/plugins/' + repoid + '/',
+                           [
+                             {
+                               'name': plugin_name,
+                               'settings': obj,
+                             }
+                           ]
+                           , {withCredentials: true})
+    .map(response => <PluginModel[]>response.json().plugins);
+  }
+
 }

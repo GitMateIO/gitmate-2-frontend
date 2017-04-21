@@ -7,7 +7,12 @@
     <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)"></md-slide-toggle>
   </md-card-title>
   <div *ngFor="let setting of plugin.settings">
-    {{setting.name}}
+    {{setting.name}} {{setting.type}} {{setting.value}}
+    {{setting.description}}
+    <md-input-container *ngIf="setting.type=='CharField'">
+      <input mdInput placeholder="{{setting.name}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
+    </md-input-container>
+    <!-- placeholder="setting.name" -->
   </div>
 </md-card>
 
