@@ -6,7 +6,7 @@ md-card{
   margin-right: auto;
   min-width: 400px;
   width: 50%;
-  padding: 12px 24px 12px 24px;
+  padding: 12px;
 }
 
 md-card-subtitle{

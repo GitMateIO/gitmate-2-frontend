@@ -28,4 +28,9 @@ export class PluginsComponent implements OnInit {
     this.apiService.getPlugins(this.repoid).subscribe(plugins => this.plugins = plugins);
     this.apiService.getRepo(this.repoid).subscribe(repo => this.repo = repo);
   }
+
+  toggle(plugin){
+    plugin.active = !plugin.active;
+    this.apiService.setPluginSettings(plugin, this.repoid).subscribe(plugins => this.plugins = plugins);
+  }
 }

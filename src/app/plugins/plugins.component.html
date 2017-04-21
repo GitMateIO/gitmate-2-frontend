@@ -4,6 +4,7 @@
 <md-card *ngFor="let plugin of plugins">
   <md-card-title>
     {{plugin.name}}
+    <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)"></md-slide-toggle>
   </md-card-title>
 </md-card>
 

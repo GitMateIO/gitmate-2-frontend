@@ -34,4 +34,16 @@ export class ApiService {
     return this.http.get(this.apiurl + '/api/repos/' + id + '/', {withCredentials: true})
     .map(response => <RepoModel>response.json());
   }
+
+  setPluginSettings(plugin: PluginModel, repoid: number){
+    return this.http.patch(this.apiurl + '/api/plugins/' + repoid + '/',
+                           [
+                             {
+                               'name': plugin.name,
+                               'active': plugin.active,
+                             }
+                           ]
+                           ,{withCredentials: true})
+    .map(response => <PluginModel[]>response.json().plugins);
+  }
 }
