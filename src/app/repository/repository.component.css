@@ -2,11 +2,11 @@ md-card{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   min-width: 400px;
   width: 50%;
+  padding: 12px 24px 12px 24px;
 }
 
 md-card-subtitle{
