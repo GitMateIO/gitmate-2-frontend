@@ -18,6 +18,8 @@ import { MdProgressSpinnerModule } from '@angular/material';
 import { MdAutocompleteModule } from '@angular/material';
 import { MdGridListModule } from '@angular/material';
 
+import { HotkeyModule } from 'angular2-hotkeys';
+
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
@@ -70,6 +72,7 @@ const appRoutes: Routes = [
     MdProgressSpinnerModule,
     MdAutocompleteModule,
     MdGridListModule,
+    HotkeyModule.forRoot(),
   ],
   providers: [
     ApiService,

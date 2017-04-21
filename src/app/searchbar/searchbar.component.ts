@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Hotkey, HotkeysService } from 'angular2-hotkeys';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,6 +8,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
+  @ViewChild('search') searchElementRef;
   stateCtrl: FormControl;
   filteredStates: any;
 
@@ -63,11 +65,19 @@ export class SearchbarComponent implements OnInit {
     'Wyoming',
   ];
 
-  constructor() {
+  constructor(private _hotkeysService: HotkeysService) {
     this.stateCtrl = new FormControl();
     this.filteredStates = this.stateCtrl.valueChanges
         .startWith(null)
         .map(name => this.filterStates(name));
+    this._hotkeysService.add(new Hotkey(
+      'ctrl+space',
+      (event: KeyboardEvent): boolean => {
+        this.searchElementRef.nativeElement.focus();
+        return false; // Prevent bubbling
+      },
+      ['INPUT', 'SELECT', 'TEXTAREA'], // hotkey fires also when in these elements
+      'Search repositories, settings, and documentation')); // description
   }
 
   filterStates(val: string) {
