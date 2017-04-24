@@ -7,7 +7,6 @@
     <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)"></md-slide-toggle>
   </md-card-title>
   <div *ngFor="let setting of plugin.settings">
-    <!-- {{setting.description}} -->
     <!-- CharField -->
     <md-input-container *ngIf="setting.type=='CharField'" style="width:100%">
       <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
@@ -17,12 +16,8 @@
       <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)"></textarea>
     </md-input-container>
     <!-- BooleanField -->
-    <md-slide-toggle *ngIf="setting.type=='BooleanField'" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)"> {{setting.description}} </md-slide-toggle>
-    <!-- placeholder="setting.name" -->
+    <md-slide-toggle *ngIf="setting.type=='BooleanField'" labelPosition="before" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)"> {{setting.description}} </md-slide-toggle>
   </div>
 </md-card>
-
-
-
 
 <h2 *ngIf="plugins==null">plugins not defined</h2>

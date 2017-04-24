@@ -48,8 +48,6 @@ export class ApiService {
   }
 
   setPluginSetting(plugin_name: string, repoid: number, setting_name: string, setting_value: string) {
-    console.log('deep stuff');
-    console.log(plugin_name, repoid, setting_name, setting_value);
     var obj ={};
     obj[setting_name] = setting_value;
     return this.http.patch(this.apiurl + '/api/plugins/' + repoid + '/',
