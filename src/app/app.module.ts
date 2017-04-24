@@ -16,6 +16,7 @@ import { MdCheckboxModule } from '@angular/material';
 import { MdSlideToggleModule } from '@angular/material';
 import { MdProgressSpinnerModule } from '@angular/material';
 import { MdAutocompleteModule } from '@angular/material';
+import { MdGridListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -68,6 +69,7 @@ const appRoutes: Routes = [
     MdSlideToggleModule,
     MdProgressSpinnerModule,
     MdAutocompleteModule,
+    MdGridListModule,
   ],
   providers: [
     ApiService,
