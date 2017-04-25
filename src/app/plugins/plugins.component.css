@@ -3,3 +3,11 @@ md-card{
   margin: auto;
   min-width: 400px;
 }
+
+md-input-container{
+  width: 100%;
+}
+
+textarea{
+  resize: vertical;
+}
