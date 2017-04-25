@@ -12,6 +12,6 @@
         settings
       </md-icon>
     </button>
-    <md-slide-toggle [checked]="repo.active" (change)="toggle()"></md-slide-toggle>
+    <md-slide-toggle disabled="{{spin}}" [checked]="repo.active" (change)="toggle()"></md-slide-toggle>
   </div>
 </md-card>
