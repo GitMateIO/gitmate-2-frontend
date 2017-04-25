@@ -3,20 +3,26 @@
 
 <md-card *ngFor="let plugin of plugins">
   <md-card-title>
-    {{plugin.name}}
-    <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)"></md-slide-toggle>
+    <label>
+      {{plugin.name}}
+      <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)" style="float:right;padding-top:10px"></md-slide-toggle>
+    </label>
   </md-card-title>
-  <div *ngFor="let setting of plugin.settings">
-    <!-- CharField -->
-    <md-input-container *ngIf="setting.type=='CharField'" style="width:100%">
-      <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
-    </md-input-container>
-    <!-- TextField -->
-    <md-input-container *ngIf="setting.type=='TextField'" >
-      <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)"></textarea>
-    </md-input-container>
-    <!-- BooleanField -->
-    <md-slide-toggle *ngIf="setting.type=='BooleanField'" labelPosition="before" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)"> {{setting.description}} </md-slide-toggle>
+  <div *ngIf="plugin.active && plugin.settings.length">
+    <div *ngFor="let setting of plugin.settings">
+      <!-- CharField -->
+      <md-input-container *ngIf="setting.type=='CharField'" style="width:100%">
+        <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
+      </md-input-container>
+      <!-- TextField -->
+      <md-input-container *ngIf="setting.type=='TextField'" >
+        <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)"></textarea>
+      </md-input-container>
+      <!-- BooleanField -->
+      <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
+        <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
+      </label>
+    </div>
   </div>
 </md-card>
 
