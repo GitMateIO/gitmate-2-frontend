@@ -8,6 +8,9 @@
       <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)" style="float:right;padding-top:10px"></md-slide-toggle>
     </label>
   </md-card-title>
+  <md-card-subtitle>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duo Reges: constructio interrete. Prioris generis est docilitas, memoria.
+  </md-card-subtitle>
   <div *ngIf="plugin.active && plugin.settings.length">
     <div *ngFor="let setting of plugin.settings">
       <!-- CharField -->
