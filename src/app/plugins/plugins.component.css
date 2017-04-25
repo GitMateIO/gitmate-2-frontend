@@ -1,7 +1,8 @@
-md-card{
+.plugins{
   width: 50%;
   margin: auto;
   min-width: 400px;
+  margin-top: 20px;
 }
 
 md-input-container{

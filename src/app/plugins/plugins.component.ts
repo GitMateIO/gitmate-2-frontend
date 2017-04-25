@@ -13,6 +13,7 @@ export class PluginsComponent implements OnInit {
   repoid: number;
   plugins: PluginModel[];
   repo: RepoModel;
+  spin=false;
 
   constructor(
     private apiService: ApiService,
@@ -36,6 +37,24 @@ export class PluginsComponent implements OnInit {
   toggle(plugin) {
     plugin.active = !plugin.active;
     this.apiService.setPluginActive(plugin, this.repoid).subscribe(plugins => this.plugins = plugins);
+  }
+  toggle_repo() {
+    this.spin = true;
+    if (!this.repo.active) {
+      this.apiService.addRepo(this.repo.id).subscribe(
+        repo => {
+          this.repo = repo;
+          this.spin = false;
+        }
+      );
+    } else {
+      this.apiService.removeRepo(this.repo.id).subscribe(
+        repo => {
+          this.repo = repo;
+          this.spin = false;
+        }
+      );
+    }
   }
 
 }
