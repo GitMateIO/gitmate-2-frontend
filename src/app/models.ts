@@ -23,6 +23,8 @@ export class SettingModel {
 
 export class PluginModel {
   name: string;
+  title: string;
+  description: string;
   active: boolean;
   settings: SettingModel[];
 }
