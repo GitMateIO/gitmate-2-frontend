@@ -1,11 +1,12 @@
 <md-card style="padding:0;">
     <md-input-container color="accent" floatPlaceholder="never" style="margin:-0.5em 0">
-      <input mdInput #search placeholder="&nbsp;Search GitMate [ctrl+space]" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+      <input mdInput #search placeholder="&nbsp;Ctrl+Space to search GitMate" [mdAutocomplete]="auto"
+      [(ngModel)]="inputValue" (ngModelChange)="filteredResults = filterResults(inputValue);" (keypress)="onKeyPress($event)">
     </md-input-container>
 
     <md-autocomplete #auto="mdAutocomplete">
-      <md-option *ngFor="let state of filteredStates | async" [value]="state">
-        {{ state }}
+      <md-option (onSelectionChange)="onSelect($event, result)" *ngFor="let result of filteredResults" [value]="">
+        {{ result.name }}
       </md-option>
     </md-autocomplete>
 </md-card>

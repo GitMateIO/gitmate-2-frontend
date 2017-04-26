@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -7,7 +7,11 @@ import { environment } from './../../environments/environment';
 
 @Injectable()
 export class ApiService {
-  constructor(private http: Http) {}
+  cached_repos: RepoModel[];
+  constructor(private http: Http) {
+    console.log('hallo');
+    this.getRepos().subscribe(repos => this.cached_repos = repos);
+  }
   apiurl = environment.backend_url;
 
   getUser() {
@@ -60,6 +64,11 @@ export class ApiService {
                            ]
                            , {withCredentials: true})
     .map(response => <PluginModel[]>response.json().plugins);
+  }
+
+  getCachedRepos() {
+    return this.cached_repos ? this.cached_repos
+                             : [];
   }
 
 }

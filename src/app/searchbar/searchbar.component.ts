@@ -1,6 +1,10 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Hotkey, HotkeysService } from 'angular2-hotkeys';
+import { Router } from '@angular/router';
+
+import { ApiService } from './../api/api.service';
+import { RepoModel  } from './../models'
 
 @Component({
   selector: 'app-searchbar',
@@ -9,67 +13,13 @@ import { Hotkey, HotkeysService } from 'angular2-hotkeys';
 })
 export class SearchbarComponent implements OnInit {
   @ViewChild('search') searchElementRef;
-  stateCtrl: FormControl;
-  filteredStates: any;
+  @ViewChild('auto') autocompleteElementRef;
+  inputValue = '';
+  filteredResults: any[];
 
-  states = [
-    'Alabama',
-    'Alaska',
-    'Arizona',
-    'Arkansas',
-    'California',
-    'Colorado',
-    'Connecticut',
-    'Delaware',
-    'Florida',
-    'Georgia',
-    'Hawaii',
-    'Idaho',
-    'Illinois',
-    'Indiana',
-    'Iowa',
-    'Kansas',
-    'Kentucky',
-    'Louisiana',
-    'Maine',
-    'Maryland',
-    'Massachusetts',
-    'Michigan',
-    'Minnesota',
-    'Mississippi',
-    'Missouri',
-    'Montana',
-    'Nebraska',
-    'Nevada',
-    'New Hampshire',
-    'New Jersey',
-    'New Mexico',
-    'New York',
-    'North Carolina',
-    'North Dakota',
-    'Ohio',
-    'Oklahoma',
-    'Oregon',
-    'Pennsylvania',
-    'Rhode Island',
-    'South Carolina',
-    'South Dakota',
-    'Tennessee',
-    'Texas',
-    'Utah',
-    'Vermont',
-    'Virginia',
-    'Washington',
-    'West Virginia',
-    'Wisconsin',
-    'Wyoming',
-  ];
-
-  constructor(private _hotkeysService: HotkeysService) {
-    this.stateCtrl = new FormControl();
-    this.filteredStates = this.stateCtrl.valueChanges
-        .startWith(null)
-        .map(name => this.filterStates(name));
+  constructor(private _hotkeysService: HotkeysService,
+              private router: Router,
+              private apiService: ApiService) {
     this._hotkeysService.add(new Hotkey(
       'ctrl+space',
       (event: KeyboardEvent): boolean => {
@@ -80,12 +30,59 @@ export class SearchbarComponent implements OnInit {
       'Search repositories, settings, and documentation')); // description
   }
 
-  filterStates(val: string) {
-    return val ? this.states.filter(s => new RegExp(`${val}`, 'gi').test(s))
-               : this.states;
+  autoCompleteTargets() {
+    const repos = this.apiService.getCachedRepos();
+    const targets = [
+      {
+        name: 'home',
+        target: '/home'
+      },
+      {
+        name: 'profile',
+        target: '/profile'
+      },
+      {
+        name: 'repositories',
+        target: '/repositories'
+      },
+    ];
+    for (const repo of repos){
+      targets.push(
+        {
+          name: repo.full_name,
+          target: '/repo/' + repo.id
+        }
+      );
+    }
+    return targets;
+  }
+
+  filterResults(val: string) {
+    const targets = this.autoCompleteTargets();
+    return targets ? targets.filter(t => val && (t.name.toLowerCase().indexOf(val.toLowerCase()) !== -1))
+                   : [];
+  }
+
+  onSelect(event, item) {
+    // this event is raised for selected and deselected items.
+    // we can differentiate them by event.isUserInput..
+    if (event.isUserInput) {
+      this.router.navigate([item.target]);
+    }
+  }
+
+  onKeyPress(event) {
+    if (event.key === 'Enter') {
+      const results = this.filterResults(this.searchElementRef.nativeElement.value);
+      if (results) {
+        const target = results[0].target;
+        this.inputValue = '';
+        this.filteredResults = [];
+        this.router.navigate([target]);
+      }
+    }
   }
 
   ngOnInit() {
   }
-
 }
