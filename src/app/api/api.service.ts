@@ -3,11 +3,12 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { UserModel, RepoModel, SettingModel, PluginModel } from './../models';
+import { environment } from './../../environments/environment';
 
 @Injectable()
 export class ApiService {
   constructor(private http: Http) {}
-  apiurl = 'http://localhost:8000';
+  apiurl = environment.backend_url;
 
   getUser() {
     return this.http.get(this.apiurl + '/api/me/', { withCredentials: true }).map(response => <UserModel>response.json());
