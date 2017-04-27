@@ -9,7 +9,6 @@ import { environment } from './../../environments/environment';
 export class ApiService {
   cached_repos: RepoModel[];
   constructor(private http: Http) {
-    console.log('hallo');
     this.getRepos().subscribe(repos => this.cached_repos = repos);
   }
   apiurl = environment.backend_url;
