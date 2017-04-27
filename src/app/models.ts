@@ -6,8 +6,7 @@ export class UserModel {
 }
 
 export class RepoModel {
-  id: string;
-  plugin: string;
+  id: number;
   provider: string;
   full_name: string;
   active: boolean;

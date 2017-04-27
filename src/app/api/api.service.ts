@@ -17,12 +17,12 @@ export class ApiService {
     return this.http.get(this.apiurl + '/api/repos/', {withCredentials: true}).map(response => <RepoModel[]>response.json());
   }
 
-  addRepo(url: string) {
-    return this.http.patch(url, {'active': true}, {withCredentials: true}).map(response => <RepoModel>response.json());
+  addRepo(id: number) {
+    return this.http.patch(this.apiurl + '/api/repos/' + id + '/', {'active': true}, {withCredentials: true}).map(response => <RepoModel>response.json());
   }
 
-  removeRepo(url: string) {
-    return this.http.patch(url, {'active': false}, {withCredentials: true}).map(response => <RepoModel>response.json());
+  removeRepo(id: number) {
+    return this.http.patch(this.apiurl + '/api/repos/' + id + '/', {'active': false}, {withCredentials: true}).map(response => <RepoModel>response.json());
   }
 
   getPlugins(id: number) {
