@@ -13,7 +13,7 @@ export class PluginsComponent implements OnInit {
   repoid: number;
   plugins: PluginModel[];
   repo: RepoModel;
-  spin=false;
+  spin = false;
 
   constructor(
     private apiService: ApiService,
@@ -21,22 +21,23 @@ export class PluginsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.forEach(
-      (params: Params) => {
-        this.repoid = params['id'];
-      }
-    );
-    this.apiService.getPlugins(this.repoid).subscribe(plugins => this.plugins = plugins);
-    this.apiService.getRepo(this.repoid).subscribe(repo => this.repo = repo);
+    this.route.params
+      .switchMap((params: Params) => this.apiService.getPlugins(params['id']))
+      .subscribe((plugins: PluginModel[]) => this.plugins = plugins);
+
+    this.route.params
+      .switchMap((params: Params) => this.apiService.getRepo(params['id']))
+      .subscribe((repo: RepoModel) => this.repo = repo);
+
   }
 
   setting_change(plugin_name: string, setting_name: string, setting_value: any) {
-    this.apiService.setPluginSetting(plugin_name, this.repoid, setting_name, setting_value).subscribe(plugins => this.plugins = plugins);
+    this.apiService.setPluginSetting(plugin_name, this.repo.id, setting_name, setting_value).subscribe(plugins => this.plugins = plugins);
 
   }
   toggle(plugin) {
     plugin.active = !plugin.active;
-    this.apiService.setPluginActive(plugin, this.repoid).subscribe(plugins => this.plugins = plugins);
+    this.apiService.setPluginActive(plugin, this.repo.id).subscribe(plugins => this.plugins = plugins);
   }
   toggle_repo() {
     this.spin = true;
