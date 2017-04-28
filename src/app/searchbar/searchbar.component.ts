@@ -34,15 +34,15 @@ export class SearchbarComponent implements OnInit {
     const repos = this.apiService.getCachedRepos();
     const targets = [
       {
-        name: 'home',
+        name: 'Home',
         target: '/home'
       },
       {
-        name: 'profile',
+        name: 'Profile',
         target: '/profile'
       },
       {
-        name: 'repositories',
+        name: 'Repositories',
         target: '/repositories'
       },
     ];
