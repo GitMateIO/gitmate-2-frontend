@@ -1,6 +1,6 @@
 <md-card style="padding:0;">
     <md-input-container color="accent" floatPlaceholder="never" style="margin:-0.5em 0">
-      <input mdInput #search placeholder="&nbsp;Ctrl+Space to search GitMate" [mdAutocomplete]="auto"
+      <input mdInput #search placeholder="Ctrl+Space to search GitMate" [mdAutocomplete]="auto"
       [(ngModel)]="inputValue" (ngModelChange)="filteredResults = filterResults(inputValue);" (keypress)="onKeyPress($event)">
     </md-input-container>
 
