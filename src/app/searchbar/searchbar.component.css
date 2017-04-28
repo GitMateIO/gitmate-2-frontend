@@ -1,3 +1,16 @@
 md-input-container{
   width: 100%;
 }
+
+md-card{
+  border-radius: 0;
+}
+
+/deep/ md-input-container .mat-input-wrapper {
+  margin: 0;
+  padding: 1em;
+}
+
+/deep/ .mat-toolbar-row .mat-input-underline {
+  display: none;
+}
