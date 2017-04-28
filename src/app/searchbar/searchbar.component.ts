@@ -80,6 +80,8 @@ export class SearchbarComponent implements OnInit {
         this.filteredResults = [];
         this.router.navigate([target]);
       }
+    } else if (event.key === 'Escape') {
+      this.filteredResults = [];
     }
   }
 
