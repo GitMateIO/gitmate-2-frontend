@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from './../api/api.service';
 import { UserModel } from './../models';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'gm-toolbar',
@@ -21,10 +22,10 @@ export class ToolbarComponent {
   }
 
   loginGitHub() {
-    window.location.href = 'http://localhost:8000/auth/login/github/';
+    window.location.href = environment.backend_url + '/auth/login/github/';
   }
 
   logout() {
-    window.location.href = 'http://localhost:8000/logout';
+    window.location.href = environment.backend_url + '/logout';
   }
 }
