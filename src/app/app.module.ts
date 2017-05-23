@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule, XSRFStrategy, CookieXSRFStrategy } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import 'hammerjs';
@@ -76,15 +76,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     ApiService,
-    {
-      provide: XSRFStrategy,
-      useFactory: xsrfFactory
-    }
     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-export function xsrfFactory() {
-      return new CookieXSRFStrategy('csrftoken', 'X-CSRFToken');
-}
