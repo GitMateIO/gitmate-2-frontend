@@ -32,12 +32,14 @@ import { NotFoundViewComponent } from './not-found-view/not-found-view.component
 import { PluginsComponent } from './plugins/plugins.component';
 import { RepositoryComponent } from './repository/repository.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
   {path: 'profile', component: ProfileViewComponent},
   {path: 'repositories', component: RepositoriesViewComponent},
   {path: 'repo/:id', component: PluginsComponent},
+  {path: 'disclaimer', component: DisclaimerComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     NotFoundViewComponent,
     PluginsComponent,
     RepositoryComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    DisclaimerComponent
   ],
   imports: [
     BrowserModule,
