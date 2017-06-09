@@ -14,7 +14,7 @@
       </label>
     </md-card-title>
     <md-card-subtitle>
-      {{plugin.description}}
+      <div [innerHTML]="plugin.description"></div>
     </md-card-subtitle>
     <div *ngIf="plugin.active && plugin.settings.length">
       <div *ngFor="let setting of plugin.settings">
