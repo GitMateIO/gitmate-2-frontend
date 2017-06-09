@@ -14,7 +14,7 @@ export class ApiService {
   apiurl = environment.backend_url;
 
   getUser() {
-    return this.http.get(this.apiurl + '/api/me/', { withCredentials: true }).map(response => <UserModel>response.json());
+    return this.http.get(this.apiurl + '/api/users/me/', { withCredentials: true }).map(response => <UserModel>response.json());
   }
 
   getRepos() {
