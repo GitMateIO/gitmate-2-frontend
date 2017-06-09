@@ -10,7 +10,8 @@ export class RepoModel {
   provider: string;
   full_name: string;
   active: boolean;
-  user: number;
+  user: string;
+  admins: string[];
 }
 
 export class SettingModel {

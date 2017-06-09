@@ -14,6 +14,7 @@ export class PluginsComponent implements OnInit {
   plugins: PluginModel[];
   repo: RepoModel;
   spin = false;
+  toggle_user = false;
 
   constructor(
     private apiService: ApiService,
@@ -56,6 +57,16 @@ export class PluginsComponent implements OnInit {
         }
       );
     }
+  }
+
+  set_active_user() {
+    this.toggle_user = true;
+    this.apiService.set_user(this.repo.id, this.repo.user).subscribe(
+      repo => {
+        this.repo = repo;
+        this.toggle_user = false;
+      }
+    );
   }
 
 }

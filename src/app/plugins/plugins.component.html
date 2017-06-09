@@ -1,7 +1,21 @@
 <div class="plugins" *ngIf="repo">
   <md-card-title style="height:40px;padding: 0 24px 0 24px;">{{repo.full_name}}
+
     <div style="float:right;display:flex">
+
+      <md-select *ngIf="repo && repo.admins.length > 1"
+        style="margin-right: 14px"
+        placeholder="User for commenting"
+        (change)="set_active_user()"
+        [(ngModel)]="repo.user"
+        [disabled]="toggle_user">
+        <md-option *ngFor="let admin of repo.admins" [value]="admin">
+          {{admin}}
+        </md-option>
+      </md-select>
+
       <md-spinner *ngIf="spin" style="width:40px;height:40px;"></md-spinner>
+      <div *ngIf="!spin" style="width:40px;"></div>
       <md-slide-toggle disabled="{{spin}}" [checked]="repo.active" (change)="toggle_repo()" style="margin-left:14px;margin-top:12px;"></md-slide-toggle>
     </div>
   </md-card-title>

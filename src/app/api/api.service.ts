@@ -21,6 +21,10 @@ export class ApiService {
     return this.http.get(this.apiurl + '/api/repos/', {withCredentials: true}).map(response => <RepoModel[]>response.json());
   }
 
+  set_user(id: number, user: string) {
+    return this.http.patch(this.apiurl + '/api/repos/' + id + '/', {'user': user}, {withCredentials: true}).map(response => <RepoModel>response.json());
+  }
+
   addRepo(id: number) {
     return this.http.patch(this.apiurl + '/api/repos/' + id + '/', {'active': true}, {withCredentials: true}).map(response => <RepoModel>response.json());
   }
