@@ -1,3 +1,43 @@
-<p>
-  profile-view works!
-</p>
+<md-card style="width: 60%; margin: auto; margin-top: 24px">
+  <md-card-header>
+    <md-card-title>Profile</md-card-title>
+  </md-card-header>
+  <md-card-content>
+
+    <md-input-container *ngIf="user">
+      <input mdInput disabled="true" placeholder="username" value="{{user.username}}">
+    </md-input-container>
+    <br>
+    <md-input-container *ngIf="user">
+      <input mdInput disabled="true" placeholder="email" value="{{user.email}}">
+    </md-input-container>
+
+  </md-card-content>
+</md-card>
+
+<md-card style="width: 60%; margin: auto; margin-top: 24px">
+  <md-card-header>
+    <md-card-title>Accounts</md-card-title>
+  </md-card-header>
+  <md-card-content *ngIf="user">
+    GitHub: {{user.username}}
+    <button md-raised-button color="primary" disabled="true">
+    Remove Account
+  </button>
+ <br>
+    GitLab
+  <button md-raised-button color="accent" disabled="true">
+    Add Account
+  </button>
+  </md-card-content>
+</md-card>
+
+<md-card style="width: 60%; margin: auto; margin-top: 24px">
+  <md-card-header>
+    <md-card-title>Delete Account</md-card-title>
+  </md-card-header>
+  <button md-raised-button color="warn" disabled="true">
+    DELETE ACCOUNT
+  </button>
+</md-card>
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from './../api/api.service';
+import { UserModel } from './../models';
 
 @Component({
   selector: 'app-profile-view',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-view.component.css']
 })
 export class ProfileViewComponent implements OnInit {
-
-  constructor() { }
+  user: UserModel;
+  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
+    this.apiService.getUser().subscribe(user => this.user = user);
   }
 
 }
