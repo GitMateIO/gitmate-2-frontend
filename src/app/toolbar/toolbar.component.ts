@@ -25,6 +25,10 @@ export class ToolbarComponent {
     window.location.href = environment.backend_url + '/auth/login/github/';
   }
 
+  loginGitLab() {
+    window.location.href = environment.backend_url + '/auth/login/gitlab/';
+  }
+
   logout() {
     window.location.href = environment.backend_url + '/logout';
   }

@@ -35,8 +35,12 @@
   <div class="box box-right">
     <span class="toolbar-filler"></span>
 
-    <button md-raised-button *ngIf="!userDefined()" color="accent" (click)="loginGitHub()">
+    <button md-raised-button *ngIf="!userDefined()" color="accent" style="margin-right:15px" (click)="loginGitHub()">
       Login with GitHub
+    </button>
+
+    <button md-raised-button *ngIf="!userDefined()" color="accent" (click)="loginGitLab()">
+      Login with GitLab
     </button>
 
     <button md-button *ngIf="userDefined()" [mdMenuTriggerFor]="userMenu">
