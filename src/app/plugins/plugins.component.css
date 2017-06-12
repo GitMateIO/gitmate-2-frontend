@@ -12,3 +12,11 @@ md-input-container{
 textarea{
   resize: vertical;
 }
+
+.vendor-icon {
+  line-height: 40px;
+  font-size: 2em;
+  height: 40px;
+  width: 40px;
+}
+

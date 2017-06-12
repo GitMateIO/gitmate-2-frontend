@@ -15,6 +15,8 @@ export class PluginsComponent implements OnInit {
   repo: RepoModel;
   spin = false;
   toggle_user = false;
+  link_icon: string;
+  repo_url: string;
 
   constructor(
     private apiService: ApiService,
@@ -28,7 +30,11 @@ export class PluginsComponent implements OnInit {
 
     this.route.params
       .switchMap((params: Params) => this.apiService.getRepo(params['id']))
-      .subscribe((repo: RepoModel) => this.repo = repo);
+      .subscribe((repo: RepoModel) => {
+        this.repo = repo;
+        this.link_icon = 'fa-' + repo.provider;
+        this.repo_url = 'https://' + repo.provider + '.com/' + repo.full_name;
+      });
 
   }
 
@@ -67,6 +73,10 @@ export class PluginsComponent implements OnInit {
         this.toggle_user = false;
       }
     );
+  }
+
+  goto_repo() {
+    window.location.href = this.repo_url;
   }
 
 }

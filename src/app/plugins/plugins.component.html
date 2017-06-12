@@ -1,5 +1,10 @@
 <div class="plugins" *ngIf="repo">
-  <md-card-title style="height:40px;padding: 0 24px 0 24px;">{{repo.full_name}}
+  <md-card-title style="height:40px;padding: 0 24px 0 24px;">
+    <button md-icon-button (click)="goto_repo()" >
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="{{link_icon}}" ></md-icon>
+    </button>
+
+    {{repo.full_name}}
 
     <div style="float:right;display:flex">
 
