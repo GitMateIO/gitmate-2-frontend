@@ -5,11 +5,11 @@
   <md-card-content>
 
     <md-input-container *ngIf="user">
-      <input mdInput disabled="true" placeholder="username" value="{{user.username}}">
+      <input mdInput [(ngModel)]="user.username" (change)="setUserName()" placeholder="username">
     </md-input-container>
     <br>
     <md-input-container *ngIf="user">
-      <input mdInput disabled="true" placeholder="email" value="{{user.email}}">
+      <input mdInput [(ngModel)]="user.email" (change)="setEmail()" placeholder="email">
     </md-input-container>
 
   </md-card-content>

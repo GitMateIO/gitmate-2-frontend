@@ -8,10 +8,15 @@ import { environment } from './../../environments/environment';
 @Injectable()
 export class ApiService {
   cached_repos: RepoModel[];
+  apiurl = environment.backend_url;
+
   constructor(private http: Http) {
     this.getRepos().subscribe(repos => this.cached_repos = repos);
   }
-  apiurl = environment.backend_url;
+
+  patch(api_dir: string, payload: any) {
+    return this.http.patch(this.apiurl + api_dir, payload, {withCredentials: true}).map(response => response.json());
+  }
 
   getUser() {
     return this.http.get(this.apiurl + '/api/users/me/', { withCredentials: true }).map(response => <UserModel>response.json());

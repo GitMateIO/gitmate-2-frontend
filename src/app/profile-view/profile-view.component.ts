@@ -15,4 +15,14 @@ export class ProfileViewComponent implements OnInit {
     this.apiService.getUser().subscribe(user => this.user = user);
   }
 
+  setEmail() {
+    this.apiService.patch('/api/users/me/', {'email': this.user.email})
+      .subscribe(user => this.user = user);
+  }
+
+  setUserName() {
+    this.apiService.patch('/api/users/me/', {'username': this.user.username})
+      .subscribe(user => this.user = user);
+  }
+
 }
