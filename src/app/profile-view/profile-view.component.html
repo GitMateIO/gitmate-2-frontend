@@ -21,17 +21,15 @@
   <md-card-header>
     <md-card-title>Accounts</md-card-title>
   </md-card-header>
-  <md-card-content *ngIf="user">
-    GitHub: {{user.username}}
-    <button md-raised-button color="primary" disabled="true">
-    Remove Account
+  <button md-raised-button color="primary" disabled="true">
+    <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github"></md-icon>
+    Remove GitHub Account
   </button>
- <br>
-    GitLab
+  <br><br>
   <button md-raised-button color="accent" disabled="true">
-    Add Account
+    <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab"></md-icon>
+    Add GitLab Account
   </button>
-  </md-card-content>
 </md-card>
 
 <md-card style="width: 60%; margin: auto; margin-top: 24px">

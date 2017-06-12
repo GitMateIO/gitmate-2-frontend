@@ -9,7 +9,7 @@ import 'hammerjs';
 import { MdButtonModule } from '@angular/material';
 import { MdToolbarModule} from '@angular/material';
 import { MdMenuModule} from '@angular/material';
-import { MdIconModule  } from '@angular/material';
+import { MdIconModule, MdIconRegistry } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdInputModule } from '@angular/material';
 import { MdCheckboxModule } from '@angular/material';
@@ -80,8 +80,13 @@ const appRoutes: Routes = [
     HotkeyModule.forRoot(),
   ],
   providers: [
+    MdIconRegistry,
     ApiService,
     ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public mdIconRegistry: MdIconRegistry) {
+    mdIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+  }
+}
