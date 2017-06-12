@@ -2,15 +2,28 @@ md-input-container{
   width: 100%;
 }
 
-md-card{
-  border-radius: 0;
+.mat-input-container {
+  background: #114a96;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
 }
-
-/deep/ md-input-container .mat-input-wrapper {
-  margin: 0;
-  padding: 1em;
+.mat-input-container:hover {
+  background: #337ac6;
 }
 
 /deep/ .mat-toolbar-row .mat-input-underline {
   display: none;
+}
+
+/deep/ .mat-input-wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px !important;
+  width: 100%;
+}
+/deep/ .mat-input-placeholder {
+  color: rgba(255,255,255,.87) !important;
 }
