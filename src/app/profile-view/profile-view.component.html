@@ -6,10 +6,12 @@
 
     <md-input-container *ngIf="user">
       <input mdInput [(ngModel)]="user.username" (change)="setUserName()" placeholder="username">
+      <md-hint>{{user_name_message}}</md-hint>
     </md-input-container>
     <br>
     <md-input-container *ngIf="user">
       <input mdInput [(ngModel)]="user.email" (change)="setEmail()" placeholder="email">
+      <md-hint>{{user_email_message}}</md-hint>
     </md-input-container>
 
   </md-card-content>
