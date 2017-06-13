@@ -76,7 +76,7 @@ export class PluginsComponent implements OnInit {
   }
 
   goto_repo() {
-    window.location.href = this.repo_url;
+    window.open(this.repo_url);
   }
 
 }
