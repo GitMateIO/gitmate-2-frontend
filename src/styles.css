@@ -1,4 +1,52 @@
 body {
   margin: 0px;
   padding: 0px;
+  font-family: Roboto;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-weight: inherit;
+}
+
+.thin {
+  font-weight: 200;
+}
+
+.light {
+  font-weight: 300;
+}
+
+.normal {
+  font-weight: 400;
+}
+
+.centered-hor {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-width {
+  width: 100%;
+}
+
+.flex-bar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.flex-expander {
+  flex: 1 1 auto;
+}
+
+@media (min-width:601px) {
+  .content-width {
+    width:66%;
+  }
+}
+
+@media (min-width:1500px) {
+  .content-width {
+    width:1000px;
+  }
 }

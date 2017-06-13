@@ -1,21 +1,9 @@
 md-card{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 400px;
-  width: 50%;
   padding: 12px;
 }
 
 md-card-subtitle{
   margin-bottom: 0px;
-}
-
-.repo_actions{
-  display: flex;
-  align-items: center;
 }
 
 md-slide-toggle{
