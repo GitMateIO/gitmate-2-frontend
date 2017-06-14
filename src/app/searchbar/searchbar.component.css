@@ -24,6 +24,7 @@ md-input-container{
   padding-bottom: 0px !important;
   width: 100%;
 }
-/deep/ .mat-input-placeholder {
+
+/deep/ .mat-toolbar-row .mat-input-placeholder {
   color: rgba(255,255,255,.87) !important;
 }
