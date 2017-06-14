@@ -5,9 +5,16 @@ md-input-container{
 .mat-input-container {
   background: #114a96;
   height: 45px;
+  width: 330px;
+  float: right;
   display: flex;
   align-items: center;
   border-radius: 2px;
+  cursor: text;
+  -webkit-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  -moz-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  -o-transition:width 300ms ease-in-out, height 300ms ease-in-out;
+  transition:width 300ms ease-in-out, height 300ms ease-in-out;
 }
 .mat-input-container:hover {
   background: #337ac6;
@@ -26,5 +33,27 @@ md-input-container{
 }
 
 /deep/ .mat-toolbar-row .mat-input-placeholder {
-  color: rgba(255,255,255,.87) !important;
+  color: rgba(255,255,255,.38);
+}
+
+/deep/ .mat-toolbar-row .mat-focused .mat-input-placeholder {
+  color: rgba(0,0,0,.38) !important;
+}
+
+.mat-focused {
+  width: 100%;
+  color: black;
+  background: white !important;
+}
+
+.mag-icon{
+  font-size:24px !important;
+  padding-right: 12px;
+  padding-top: 1px;
+}
+
+@media (max-width:600px){
+  .mat-input-container {
+  width: 100%;
+  }
 }
