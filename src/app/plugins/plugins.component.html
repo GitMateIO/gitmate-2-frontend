@@ -1,57 +1,59 @@
-<div class="flex-bar">
-  <button md-icon-button (click)="goto_repo()" >
-    <md-icon class="vendor-icon" fontSet="fa" fontIcon="{{link_icon}}" ></md-icon>
-  </button>
+<div class="content-width centered-hor plugins" *ngIf="repo">
+  <div class="flex-bar">
+    <button md-icon-button (click)="goto_repo()" >
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="{{link_icon}}" ></md-icon>
+    </button>
 
-  <h2 class="normal">
-    {{repo.full_name}}
-  </h2>
+    <h2 class="normal">
+      {{repo.full_name}}
+    </h2>
 
-  <div class="flex-expander"></div>
+    <div class="flex-expander"></div>
 
-  <md-select *ngIf="repo && repo.admins.length > 1"
-    style="margin-right: 14px"
-    placeholder="User for commenting"
-    (change)="set_active_user()"
-    [(ngModel)]="repo.user"
-    [disabled]="toggle_user">
-    <md-option *ngFor="let admin of repo.admins" [value]="admin">
-      {{admin}}
-    </md-option>
-  </md-select>
+    <md-select *ngIf="repo && repo.admins.length > 1"
+      style="margin-right: 14px"
+      placeholder="User for commenting"
+      (change)="set_active_user()"
+      [(ngModel)]="repo.user"
+      [disabled]="toggle_user">
+      <md-option *ngFor="let admin of repo.admins" [value]="admin">
+        {{admin}}
+      </md-option>
+    </md-select>
 
-  <md-spinner *ngIf="spin" style="width:40px;height:40px;"></md-spinner>
-  <div *ngIf="!spin" style="width:40px;"></div>
-  <md-slide-toggle disabled="{{spin}}" [checked]="repo.active" (change)="toggle_repo()" style="margin-left:14px;margin-top:12px;"></md-slide-toggle>
+    <md-spinner *ngIf="spin" style="width:40px;height:40px;"></md-spinner>
+    <div *ngIf="!spin" style="width:40px;"></div>
+    <md-slide-toggle disabled="{{spin}}" [checked]="repo.active" (change)="toggle_repo()" style="margin-left:14px;margin-top:12px;"></md-slide-toggle>
 
-</div>
-
-<md-card *ngFor="let plugin of plugins">
-  <md-card-title>
-    <label>
-      {{plugin.title}}
-      <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)" style="float:right;padding-top:10px"></md-slide-toggle>
-    </label>
-  </md-card-title>
-  <md-card-subtitle>
-    <div [innerHTML]="plugin.description"></div>
-  </md-card-subtitle>
-  <div *ngIf="plugin.active && plugin.settings.length">
-    <div *ngFor="let setting of plugin.settings">
-      <!-- CharField -->
-      <md-input-container *ngIf="setting.type=='CharField'">
-        <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
-      </md-input-container>
-      <!-- TextField -->
-      <md-input-container *ngIf="setting.type=='TextField'">
-        <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" ></textarea>
-      </md-input-container>
-      <!-- BooleanField -->
-      <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
-        <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
-      </label>
-    </div>
   </div>
-</md-card>
+
+  <md-card *ngFor="let plugin of plugins">
+    <md-card-title>
+      <label>
+        {{plugin.title}}
+        <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)" style="float:right;padding-top:10px"></md-slide-toggle>
+      </label>
+    </md-card-title>
+    <md-card-subtitle>
+      <div [innerHTML]="plugin.description"></div>
+    </md-card-subtitle>
+    <div *ngIf="plugin.active && plugin.settings.length">
+      <div *ngFor="let setting of plugin.settings">
+        <!-- CharField -->
+        <md-input-container *ngIf="setting.type=='CharField'">
+          <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
+        </md-input-container>
+        <!-- TextField -->
+        <md-input-container *ngIf="setting.type=='TextField'">
+          <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" ></textarea>
+        </md-input-container>
+        <!-- BooleanField -->
+        <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
+          <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
+        </label>
+      </div>
+    </div>
+  </md-card>
+</div>
 
 <p *ngIf="plugins==null">Loading...</p>

@@ -1,42 +1,44 @@
-<md-card>
-  <md-card-header>
-    <md-card-title>Profile</md-card-title>
-  </md-card-header>
-  <md-card-content>
+<div class="content-width centered-hor">
+  <md-card>
+    <md-card-header>
+      <md-card-title>Profile</md-card-title>
+    </md-card-header>
+    <md-card-content>
 
-    <md-input-container *ngIf="user">
-      <input mdInput [(ngModel)]="user.username" (change)="setUserName()" placeholder="username">
-      <md-hint>{{user_name_message}}</md-hint>
-    </md-input-container>
-    <br>
-    <md-input-container *ngIf="user">
-      <input mdInput [(ngModel)]="user.email" (change)="setEmail()" placeholder="email">
-      <md-hint>{{user_email_message}}</md-hint>
-    </md-input-container>
+      <md-input-container *ngIf="user">
+        <input mdInput [(ngModel)]="user.username" (change)="setUserName()" placeholder="username">
+        <md-hint>{{user_name_message}}</md-hint>
+      </md-input-container>
+      <br>
+      <md-input-container *ngIf="user">
+        <input mdInput [(ngModel)]="user.email" (change)="setEmail()" placeholder="email">
+        <md-hint>{{user_email_message}}</md-hint>
+      </md-input-container>
 
-  </md-card-content>
-</md-card>
+    </md-card-content>
+  </md-card>
 
-<md-card>
-  <md-card-header>
-    <md-card-title>Accounts</md-card-title>
-  </md-card-header>
-  <button md-raised-button color="primary" disabled="true">
-    <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github"></md-icon>
-    Remove GitHub Account
-  </button>
-  <br><br>
-  <button md-raised-button color="accent" disabled="true">
-    <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab"></md-icon>
-    Add GitLab Account
-  </button>
-</md-card>
+  <md-card>
+    <md-card-header>
+      <md-card-title>Accounts</md-card-title>
+    </md-card-header>
+    <button md-raised-button color="primary" disabled="true">
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github"></md-icon>
+      Remove GitHub Account
+    </button>
+    <br><br>
+    <button md-raised-button color="accent" disabled="true">
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab"></md-icon>
+      Add GitLab Account
+    </button>
+  </md-card>
 
-<md-card>
-  <md-card-header>
-    <md-card-title>Delete Account</md-card-title>
-  </md-card-header>
-  <button md-raised-button color="warn" disabled="true">
-    DELETE ACCOUNT
-  </button>
-</md-card>
+  <md-card>
+    <md-card-header>
+      <md-card-title>Delete Account</md-card-title>
+    </md-card-header>
+    <button md-raised-button color="warn" disabled="true">
+      DELETE ACCOUNT
+    </button>
+  </md-card>
+</div>
