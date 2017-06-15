@@ -14,7 +14,7 @@ export class RepositoriesViewComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.update_repos();
+    this.apiService.getCachedRepos().subscribe(repos => this.repos = repos);
   }
 
   update_repos() {
