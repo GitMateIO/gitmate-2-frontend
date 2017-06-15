@@ -1,4 +1,2 @@
 <p *ngIf="repos.length == 0">Loading...</p>
-<div class="content-width centered-hor">
-  <app-repository *ngFor="let repo of repos" [repo]="repo" (active_toggled)="update_repos()"></app-repository>
-</div>
+<app-repository *ngFor="let repo of repos" [repo]="repo" (active_toggled)="update_repos()"></app-repository>
