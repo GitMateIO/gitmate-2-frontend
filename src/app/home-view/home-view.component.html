@@ -9,7 +9,28 @@
 
   <br>
   <img src="assets/images/header.png"/>
+</section>
+
+<section class="center">
+  <div class="center center-block section-heading">Get free code reviews now!</div>
+  <div class="center center-block section-content">
+    Add code analysis for all pull requests on your repositories on GitHub and GitLab. Automatically set labels and more with our awesome free community edition.
+  </div>
   <br>
+  <div *ngIf="!userDefined()" class="container center-block">
+    <br>
+    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+      Get started with GitHub&nbsp;&nbsp;
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+    </button>
+    <br><br>
+    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+      Get started with GitLab&nbsp;&nbsp;
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+    </button>
+    <br><br>
+  </div>
+  <br><br>
 </section>
 
 <section class="center grey lighten-4 features-section">
@@ -72,11 +93,17 @@
 
 <section class="center">
   <br>
-  <div class="center center-block section-heading">Sounds Interesting?</div>
-  <br><br>
-  <div class="container center-block">
-    <a href="http://eepurl.com/cOBGmj" md-raised-button color="accent" class="action-btn">Get Updates on GitMate</a>
-    <a href="mailto:info@gitmate.io" md-raised-button color="primary" class="action-btn">Get in Touch</a>
+  <br>
+  <div *ngIf="!userDefined()" class="container center-block">
+    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+      Get started with GitHub&nbsp;&nbsp;
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+    </button>
+    <br><br>
+    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+      Get started with GitLab&nbsp;&nbsp;
+      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+    </button>
   </div>
   <br><br>
 

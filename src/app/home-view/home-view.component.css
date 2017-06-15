@@ -164,6 +164,17 @@ img {
   max-width: 30em !important;
 }
 
+/* Call to action */
+
+.big-button {
+  font-size: 22px;
+  line-height: 60px;
+  padding: 0 30px;
+  border-radius: 4px;
+  width: 330px;
+}
+
+
 /* Footer Section */
 
 .action-btn {
