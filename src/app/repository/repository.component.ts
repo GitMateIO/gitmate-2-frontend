@@ -41,7 +41,6 @@ export class RepositoryComponent implements OnInit {
       );
       this.active_toggled.emit('disabled');
     }
-    console.log(this.spin);
   }
 
   ngOnInit() {
