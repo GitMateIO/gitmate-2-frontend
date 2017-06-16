@@ -31,8 +31,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   autoCompleteTargets() {
-    let repos: RepoModel[];
-    this.apiService.getCachedRepos().subscribe(reps => repos = reps);
+    const repos = this.apiService.getCachedRepos();
     const targets = [
       {
         name: 'Home',

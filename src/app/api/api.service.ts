@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Observable';
 
 import { UserModel, RepoModel, SettingModel, PluginModel } from './../models';
 import { environment } from './../../environments/environment';
@@ -12,7 +11,7 @@ export class ApiService {
   apiurl = environment.backend_url;
 
   constructor(private http: Http) {
-    this.updateCachedRepos();
+    this.getRepos().subscribe(repos => this.cached_repos = repos);
   }
 
   patch(api_dir: string, payload: any) {
@@ -25,16 +24,6 @@ export class ApiService {
 
   getRepos() {
     return this.http.get(this.apiurl + '/api/repos/', {withCredentials: true}).map(response => <RepoModel[]>response.json());
-  }
-
-  getCachedRepos() {
-    return Observable.of(this.cached_repos);
-  }
-
-  updateCachedRepos() {
-    this.http.get(this.apiurl + '/api/repos/', {withCredentials: true})
-    .map(response => <RepoModel[]>response.json())
-    .subscribe(repos => this.cached_repos = repos);
   }
 
   set_user(id: number, user: string) {
@@ -84,4 +73,10 @@ export class ApiService {
                            , {withCredentials: true})
     .map(response => <PluginModel[]>response.json().plugins);
   }
+
+  getCachedRepos() {
+    return this.cached_repos ? this.cached_repos
+                             : [];
+  }
+
 }
