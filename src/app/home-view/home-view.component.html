@@ -1,113 +1,115 @@
-<section class="header-section center-block">
-  <br>
-  <h1 class="thin center">
-    Automated Code Review
-  </h1>
-  <h5 class="light center">
-    for Java, C/C++, C#, JavaScript, Delphi, SQL and 55 Other Languages
-  </h5>
-
-  <br>
-  <img src="assets/images/header.png"/>
-</section>
-
-<section class="center">
-  <div class="center center-block section-heading">Get free code reviews now!</div>
-  <div class="center center-block section-content">
-    Add code analysis for all pull requests on your repositories on GitHub and GitLab. Automatically set labels and more with our awesome free community edition.
-  </div>
-  <br>
-  <div *ngIf="!userDefined()" class="container center-block">
+<md-card>
+  <section class="header-section center-block">
     <br>
-    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
-      Get started with GitHub&nbsp;&nbsp;
-      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
-    </button>
-    <br><br>
-    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
-      Get started with GitLab&nbsp;&nbsp;
-      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
-    </button>
-    <br><br>
-  </div>
-  <br><br>
-</section>
+    <h1 class="thin center">
+      Automated Code Review
+    </h1>
+    <h5 class="light center">
+      for Java, C/C++, C#, JavaScript, Delphi, SQL and 55 Other Languages
+    </h5>
 
-<section class="center grey lighten-4 features-section">
+    <br>
+    <img src="assets/images/header.png"/>
+  </section>
+
+  <section class="center">
+    <div class="center center-block section-heading">Get free code reviews now!</div>
+    <div class="center center-block section-content">
+      Add code analysis for all pull requests on your repositories on GitHub and GitLab. Automatically set labels and more with our awesome free community edition.
+    </div>
+    <br>
+    <div *ngIf="!userDefined()" class="container center-block">
+      <br>
+      <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+        Get started with GitHub&nbsp;&nbsp;
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+      </button>
+      <br><br>
+      <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+        Get started with GitLab&nbsp;&nbsp;
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+      </button>
+      <br><br>
+    </div>
+    <br><br>
+  </section>
+
+  <section class="center lighten-4 features-section">
     <div class="container">
-    <div class="row center-block">
-      <div class="features features-top col m4 center-block">
-        <br>
-        <i class="fa fa-code" aria-hidden="true"></i>
-        <div>
-          <h6 class="center-block normal">Powerful Code Analysis</h6>
-          <p>Get detailed feedback on bad practises, style inconsistencies and security issues.</p>
+      <div class="row center-block">
+        <div class="features col m4 center-block">
+          <br>
+          <i class="fa fa-code" aria-hidden="true"></i>
+          <div>
+            <h6 class="center-block normal">Powerful Code Analysis</h6>
+            <p>Get detailed feedback on bad practises, style inconsistencies and security issues.</p>
+          </div>
+        </div>
+        <div class="features col m4 center-block">
+          <br>
+          <i class="fa fa-crosshairs" aria-hidden="true"></i>
+          <div>
+            <h6 class="center-block normal">Risk Detection</h6>
+            <p>Identify 50% of your bugs in 1% of your codebase before they happen.</p>
+          </div>
+        </div>
+        <div class="features col m4 center-block">
+          <br>
+          <i class="fa fa-gears" aria-hidden="true"></i>
+          <div>
+            <h6 class="center-block normal">Individual Configuration</h6>
+            <p>Create your own coding guidelines and set priorities for your specific needs.</p>
+          </div>
         </div>
       </div>
-      <div class="features features-top col m4 center-block">
-        <br>
-        <i class="fa fa-crosshairs" aria-hidden="true"></i>
-        <div>
-          <h6 class="center-block normal">Risk Detection</h6>
-          <p>Identify 50% of your bugs in 1% of your codebase before they happen.</p>
+      <div class="row center-block">
+        <div class="features  col m4 center-block">
+          <br>
+          <i class="fa fa-users" aria-hidden="true"></i>
+          <div>
+            <h6 class="center-block normal">Personal Service</h6>
+            <p>Integrate GitMate into your existing stack in cooperation with experienced consultants</p>
+          </div>
+        </div>
+        <div class="features  col m4 center-block">
+          <br>
+          <i class="fa fa-line-chart" aria-hidden="true"></i>
+          <div>
+            <h6 class="center-block normal">Progress Dashboard</h6>
+            <p>Visualize your codes quality progress and your monetary benefits. </p>
+          </div>
+        </div>
+        <div class="features  col m4 center-block">
+          <br>
+          <i class="fa fa-code-fork" aria-hidden="true"></i>
+          <div>
+            <h6 class="center-block normal">Tight Integration</h6>
+            <p>Use GitMate within your existing workflows in your Atlassian Suite, Subversion, Gerrit, or git.</p>
+          </div>
         </div>
       </div>
-        <div class="features features-top col m4 center-block">
-        <br>
-        <i class="fa fa-gears" aria-hidden="true"></i>
-        <div>
-          <h6 class="center-block normal">Individual Configuration</h6>
-          <p>Create your own coding guidelines and set priorities for your specific needs.</p>
-        </div>
-      </div>
+      <br><br>
     </div>
-    <div class="row center-block">
-      <div class="features features-bottom col m4 center-block">
-        <br>
-        <i class="fa fa-users" aria-hidden="true"></i>
-        <div>
-          <h6 class="center-block normal">Personal Service</h6>
-          <p>Integrate GitMate into your existing stack in cooperation with experienced consultants</p>
-        </div>
-      </div>
-      <div class="features features-bottom col m4 center-block">
-        <br>
-        <i class="fa fa-line-chart" aria-hidden="true"></i>
-        <div>
-          <h6 class="center-block normal">Progress Dashboard</h6>
-          <p>Visualize your codes quality progress and your monetary benefits. </p>
-        </div>
-      </div>
-      <div class="features features-bottom col m4 center-block">
-        <br>
-        <i class="fa fa-code-fork" aria-hidden="true"></i>
-        <div>
-          <h6 class="center-block normal">Tight Integration</h6>
-          <p>Use GitMate within your existing workflows in your Atlassian Suite, Subversion, Gerrit, or git.</p>
-        </div>
-      </div>
+  </section>
+
+  <section class="center">
+    <br>
+    <br>
+    <div *ngIf="!userDefined()" class="container center-block">
+      <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+        Get started with GitHub&nbsp;&nbsp;
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+      </button>
+      <br><br>
+      <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+        Get started with GitLab&nbsp;&nbsp;
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+      </button>
     </div>
     <br><br>
-  </div>
-</section>
 
-<section class="center">
-  <br>
-  <br>
-  <div *ngIf="!userDefined()" class="container center-block">
-    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
-      Get started with GitHub&nbsp;&nbsp;
-      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
-    </button>
-    <br><br>
-    <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
-      Get started with GitLab&nbsp;&nbsp;
-      <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
-    </button>
-  </div>
-  <br><br>
-
-  <div style="text-align: center">
-    <a style="display: inline-block; color: #607070" href="/disclaimer">Disclaimer</a><br>
-  </div>
-</section>
+    <div style="text-align: center">
+      <a style="display: inline-block; color: #607070" href="/disclaimer">Disclaimer</a><br>
+    </div>
+  </section>
+</md-card>

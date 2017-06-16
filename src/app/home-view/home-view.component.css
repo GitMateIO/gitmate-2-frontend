@@ -40,6 +40,7 @@ h5 {
 h6 {
   font-family: Roboto;
   font-size: 1.3em;
+  margin: 0.82rem 0 0.656rem 0;
 }
 
 p {
@@ -108,45 +109,28 @@ img {
   max-width: 1000px;
 }
 
-.grey {
-  background-color: #d9e2ed;
-}
-
 /* Features Section */
 
 .features-section{
   text-align: center;
-  padding-right: 3vw;
-  padding-left: 3vw;
+  padding-right: 1vw;
+  padding-left: 1vw;
 }
 
 .features-section .fa {
-  font-size: 10vw;
+  font-size: 5vw;
   height: 5vw;
 }
 
 .features-section p {
   color: grey;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 .features {
   flex-grow: 1;
   width: 33%
-}
-
-.features:nth-of-type(2) {
-  border-left: 2px solid rgb(238, 238, 238);
-  border-right: 2px solid rgb(238, 238, 238);
-}
-
-.features-top {
-  border-bottom: 2px solid rgb(238, 238, 238);
-}
-
-.features-bottom {
-  border-bottom: 0px;
 }
 
 /* Feature Detail Section */
@@ -198,9 +182,5 @@ img {
   .features:nth-of-type(2) {
     border-left: 0px;
     border-right: 0px;
-  }
-
-  .features-bottom {
-    border-bottom: 2px solid rgb(238, 238, 238);
   }
 }
