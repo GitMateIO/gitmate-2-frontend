@@ -1,17 +1,22 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
+import 'rxjs/observable/of';
 
 import { UserModel, RepoModel, SettingModel, PluginModel } from './../models';
 import { environment } from './../../environments/environment';
 
 @Injectable()
 export class ApiService {
-  cached_repos: RepoModel[];
+  cache_data: RepoModel[];
+  private cache_observable: Observable<any>;
+
   apiurl = environment.backend_url;
 
   constructor(private http: Http) {
-    this.getRepos().subscribe(repos => this.cached_repos = repos);
+    const _ = this.getRepos().subscribe();
   }
 
   patch(api_dir: string, payload: any) {
@@ -22,8 +27,28 @@ export class ApiService {
     return this.http.get(this.apiurl + '/api/users/me/', { withCredentials: true }).map(response => <UserModel>response.json());
   }
 
-  getRepos() {
-    return this.http.get(this.apiurl + '/api/repos/', {withCredentials: true}).map(response => <RepoModel[]>response.json());
+  getRepos(allow_cached = false) {
+    if (this.cache_observable) {
+      // if this.cache_observable is set then the request is in progress
+      // return the Observable of the ongoing request
+      return this.cache_observable;
+    } else if (this.cache_data && allow_cached) {
+      // if we have the repos, just return an them as Observable
+      return Observable.of(this.cache_data);
+    } else {
+      // create the request and store the observable
+      this.cache_observable = this.http.get(this.apiurl + '/api/repos/', {withCredentials: true})
+      .map(response => {
+        // when the cached data is available we don't need the Observable anymore
+        this.cache_observable = null;
+
+        this.cache_data = response.json();
+        return this.cache_data;
+      // make it share so that more than one subscriber can get the result
+      })
+      .share();
+      return this.cache_observable;
+    }
   }
 
   set_user(id: number, user: string) {
@@ -73,10 +98,4 @@ export class ApiService {
                            , {withCredentials: true})
     .map(response => <PluginModel[]>response.json().plugins);
   }
-
-  getCachedRepos() {
-    return this.cached_repos ? this.cached_repos
-                             : [];
-  }
-
 }
