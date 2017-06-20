@@ -44,7 +44,7 @@ export class RepositoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.repo.full_name.split('/')[0];
-    this.title = this.repo.full_name.split('/')[1];
+    this.user = this.repo.full_name.substr(0, this.repo.full_name.lastIndexOf('/'));
+    this.title = this.repo.full_name.split('/').pop();
   }
 }
