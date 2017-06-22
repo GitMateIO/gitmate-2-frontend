@@ -1,3 +1,8 @@
+:host {
+  width: 100%;
+  flex: 1 0 auto;
+}
+
 md-hint {
   color: red
 }

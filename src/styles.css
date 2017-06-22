@@ -1,8 +1,20 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0px;
   padding: 0px;
+  min-height: 100vh; /* workaround for long container */
   font-family: Roboto;
   background: #eff0f1;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -34,6 +46,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .flex-expander {
