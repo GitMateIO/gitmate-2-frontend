@@ -54,4 +54,6 @@
   </div>
 </md-card>
 
-<p *ngIf="plugins==null">Loading...</p>
+<p class="loader" *ngIf="plugins==null">
+  <md-spinner></md-spinner>
+</p>
