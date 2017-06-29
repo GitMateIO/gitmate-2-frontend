@@ -105,8 +105,14 @@ img {
 
 /* Header Section */
 .header-section{
-  text-align: center;
-  max-width: 1000px;
+  text-align: left;
+  max-width: 60vw;
+}
+
+.stuff {
+  margin-bottom: 60px;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 /* Features Section */
@@ -150,12 +156,15 @@ img {
 
 /* Call to action */
 
+.buttons {
+  display: inline-flex;
+}
 .big-button {
-  font-size: 22px;
-  line-height: 60px;
+  font-size: 14px;
+  line-height: 35px;
   padding: 0 30px;
-  border-radius: 4px;
-  width: 330px;
+  width: 190px;
+  margin: 5px 5px;
 }
 
 
@@ -166,6 +175,13 @@ img {
 }
 
 /* Media Queries */
+@media screen and (max-width: 772px){
+
+  .buttons {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 620px){
   .fds-img {
     display:none;
@@ -183,4 +199,5 @@ img {
     border-left: 0px;
     border-right: 0px;
   }
+
 }
