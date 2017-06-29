@@ -105,8 +105,15 @@ img {
 
 /* Header Section */
 .header-section{
-  text-align: center;
-  max-width: 1000px;
+  text-align: left;
+  max-width: 550px;
+}
+
+.header-block {
+  margin-top: 40px !important;
+  margin-bottom: 100px;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 /* Features Section */
@@ -150,12 +157,20 @@ img {
 
 /* Call to action */
 
+.buttons {
+  display: inline-flex;
+}
 .big-button {
-  font-size: 22px;
-  line-height: 60px;
-  padding: 0 30px;
-  border-radius: 4px;
-  width: 330px;
+  text-align: left;
+  font-size: 14px;
+  line-height: 35px;
+  padding: 0 25px;
+  width: 190px;
+  margin: 5px 5px;
+}
+
+.vendor-icon {
+  line-height: 20px;
 }
 
 
@@ -166,6 +181,32 @@ img {
 }
 
 /* Media Queries */
+@media screen and (max-width: 960px){
+  .header-block {
+    display: block !important;
+  }
+
+  .header-buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-section {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 772px){
+
+  .header-buttons {
+    display: block;
+    text-align: center;
+  }
+  .buttons {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 620px){
   .fds-img {
     display:none;
@@ -183,4 +224,5 @@ img {
     border-left: 0px;
     border-right: 0px;
   }
+
 }

@@ -29,4 +29,8 @@ export class HomeViewComponent implements OnInit {
     window.location.href = environment.backend_url + '/auth/login/github/';
   }
 
+  loginBitbucket() {
+    window.location.href = 'http://eepurl.com/cUXlJ5';
+  }
+
 }
