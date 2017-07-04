@@ -26,33 +26,39 @@
 
 </div>
 
-<md-card *ngFor="let plugin of plugins">
-  <md-card-title>
-    <label>
-      {{plugin.title}}
-      <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)" style="float:right;padding-top:10px"></md-slide-toggle>
-    </label>
-  </md-card-title>
-  <md-card-subtitle>
-    <div [innerHTML]="plugin.description"></div>
-  </md-card-subtitle>
-  <div *ngIf="plugin.active && plugin.settings.length">
-    <div *ngFor="let setting of plugin.settings">
-      <!-- CharField -->
-      <md-input-container *ngIf="setting.type=='CharField'">
-        <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
-      </md-input-container>
-      <!-- TextField -->
-      <md-input-container *ngIf="setting.type=='TextField'">
-        <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" ></textarea>
-      </md-input-container>
-      <!-- BooleanField -->
-      <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
-        <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
-      </label>
+<md-tab-group *ngIf="plugins">
+  <md-tab *ngFor="let section of [['analysis', 'Code Analysis'], ['pull_request', 'Pull Request Management'], ['issue', 'Issue Management']]" label="{{section[1]}}">
+    <div *ngFor="let plugin of plugins">
+      <md-card *ngIf="plugin.plugin_category == section[0]">
+        <md-card-title>
+          <label>
+            {{plugin.title}}
+            <md-slide-toggle [checked]="plugin.active" (change)="toggle(plugin)" style="float:right;padding-top:10px"></md-slide-toggle>
+          </label>
+        </md-card-title>
+        <md-card-subtitle>
+          <div [innerHTML]="plugin.description"></div>
+        </md-card-subtitle>
+        <div *ngIf="plugin.active && plugin.settings.length">
+          <div *ngFor="let setting of plugin.settings">
+            <!-- CharField -->
+            <md-input-container *ngIf="setting.type=='CharField'">
+              <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
+            </md-input-container>
+            <!-- TextField -->
+            <md-input-container *ngIf="setting.type=='TextField'">
+              <textarea mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" ></textarea>
+            </md-input-container>
+            <!-- BooleanField -->
+            <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
+              <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
+            </label>
+          </div>
+        </div>
+      </md-card>
     </div>
-  </div>
-</md-card>
+  </md-tab>
+</md-tab-group>
 
 <p class="loader" *ngIf="plugins==null">
   <md-spinner></md-spinner>
