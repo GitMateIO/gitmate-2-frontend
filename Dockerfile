@@ -13,6 +13,8 @@ RUN npm install -g @angular/cli && \
 
 VOLUME $ROOT/dist
 
-RUN ng build -prod
+RUN npm rebuild node-sass
+
+RUN ng build -prod --delete-output-path=false
 
 CMD ng serve --host 0.0.0.0
