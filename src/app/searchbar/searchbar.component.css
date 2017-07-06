@@ -17,7 +17,7 @@ md-input-container{
   display: none;
 }
 
-/deep/ .mat-input-wrapper {
+/deep/ .mat-toolbar-row .mat-input-wrapper {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 0px;
