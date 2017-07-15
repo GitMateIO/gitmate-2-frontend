@@ -33,6 +33,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   font-weight: 400;
 }
 
+md-hint {
+  color: red
+}
+
 .centered-hor {
   margin-left: auto;
   margin-right: auto;
