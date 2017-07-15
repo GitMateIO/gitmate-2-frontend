@@ -35,6 +35,7 @@ import { PluginsComponent } from './plugins/plugins.component';
 import { RepositoryComponent } from './repository/repository.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { DictSettingComponent } from './dict-setting/dict-setting.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     PluginsComponent,
     RepositoryComponent,
     SearchbarComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
+    DictSettingComponent
   ],
   imports: [
     BrowserModule,
