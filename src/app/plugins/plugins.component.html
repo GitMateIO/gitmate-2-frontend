@@ -53,6 +53,16 @@
             <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
               <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
             </label>
+            <!-- JSONField -->
+            <div *ngIf="repo">
+              <dict-setting *ngIf="setting.type=='JSONField'"
+                [description]="setting.description"
+                [backend_dict]="setting.value"
+                [plugin_name]="plugin.name"
+                [repoid]="repo.id"
+                [setting_name]="setting.name">
+              </dict-setting>
+            </div>
           </div>
         </div>
       </md-card>
