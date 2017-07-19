@@ -11,6 +11,7 @@ import { environment } from './../../environments/environment';
 })
 export class ToolbarComponent {
   user: UserModel;
+  search_bar_expanded = false;
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
@@ -31,5 +32,9 @@ export class ToolbarComponent {
 
   logout() {
     window.location.href = environment.backend_url + '/logout';
+  }
+
+  onSearchBarResized(expanded: boolean) {
+    this.search_bar_expanded = expanded;
   }
 }

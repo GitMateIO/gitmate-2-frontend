@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Hotkey, HotkeysService } from 'angular2-hotkeys';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { RepoModel  } from './../models'
 export class SearchbarComponent implements OnInit {
   @ViewChild('search') searchElementRef;
   @ViewChild('auto') autocompleteElementRef;
+  @Output() onResized = new EventEmitter<boolean>();
   inputValue = '';
   filteredResults: any[];
 
@@ -88,5 +89,12 @@ export class SearchbarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onFocus() {
+    this.onResized.emit(true);
+  }
+  onBlur() {
+    this.onResized.emit(false);
   }
 }

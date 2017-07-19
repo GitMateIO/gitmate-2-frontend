@@ -17,19 +17,21 @@
     <a class="toolbar-title" [routerLink]="['']" [routerLinkActive]="['router-link-active']"
       [routerLinkActiveOptions]="{exact:true}">GitMate</a>
 
-    <button *ngIf="userDefined()" md-button routerLink="/home" routerLinkActive="active" class="nav-button" >
-      HOME
-    </button>
-
-    <button *ngIf="userDefined()" md-button routerLink="/repositories" routerLinkActive="active" class="nav-button" >
-      REPOSITORIES
-    </button>
-
     <span class="toolbar-filler"></span>
   </div>
 
-  <div class="box box-center">
-    <app-searchbar *ngIf="userDefined()"></app-searchbar>
+  <div class="flex-bar content-width">
+
+    <div *ngIf="!search_bar_expanded">
+      <button *ngIf="userDefined()" md-button routerLink="/home" routerLinkActive="active" class="nav-button" >
+        HOME
+      </button>
+
+      <button *ngIf="userDefined()" md-button routerLink="/repositories" routerLinkActive="active" class="nav-button" >
+        REPOSITORIES
+      </button>
+    </div>
+    <app-searchbar *ngIf="userDefined()" (onResized)="onSearchBarResized($event)"></app-searchbar>
   </div>
 
   <div class="box box-right">
