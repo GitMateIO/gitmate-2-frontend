@@ -2,7 +2,7 @@
   <md-input-container color="accent" floatPlaceholder="never" >
     <md-icon class="mag-icon" mdPrefix>search</md-icon>
     <input mdInput #search placeholder="Ctrl+Space to search GitMate" [mdAutocomplete]="auto"
-    [(ngModel)]="inputValue" (ngModelChange)="filteredResults = filterResults(inputValue);" (keypress)="onKeyPress($event)"
+    [(ngModel)]="inputValue" (ngModelChange)="filteredResults = filterResults(inputValue);" (keydown)="onKeyDown($event)"
     (blur)="onBlur()" (focus)="onFocus()">
   </md-input-container>
 
