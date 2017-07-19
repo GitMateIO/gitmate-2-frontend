@@ -6,10 +6,44 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+// let's try to make a custom palette:
+
+$gitmate: (
+    50: #ffffff,
+  100: #b9c2c6,
+  200: #8b9aa1,
+  300: #5d727b,
+  400: #3a535e,
+  500: #173542,
+  600: #14303c,
+  700: #112833,
+  800: #0d222b,
+  900: #07161d,
+  A100: #5dbeff,
+  A200: #2aaaff,
+  A400: #0093f6,
+  A700: #0084dc,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: white,
+    A700: white,
+  )
+);
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$gitmate-primary: mat-palette($mat-blue, 800);
+$gitmate-primary: mat-palette($gitmate);
 $gitmate-accent:  mat-palette($mat-light-blue);
 
 // The warn palette is optional (defaults to red).

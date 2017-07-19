@@ -3,7 +3,7 @@ md-input-container{
 }
 
 .mat-input-container {
-  background: #114a96;
+  background: #3a535e;
   height: 45px;
   width: 330px;
   float: right;
@@ -17,7 +17,7 @@ md-input-container{
   transition:width 300ms ease-in-out, height 300ms ease-in-out;
 }
 .mat-input-container:hover {
-  background: #337ac6;
+  background: #5d727b;
 }
 
 /deep/ .mat-toolbar-row .mat-input-underline {
