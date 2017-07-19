@@ -83,6 +83,7 @@ export class SearchbarComponent implements OnInit {
       }
     } else if (event.key === 'Escape') {
       this.filteredResults = [];
+      this.searchElementRef.nativeElement.blur();
     }
   }
 
