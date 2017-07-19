@@ -73,7 +73,7 @@ export class SearchbarComponent implements OnInit {
     }
   }
 
-  onKeyPress(event) {
+  onKeyDown(event) {
     if (event.key === 'Enter') {
       const results = this.filterResults(this.searchElementRef.nativeElement.value);
       if (results) {
