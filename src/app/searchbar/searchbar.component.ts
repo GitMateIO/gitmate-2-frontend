@@ -4,7 +4,7 @@ import { Hotkey, HotkeysService } from 'angular2-hotkeys';
 import { Router } from '@angular/router';
 
 import { ApiService } from './../api/api.service';
-import { RepoModel  } from './../models'
+import { RepoModel  } from './../models';
 
 @Component({
   selector: 'app-searchbar',
