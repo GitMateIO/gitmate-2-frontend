@@ -26,7 +26,7 @@ export class HomeViewComponent implements OnInit {
 
 
   loginGitLab() {
-    window.location.href = environment.backend_url + '/auth/login/github/';
+    window.location.href = environment.backend_url + '/auth/login/gitlab/';
   }
 
   loginBitbucket() {
