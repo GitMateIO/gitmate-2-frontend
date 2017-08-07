@@ -1,6 +1,4 @@
-<p class="loader" *ngIf="repos.length == 0">
-  <md-spinner></md-spinner>
-</p>
+<spinner *ngIf="repos.length == 0"></spinner>
 
 <div class="flex-bar" *ngIf="repos.length">
   <div class="caption">Showing repos of:</div>

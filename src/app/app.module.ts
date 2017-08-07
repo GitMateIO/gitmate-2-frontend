@@ -36,6 +36,7 @@ import { RepositoryComponent } from './repository/repository.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { DictSettingComponent } from './dict-setting/dict-setting.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     RepositoryComponent,
     SearchbarComponent,
     DisclaimerComponent,
-    DictSettingComponent
+    DictSettingComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
