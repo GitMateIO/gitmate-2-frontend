@@ -1,4 +1,20 @@
 <p class="loader" *ngIf="repos.length == 0">
-    <md-spinner></md-spinner>
+  <md-spinner></md-spinner>
 </p>
-<app-repository *ngFor="let repo of repos" [repo]="repo" (active_toggled)="update_repos()"></app-repository>
+
+<div class="flex-bar" *ngIf="repos.length">
+  <div class="caption">Showing repos of:</div>
+  <md-select
+    [(ngModel)]="selected_owner">
+    <md-option *ngFor="let owner of owner_options()" [value]="owner">
+      {{owner}}
+    </md-option>
+  </md-select>
+  <div class="flex-expander"></div>
+</div>
+
+<div *ngFor="let repo of repos">
+  <app-repository *ngIf="valid_owner(repo.provider, repo.full_name)"
+    [repo]="repo" (active_toggled)="update_repos()">
+  </app-repository>
+</div>
