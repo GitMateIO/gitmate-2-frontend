@@ -60,6 +60,10 @@ md-hint {
   flex: 1 1 auto;
 }
 
+.loader md-spinner {
+  width: 100%;
+}
+
 @media (min-width:601px) {
   .content-width {
     width:90%;
