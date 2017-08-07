@@ -33,7 +33,7 @@ export class RepositoriesViewComponent implements OnInit {
       }
     }
     owners.sort();
-    owners.push('all');
+    owners.unshift('all');
     return owners;
   }
 
