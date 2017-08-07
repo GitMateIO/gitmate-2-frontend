@@ -70,6 +70,10 @@
   </md-tab>
 </md-tab-group>
 
-<p class="loader" *ngIf="plugins==null">
-  <md-spinner></md-spinner>
-</p>
+<div class="outer" *ngIf="plugins==null">
+  <div class="middle">
+    <div class="inner">
+      <md-spinner></md-spinner>
+    </div>
+  </div>
+</div>

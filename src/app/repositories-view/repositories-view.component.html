@@ -1,4 +1,8 @@
-<p class="loader" *ngIf="repos.length == 0">
-    <md-spinner></md-spinner>
-</p>
+<div class="outer" *ngIf="repos.length == 0">
+  <div class="middle">
+    <div class="inner">
+      <md-spinner></md-spinner>
+    </div>
+  </div>
+</div>
 <app-repository *ngFor="let repo of repos" [repo]="repo" (active_toggled)="update_repos()"></app-repository>
