@@ -37,9 +37,11 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { DisclaimerComponent } from './disclaimer/disclaimer.component';
 import { DictSettingComponent } from './dict-setting/dict-setting.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SecurityComponent } from './security/security.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
+  {path: 'security', component: SecurityComponent},
   {path: 'profile', component: ProfileViewComponent},
   {path: 'repositories', component: RepositoriesViewComponent},
   {path: 'repo/:id', component: PluginsComponent},
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     SearchbarComponent,
     DisclaimerComponent,
     DictSettingComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,
