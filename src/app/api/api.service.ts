@@ -37,7 +37,7 @@ export class ApiService {
       return Observable.of(this.cached_repos);
     } else {
       // create the request and store the observable
-      this.cache_observable = this.http.get(this.apiurl + '/api/repos/', {withCredentials: true})
+      this.cache_observable = this.http.get(this.apiurl + '/api/repos/?cached=0', {withCredentials: true})
       .map(response => {
         // when the cached data is available we don't need the Observable anymore
         this.cache_observable = null;
