@@ -1,0 +1,20 @@
+a {
+  color: #607070;
+  text-decoration: none;
+}
+
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column
+}
+
+.footer-icon {
+  line-height:20px;
+  height: 21px;
+}
