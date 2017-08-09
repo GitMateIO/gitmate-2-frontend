@@ -46,6 +46,7 @@ const appRoutes: Routes = [
   {path: 'repositories', component: RepositoriesViewComponent},
   {path: 'repo/:id', component: PluginsComponent},
   {path: 'disclaimer', component: DisclaimerComponent},
+  {path: 'security', component: SecurityComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
