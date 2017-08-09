@@ -64,6 +64,10 @@ img {
   height: auto;
 }
 
+section {
+  padding-bottom: 3vw;
+}
+
 .center-block {
   display: block;
   margin-left: auto;

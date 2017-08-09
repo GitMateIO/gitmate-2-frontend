@@ -1,15 +1,16 @@
 <md-card>
-  <div class="flex-bar header-block">
-    <div class="header-section center-block">
-      <h3 class="light">
-        Stay in control <br>of your repository
-      </h3>
-      <h5 class="light">
-        GitMate automates code review and finds duplicated issues and stale pull requests.
-      </h5>
-    </div>
+  <section>
+    <div class="flex-bar header-block">
+      <div class="header-section center-block">
+        <h3 class="light">
+          Stay in control <br>of your repository
+        </h3>
+        <h5 class="light">
+          GitMate automates code review and finds duplicated issues and stale pull requests.
+        </h5>
+      </div>
 
-    <div class="flex-expander"></div>
+      <div class="flex-expander"></div>
 
       <div *ngIf="!userDefined()" class="container center-block header-buttons" style="margin-top: 1.46rem;">
         <div>
@@ -31,10 +32,10 @@
           </button>
         </div>
       </div>
-  </div>
+    </div>
+  </section>
 
 <section class="feature-detail-section">
-  <br>
   <div class="row">
     <div class="fds-content">
       <p class="center-block letter-spacing">
@@ -54,7 +55,6 @@
     </div>
   </div>
 </section>
-<br><br>
 
 <section class="feature-detail-section">
   <div class="row">
@@ -76,7 +76,6 @@
   </div>
 </section>
 
-<br><br>
 
 <section class="feature-detail-section">
   <div class="row">
@@ -99,13 +98,11 @@
   </div>
 </section>
 
-  <section class="center">
-    <br>
-    <div *ngIf="!userDefined()" class="center center-block section-heading">
+  <section *ngIf="!userDefined()" class="center">
+    <div class="center center-block section-heading">
       Take control of your repository now!
     </div>
-    <br>
-    <div *ngIf="!userDefined()" class="container center-block buttons">
+    <div class="container center-block buttons">
       <div>
         <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
           <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
@@ -125,6 +122,5 @@
         </button>
       </div>
     </div>
-    <br><br>
   </section>
 </md-card>
