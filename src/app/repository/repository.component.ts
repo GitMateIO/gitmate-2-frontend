@@ -29,17 +29,17 @@ export class RepositoryComponent implements OnInit {
         repo => {
           this.repo = repo;
           this.spin = false;
+          this.active_toggled.emit('enabled');
         }
       );
-      this.active_toggled.emit('enabled');
     } else {
       this.apiService.removeRepo(this.repo.id).subscribe(
         repo => {
           this.repo = repo;
           this.spin = false;
+          this.active_toggled.emit('disabled');
         }
       );
-      this.active_toggled.emit('disabled');
     }
   }
 
