@@ -21,17 +21,9 @@ build_image:
 
 master-image:
   script:
-    - docker build -t $MASTER_IMG_NAME .
     - docker login -e gitlab-ci@gitlab.com -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
-    - docker push $MASTER_IMG_NAME
-  only:
-    - master
-
-release-image:
-  script:
-    - docker build -t $RELEASE_IMG_NAME .
-    - docker login -e gitlab-ci@gitlab.com -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
-    - docker push $RELEASE_IMG_NAME
-  when: manual
+    - docker pull $TEST_IMAGE_NAME
+    - docker tag $TEST_IMAGE_NAME $MASTER_NAME
+    - docker push $MASTER_NAME
   only:
     - master
