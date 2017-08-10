@@ -50,6 +50,10 @@ md-hint {
   height: 100%;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .flex-bar {
   display: flex !important;
   justify-content: space-between !important;
