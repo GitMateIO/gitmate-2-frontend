@@ -53,7 +53,7 @@ app-searchbar{
 
 @media screen and (max-width: 660px){
   .toolbar-title {
-    display: none;
+    display: none !important;
   }
   app-searchbar{
     min-width: 100px;
