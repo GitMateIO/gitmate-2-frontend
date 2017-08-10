@@ -53,6 +53,17 @@
             <label *ngIf="setting.type=='BooleanField'">{{setting.description}}
               <md-slide-toggle [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" style="float:right;padding-top:2px"></md-slide-toggle>
             </label>
+            <!-- IntegerField -->
+            <md-input-container *ngIf="setting.type=='IntegerField'">
+              <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" [formControl]="numberFormControl">
+              <md-error *ngIf="numberFormControl.hasError('required')">
+                This field cannot be empty
+              </md-error>
+              <md-error *ngIf="numberFormControl.hasError('pattern')">
+                Please enter a number
+              </md-error>
+            </md-input-container>
+
             <!-- JSONField -->
             <div *ngIf="repo">
               <dict-setting *ngIf="setting.type=='JSONField'"

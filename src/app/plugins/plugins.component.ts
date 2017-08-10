@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 import { ApiService } from './../api/api.service';
 import { RepoModel, PluginModel, SettingModel } from './../models';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+
+const NUMBER_REGEX = /^[0-9]+$/;
 
 @Component({
   selector: 'app-plugins',
@@ -17,6 +20,10 @@ export class PluginsComponent implements OnInit {
   toggle_user = false;
   link_icon: string;
   repo_url: string;
+
+  numberFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(NUMBER_REGEX )]);
 
   constructor(
     private apiService: ApiService,
