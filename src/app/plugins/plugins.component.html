@@ -55,13 +55,10 @@
             </label>
             <!-- IntegerField -->
             <md-input-container *ngIf="setting.type=='IntegerField'">
-              <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)" [formControl]="numberFormControl">
-              <md-error *ngIf="numberFormControl.hasError('required')">
-                This field cannot be empty
-              </md-error>
-              <md-error *ngIf="numberFormControl.hasError('pattern')">
+              <input mdInput placeholder="{{setting.description}}" [(ngModel)]="setting.value" (change)="setting_change(plugin.name, setting.name, setting.value)">
+              <md-hint *ngIf="!is_integer(setting.value)">
                 Please enter a number
-              </md-error>
+              </md-hint>
             </md-input-container>
 
             <!-- JSONField -->
