@@ -39,6 +39,7 @@ import { DictSettingComponent } from './dict-setting/dict-setting.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SecurityComponent } from './security/security.component';
 import { FooterComponent } from './footer/footer.component';
+import { SearchSelectComponent } from './search-select/search-select.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     DictSettingComponent,
     SpinnerComponent,
     SecurityComponent,
-    FooterComponent
+    FooterComponent,
+    SearchSelectComponent
   ],
   imports: [
     BrowserModule,
