@@ -76,7 +76,7 @@ export class SearchbarComponent implements OnInit {
   onKeyDown(event) {
     if (event.key === 'Enter') {
       const results = this.filterResults(this.searchElementRef.nativeElement.value);
-      if (results) {
+      if (results && results.length > 0) {
         const target = results[0].target;
         this.inputValue = '';
         this.filteredResults = [];
