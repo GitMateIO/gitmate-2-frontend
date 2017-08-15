@@ -1,11 +1,11 @@
-import { Component, ViewChild, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ViewChild, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-select',
   templateUrl: './search-select.component.html',
   styleUrls: ['./search-select.component.css']
 })
-export class SearchSelectComponent implements OnInit {
+export class SearchSelectComponent implements OnChanges {
   @ViewChild('search') searchElementRef;
   @ViewChild('auto') autocompleteElementRef;
   @Input() choices: any[];
@@ -46,6 +46,7 @@ export class SearchSelectComponent implements OnInit {
     this.inputValue = '';
   }
 
-  ngOnInit() {
+  ngOnChanges(changes) {
+    this.onClear();
   }
 }
