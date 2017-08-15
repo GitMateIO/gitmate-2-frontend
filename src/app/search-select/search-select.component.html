@@ -2,7 +2,7 @@
   <input mdInput #search [placeholder]="placeholder" [mdAutocomplete]="auto"
   [(ngModel)]="inputValue" (ngModelChange)="filteredResults = filterResults(inputValue);" (keydown)="onKeyDown($event)"
   (focus)="filteredResults = filterResults(inputValue);" (change)="onChange()">
-  <md-hint *ngIf="invalid"> Hey </md-hint>
+  <md-hint *ngIf="invalid">{{hint}}</md-hint>
   <button md-icon-button mdSuffix (click)="onClear()"><md-icon>backspace</md-icon></button>
 </md-input-container>
 
