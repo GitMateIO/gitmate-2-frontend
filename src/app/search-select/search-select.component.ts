@@ -32,7 +32,7 @@ export class SearchSelectComponent implements OnChanges {
     if (event.key === 'Enter') {
       const results = this.filterResults(this.searchElementRef.nativeElement.value);
       if (results) {
-        this.inputValue = '';
+        this.inputValue = results[0];
         this.filteredResults = [];
         this.selected.emit(results[0]);
       }
