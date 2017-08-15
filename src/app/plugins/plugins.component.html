@@ -9,6 +9,12 @@
 
   <div class="flex-expander"></div>
 
+  <app-search-select
+    [choices]="names_of_other_repos"
+    placeholder="Copy plugin settings"
+    (selected)="copy_from($event)">
+  </app-search-select>
+
   <md-select *ngIf="repo && repo.admins.length > 1"
     style="margin-right: 14px"
     placeholder="User for commenting"
