@@ -16,7 +16,7 @@
   </app-search-select>
 
   <md-select *ngIf="repo && repo.admins.length > 1"
-    style="margin-right: 14px"
+    style="margin-right: 14px; margin-bottom:1px;"
     placeholder="User for commenting"
     (change)="set_active_user()"
     [(ngModel)]="repo.user"
