@@ -137,7 +137,7 @@ export class PluginsComponent implements OnInit {
                     .map(response => response.json().plugins)
                     .subscribe((new_plugins: PluginModel[]) => {
                       this.plugins = new_plugins;
-                      const snackBarRef = this.snackBar.open('copied settings from ' + origin_repo.full_name, 'undo', {duration: 10000});
+                      const snackBarRef = this.snackBar.open('Copied settings from ' + origin_repo.full_name, 'undo', {duration: 10000});
                       snackBarRef.onAction().subscribe(() => {
                         this.http.patch(environment.backend_url + '/api/plugins/' + this.repo.id + '/',
                                         backup,
