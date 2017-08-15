@@ -13,6 +13,7 @@ export class SearchSelectComponent implements OnChanges {
   @Output() selected = new EventEmitter<string>();
   inputValue = '';
   filteredResults: any[];
+  invalid = false;
 
   constructor() {}
 
@@ -29,6 +30,7 @@ export class SearchSelectComponent implements OnChanges {
   }
 
   onKeyDown(event) {
+    this.invalid = false;
     if (event.key === 'Enter') {
       const results = this.filterResults(this.searchElementRef.nativeElement.value);
       if (results) {
@@ -48,5 +50,14 @@ export class SearchSelectComponent implements OnChanges {
 
   ngOnChanges(changes) {
     this.onClear();
+  }
+
+  onChange() {
+    if (this.choices.indexOf(this.inputValue) >= 0) {
+      this.selected.emit(this.inputValue);
+    } else {
+      this.invalid = true;
+    }
+    console.log('changed');
   }
 }
