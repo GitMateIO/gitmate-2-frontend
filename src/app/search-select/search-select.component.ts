@@ -10,6 +10,7 @@ export class SearchSelectComponent implements OnChanges {
   @ViewChild('auto') autocompleteElementRef;
   @Input() choices: any[];
   @Input() placeholder: string;
+  @Input() hint: string;
   @Output() selected = new EventEmitter<string>();
   inputValue = '';
   filteredResults: any[];
