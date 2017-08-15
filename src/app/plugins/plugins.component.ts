@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import {MdSnackBar} from '@angular/material';
 
 import { ApiService } from './../api/api.service';
 import { RepoModel, PluginModel, SettingModel } from './../models';
@@ -25,7 +26,8 @@ export class PluginsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private http: Http) { }
+    private http: Http,
+    public snackBar: MdSnackBar) { }
 
   ngOnInit() {
     this.route.params
@@ -116,11 +118,34 @@ export class PluginsComponent implements OnInit {
       payload.push(plugin_payload);
     }
 
+    const backup = [];
+    for (const plugin of this.plugins) {
+      const plugin_backup = {};
+      plugin_backup['name'] = plugin.name;
+      plugin_backup['active'] = plugin.active;
+      const setting_backup = {};
+      for (const setting of plugin.settings) {
+        setting_backup[setting.name] = setting.value;
+      }
+      plugin_backup['settings'] = setting_backup;
+      backup.push(plugin_backup);
+    }
+
     this.http.patch(environment.backend_url + '/api/plugins/' + this.repo.id + '/',
                     payload,
                     {withCredentials: true})
                     .map(response => response.json().plugins)
-                    .subscribe((new_plugins: PluginModel[]) => this.plugins = new_plugins);
+                    .subscribe((new_plugins: PluginModel[]) => {
+                      this.plugins = new_plugins;
+                      const snackBarRef = this.snackBar.open('copied settings from ' + origin_repo.full_name, 'undo', {duration: 10000});
+                      snackBarRef.onAction().subscribe(() => {
+                        this.http.patch(environment.backend_url + '/api/plugins/' + this.repo.id + '/',
+                                        backup,
+                                        {withCredentials: true})
+                                        .map(response => response.json().plugins)
+                                        .subscribe((backup_plugins: PluginModel[]) => { this.plugins = backup_plugins; });
+                      });
+                    });
     });
   }
 }

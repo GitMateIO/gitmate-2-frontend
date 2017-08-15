@@ -19,6 +19,7 @@ import { MdAutocompleteModule } from '@angular/material';
 import { MdGridListModule } from '@angular/material';
 import { MdSelectModule } from '@angular/material';
 import { MdTabsModule } from '@angular/material';
+import { MdSnackBarModule } from '@angular/material';
 
 import { HotkeyModule } from 'angular2-hotkeys';
 
@@ -91,6 +92,7 @@ const appRoutes: Routes = [
     MdGridListModule,
     MdSelectModule,
     MdTabsModule,
+    MdSnackBarModule,
     HotkeyModule.forRoot(),
   ],
   providers: [
