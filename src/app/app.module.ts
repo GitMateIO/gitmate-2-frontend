@@ -41,6 +41,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SecurityComponent } from './security/security.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchSelectComponent } from './search-select/search-select.component';
+import { PricingComponent } from './pricing/pricing.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
   {path: 'repo/:id', component: PluginsComponent},
   {path: 'disclaimer', component: DisclaimerComponent},
   {path: 'security', component: SecurityComponent},
+  {path: 'pricing', component: PricingComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     SpinnerComponent,
     SecurityComponent,
     FooterComponent,
-    SearchSelectComponent
+    SearchSelectComponent,
+    PricingComponent
   ],
   imports: [
     BrowserModule,
