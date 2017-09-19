@@ -9,6 +9,10 @@
         Home
       </button>
 
+      <button *ngIf="!userDefined()" md-menu-item routerLink="/pricing" routerLinkActive="active" >
+        Pricing
+      </button>
+
       <button *ngIf="userDefined()" md-menu-item routerLink="/repositories" routerLinkActive="active" >
         Repositories
       </button>
@@ -26,8 +30,12 @@
   <div class="flex-bar content-width">
 
     <div *ngIf="!search_bar_expanded">
-      <button *ngIf="userDefined()" md-button routerLink="/home" routerLinkActive="active" class="nav-button" >
+      <button md-button routerLink="/home" routerLinkActive="active" class="nav-button" >
         HOME
+      </button>
+
+      <button *ngIf="!userDefined()" md-button routerLink="/pricing" routerLinkActive="active" class="nav-button" >
+        PRICING
       </button>
 
       <button *ngIf="userDefined()" md-button routerLink="/repositories" routerLinkActive="active" class="nav-button" >
