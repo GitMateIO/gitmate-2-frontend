@@ -1,3 +1,27 @@
-<p>
-  features works!
-</p>
+<section>
+  <div class="container header-section">
+    <h3 class="light">
+      Features
+    </h3>
+    <h5 class="light">
+      GitMate brings you numerous features.
+    </h5>
+ </div>
+</section>
+
+<br>
+
+<section *ngFor="let item of features">
+	<md-card class="feature-card">
+		  <section class="center">
+	    <div class="center center-block section-heading" >
+	    	 
+	      <h5 class="light">{{item.title}}</h5>
+	      <p>{{ item.description }}</p>
+
+	    </div>
+	  </section>
+	</md-card>
+</section>
+
+<br><br>

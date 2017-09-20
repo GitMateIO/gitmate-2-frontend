@@ -12,4 +12,21 @@ export class FeaturesComponent implements OnInit {
   ngOnInit() {
   }
 
+  features = [
+	  	{
+	  		"title" : "Feature Title",
+	  		"description" :"FD",
+	  		"img" : "img"
+	  	},
+	  	{
+	  		"title" : "Feature Title 2",
+	  		"description" :"FD",
+	  		"img" : "img"
+	  	},
+	  	{
+	  		"title" : "Feature Title 3",
+	  		"description" :"FD",
+	  		"img" : "img"
+	  	}
+  ]
 }
