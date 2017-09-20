@@ -42,6 +42,7 @@ import { SecurityComponent } from './security/security.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchSelectComponent } from './search-select/search-select.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { FeaturesComponent } from './features/features.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
   {path: 'disclaimer', component: DisclaimerComponent},
   {path: 'security', component: SecurityComponent},
   {path: 'pricing', component: PricingComponent},
+  {path: 'features', component: FeaturesComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
@@ -73,7 +75,8 @@ const appRoutes: Routes = [
     SecurityComponent,
     FooterComponent,
     SearchSelectComponent,
-    PricingComponent
+    PricingComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
