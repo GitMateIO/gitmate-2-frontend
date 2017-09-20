@@ -1,3 +1,33 @@
-<p>
-  pricing works!
-</p>
+<section>
+  <div class="container header-section">
+    <h3 class="light">
+      Pricing
+    </h3>
+    <h5 class="light">
+      GitMate pricing plans.
+    </h5>
+ </div>
+</section>
+
+<md-grid-list [cols]="pricing.length" rowHeight="2:3" style="margin-top: -3em;">
+  <md-grid-tile *ngFor="let item of pricing">
+  	<md-card style="padding:10px;">
+  		<div>
+  			<h5 class="light center" style="margin-top: 1em;">{{item.title}}</h5>
+  			<h6 class="light center" style="color: grey; margin-bottom: 1em">{{ item.price }}</h6>
+  			<hr style="width: 12%; margin-left: auto; margin-right: auto;">
+  			<ul style="margin-left: 0; margin-top: 2em;">
+  				<li *ngFor="let h of item.highlights">{{h}}</li>
+  			</ul>
+  			<button class="big-button" md-raised-button color="accent" style="width: 28vw;
+    margin-top: 2em;
+    margin-bottom: 1em;">
+            GET STARTED 
+     </button>
+     <ul style="margin-left: 0; margin-top: 1em;">
+  				<li *ngFor="let f of item.features">{{f}}</li>
+  			</ul>
+  		</div>
+  	</md-card>
+  </md-grid-tile>
+</md-grid-list>
