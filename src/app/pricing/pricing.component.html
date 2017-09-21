@@ -16,15 +16,15 @@
   			<h5 class="light center" style="margin-top: 1em;">{{item.title}}</h5>
   			<h6 class="light center" style="color: grey; margin-bottom: 1em">{{ item.price }}</h6>
   			<hr style="width: 12%; margin-left: auto; margin-right: auto;">
-  			<ul style="margin-left: 0; margin-top: 2em;">
+  			<ul class="highlights-ul">
   				<li *ngFor="let h of item.highlights">{{h}}</li>
   			</ul>
-  			<button class="big-button" md-raised-button color="accent" style="width: 28vw;
+  			<button class="big-button" md-raised-button color="accent" style="min-width:250px;max-width: 350px;
     margin-top: 2em;
     margin-bottom: 1em;">
             GET STARTED 
      </button>
-     <ul style="margin-left: 0; margin-top: 1em;">
+     <ul>
   				<li *ngFor="let f of item.features">{{f}}</li>
   			</ul>
   		</div>
