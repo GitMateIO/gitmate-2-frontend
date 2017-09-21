@@ -4,14 +4,14 @@
       Pricing
     </h3>
     <h5 class="light">
-      GitMate pricing plans.
+      All plans come with a 30 day trial
     </h5>
  </div>
 </section>
 
-<md-grid-list [cols]="pricing.length" rowHeight="2:3" style="margin-top: -3em;">
+<md-grid-list [cols]="pricing.length" rowHeight="2:3" style="margin-top: -3em; margin-bottom: -3em">
   <md-grid-tile *ngFor="let item of pricing">
-  	<md-card style="padding:10px;">
+  	<md-card style="padding:10px; width:100%" [style.height.px]="item.height">
   		<div>
   			<h5 class="light center" style="margin-top: 1em;">{{item.title}}</h5>
   			<h6 class="light center" style="color: grey; margin-bottom: 1em">{{ item.price }}</h6>
@@ -19,15 +19,23 @@
   			<ul style="margin-left: 0; margin-top: 2em;">
   				<li *ngFor="let h of item.highlights">{{h}}</li>
   			</ul>
-  			<button class="big-button" md-raised-button color="accent" style="width: 28vw;
+  			<button class="big-button" md-raised-button color="accent" style="width: 100%;
     margin-top: 2em;
     margin-bottom: 1em;">
-            GET STARTED 
+            GET STARTED
      </button>
      <ul style="margin-left: 0; margin-top: 1em;">
-  				<li *ngFor="let f of item.features">{{f}}</li>
+       <li *ngFor="let f of item.features">
+         <div [innerHTML]="f"></div>
+       </li>
   			</ul>
   		</div>
   	</md-card>
   </md-grid-tile>
+
 </md-grid-list>
+<div class="container header-section">
+  <h6 class="light">
+    Discounts for Open Source projects available! <a href="javascript:void(Tawk_API.toggle())">contact us</a>
+  </h6>
+</div>
