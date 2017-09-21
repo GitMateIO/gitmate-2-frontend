@@ -4,7 +4,7 @@
       Features
     </h3>
     <h5 class="light">
-      GitMate brings you numerous features.
+      GitMate helps you right on Git{{ '{' }}Hub,Lab{{ '}' }} - just like a coworker would.
     </h5>
  </div>
 </section>
@@ -17,7 +17,7 @@
 	    <div class="center center-block section-heading" >
 	    	 
 	      <h5 class="light">{{item.title}}</h5>
-	      <p>{{ item.description }}</p>
+              <div [innerHTML]="item.description"></div>
 
 	    </div>
 	  </section>
