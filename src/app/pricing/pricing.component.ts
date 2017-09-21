@@ -17,23 +17,23 @@ export class PricingComponent implements OnInit {
   pricing = [
 	  {
 	  	"title":"Basic",
-	  	"highlights" : ["limited to 8 users per organization"],
+	  	"highlights" : ["Limited to 8 users per organization"],
 	  	"features" : [],
 	  	"price" : "Free",
                 "height": 380
 	  },
 	  {
 	  	"title":"Professional",
-	  	"highlights" : ["limited to 200 users per organization"],
+	  	"highlights" : ["Limited to 200 users per organization"],
 	  	"features" : ["Priority Support"],
 	  	"price" : "29€ /dev /month",
                 "height": 420
 	  },
 	  {
-	  	"title":"Business",
-	  	"highlights" : ["unlimited users"],
+	  	"title":"Enterprise",
+	  	"highlights" : ["Unlimited users"],
 	  	"features" : ["Priority Support",
-                              "On-Premises Deployment possible"],
+                    "On-Premises Deployment possible"],
 	  	"price" : "49€ /dev /month",
                 "height": 380
 	  }
