@@ -43,6 +43,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchSelectComponent } from './search-select/search-select.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { FeaturesComponent } from './features/features.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent},
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
   {path: 'security', component: SecurityComponent},
   {path: 'pricing', component: PricingComponent},
   {path: 'features', component: FeaturesComponent},
+  {path: 'payment', component: PaymentComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
@@ -76,7 +78,8 @@ const appRoutes: Routes = [
     FooterComponent,
     SearchSelectComponent,
     PricingComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

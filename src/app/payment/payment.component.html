@@ -1,0 +1,52 @@
+<section>
+  <div class="container header-section">
+    <h3 class="light" style="text-align: center">
+      Purchase
+    </h3>
+    <h5 class="light" style="text-align: center; margin-top: 0.5em">
+      Super Easy Payment.
+    </h5>
+  </div>
+</section>
+<br>
+<section>
+  <md-card style="margin:auto; width: 40%; background: #173542;">
+    <form id='mf'>
+      <md-grid-list cols="2" rowHeight="4:1">
+        <md-grid-tile>
+        </md-grid-tile>
+        <md-grid-tile>
+          <img style="height:50px; float: right" src="http://www.clker.com/cliparts/B/2/B/g/k/0/3circles.svg">
+        </md-grid-tile>
+      </md-grid-list>
+      <br>
+      <div id="card-element" style="
+        font-size: 1.2em;
+        margin-bottom: 1em;
+        width: 70%;
+        " class="field"></div>
+      <br>
+      <input type="text" class="field" name="cardholder-name" placeholder="Name" style="
+        font-size: 1.2em;
+        text-indent: 0.2em;
+        width: 50%;
+        background: aliceblue;
+        ">
+      <input class="field" placeholder="Telephone" type="tel" style="
+        font-size: 1.2em;
+        text-indent: 0.2em;
+        width: 30%;
+        background: aliceblue;
+        " />
+      <br><br>
+    </form>
+  </md-card>
+  <button type="submit" style="margin: auto; width: 40%; margin-top: 1em;">Pay</button>
+  <div class="outcome">
+    <div class="error" role="alert"></div>
+    <div class="success">
+      Success! Your Stripe token is <span class="token"></span>
+    </div>
+  </div>
+  <br>
+</section>
