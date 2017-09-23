@@ -12,6 +12,8 @@ export class DictSettingComponent implements OnInit {
   @Input() repoid: number;
   @Input() plugin_name: string;
   @Input() setting_name: string;
+  @Input() key_desc: string;
+  @Input() value_desc: string;
   dict_list: any[];
 
   constructor(
@@ -19,6 +21,7 @@ export class DictSettingComponent implements OnInit {
 
     ngOnInit() {
       this.dict_list = this.list_from_dict(this.backend_dict);
+      console.log(this.key_desc);
     }
 
     list_from_dict(dict) {

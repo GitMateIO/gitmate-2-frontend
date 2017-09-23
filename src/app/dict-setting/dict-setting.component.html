@@ -1,12 +1,12 @@
 {{description}}
 <div *ngFor="let setting of dict_list">
   <md-input-container>
-    <input mdInput placeholder="label" [(ngModel)]="setting[0]"
+    <input mdInput [placeholder]="key_desc" [(ngModel)]="setting[0]"
     (change)="update(setting)">
     <md-hint>{{hint(setting)}}</md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput placeholder="keywords" [(ngModel)]="setting[1]"
+    <input mdInput [placeholder]="value_desc" [(ngModel)]="setting[1]"
     (change)="update(setting)">
   </md-input-container>
   <button md-button *ngIf="!is_empty(setting)"

@@ -68,7 +68,6 @@
                 Please enter a number
               </md-hint>
             </md-input-container>
-
             <!-- JSONField -->
             <div *ngIf="repo">
               <dict-setting *ngIf="setting.type=='JSONField'"
@@ -76,7 +75,21 @@
                 [backend_dict]="setting.value"
                 [plugin_name]="plugin.name"
                 [repoid]="repo.id"
-                [setting_name]="setting.name">
+                [setting_name]="setting.name"
+                key_desc="label"
+                value_desc="keywords">
+              </dict-setting>
+            </div>
+            <!-- REAPERField -->
+            <div *ngIf="repo">
+              <dict-setting *ngIf="setting.type=='REAPERField'"
+                [description]="setting.description"
+                [backend_dict]="setting.value"
+                [plugin_name]="plugin.name"
+                [repoid]="repo.id"
+                [setting_name]="setting.name"
+                key_desc="label"
+                value_desc="time in days">
               </dict-setting>
             </div>
           </div>
