@@ -14,11 +14,14 @@
 <section *ngFor="let item of features">
 	<md-card class="feature-card">
 		  <section class="center">
-	    <div class="center center-block section-heading" >
-	    	 
+	    <div class="section-heading" style="display: flex;" >
+	    	 <div>
 	      <h5 class="light">{{item.title}}</h5>
-              <div [innerHTML]="item.description"></div>
-
+       <div [innerHTML]="item.description"></div>
+      </div>
+      <div style="float: right">
+       <img style="height:150px;" src="assets/images/{{item.img}}">
+      </div>
 	    </div>
 	  </section>
 	</md-card>

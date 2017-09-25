@@ -19,7 +19,7 @@ export class FeaturesComponent implements OnInit {
                         GitMate will post a link to the likely duplicates in a comment of the new issue.\
                         This helps maintainers to find and remove duplicates. Users instantly find \
                         helpful information in the discussions of the linked similar issues.",
-        "img" : "img"
+        "img" : "feature0.png"
       },
       {
         "title" : "Setting labels automatically",
@@ -36,7 +36,7 @@ export class FeaturesComponent implements OnInit {
                         mark the issue as \"needs-info\" and ask the user for it.<p> \
                         <p>This way you never have to worry about incomplete issue reports again.</p> \
                         <p>We are currently working hard to make this feature reality, it will come soon - promised!</p>",
-        "img" : "img"
+        "img" : "feature2.png"
       },
       {
         "title" : "Calling for help",
@@ -44,7 +44,7 @@ export class FeaturesComponent implements OnInit {
                         part of the project or a specific kind off issue, based on their previous involvement. \
                         By mentioning appropriate contributors in the issue discussion, GitMate notifies them of\
                         the issues they need to know about.",
-        "img" : "img"
+        "img" : "feature1.png"
       },
       {
         "title" : "Handling stale issues",
@@ -53,7 +53,7 @@ export class FeaturesComponent implements OnInit {
                         include setting a label, posting a message, unassigning inactive developers, and eventually \
                         closing the issue.</p>\
                         <p>The exact behaviour is dependend on labels set on the issue and can be extensively configured</p>",
-        "img" : "img"
+        "img" : "feature3.png"
       }
   ]
 }
