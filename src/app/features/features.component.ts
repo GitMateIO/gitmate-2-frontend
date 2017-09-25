@@ -30,6 +30,15 @@ export class FeaturesComponent implements OnInit {
         "img" : "img"
       },
       {
+        "title" : "Determining Missing Information (Coming Soon!)",
+        "description" :"<p>Oftentimes users report issues without providing crucial information.\
+                        GitMate can automatically detect missing information in given templates,\
+                        mark the issue as \"needs-info\" and ask the user for it.<p> \
+                        <p>This way you never have to worry about incomplete issue reports again.</p> \
+                        <p>We are currently working hard to make this feature reality, it will come soon - promised!</p>",
+        "img" : "img"
+      },
+      {
         "title" : "Calling for help",
         "description" :"GitMate can determine which contributors have the most experience with a certain \
                         part of the project or a specific kind off issue, based on their previous involvement. \
