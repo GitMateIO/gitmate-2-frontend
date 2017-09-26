@@ -35,9 +35,9 @@
 </div>
 
 <md-tab-group *ngIf="plugins">
-  <md-tab *ngFor="let section of [['issue', 'Issue Management'], ['pull_request', 'Pull Request Management'], ['analysis', 'Code Analysis']]" label="{{section[1]}}">
+  <md-tab *ngFor="let section of [[['issue'], 'Issue Management'], [['pull_request', 'analysis'], 'Other']]" label="{{section[1]}}">
     <div *ngFor="let plugin of plugins">
-      <md-card *ngIf="plugin.plugin_category == section[0]">
+      <md-card *ngIf="section[0].indexOf(plugin.plugin_category) >= 0">
         <md-card-title>
           <label>
             {{plugin.title}}
