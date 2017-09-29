@@ -65,3 +65,23 @@ ul {
   -webkit-margin-end: 0px;
   -webkit-padding-start: 20px;
 }
+
+@media screen and (max-width: 1060px){
+
+  .features-xs {
+    display: none;
+  }
+  .features-sm {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1061px){
+
+  .features-xs {
+    display: block;
+  }
+  .features-sm {
+    display: none;
+  }
+}
