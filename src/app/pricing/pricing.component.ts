@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from './../../environments/environment';
 import {MdGridListModule} from '@angular/material';
 
 
@@ -12,6 +13,15 @@ export class PricingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  loginGitHub() {
+    window.location.href = environment.backend_url + '/auth/login/github/';
+  }
+
+
+  loginGitLab() {
+    window.location.href = environment.backend_url + '/auth/login/gitlab/';
   }
 
   pricing = [

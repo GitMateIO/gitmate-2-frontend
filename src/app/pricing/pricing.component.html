@@ -10,7 +10,17 @@
       We do ask projects with a commercial background to sign up
       for one of the plans.
     </h5>
-    <button class="big-button" style="width:70%" md-raised-button color="accent">Get Started for Free</button>
+
+      <button class="big-button" style="width:40%" md-raised-button
+              color="accent" (click)="loginGitHub()">
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+        Use with GitHub
+      </button>
+      <button class="big-button" style="width:40%" md-raised-button
+              color="accent" (click)="loginGitLab()">
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+        Use with GitLab
+      </button>
  </div>
 </section>
 
@@ -35,11 +45,18 @@
   			<ul style="margin-left: 0; margin-top: 2em;">
   				<li *ngFor="let h of item.highlights">{{h}}</li>
   			</ul>
-  			<button class="big-button" md-raised-button color="accent" style="width: 100%;
-    margin-top: 2em;
-    margin-bottom: 1em;">
-            GET STARTED
-     </button>
+        <div class="center-block">
+          <button class="big-button" style="width:45%" md-raised-button
+                  color="accent" (click)="loginGitHub()">
+            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+            Use with GitHub
+          </button>
+          <button class="big-button" style="width:45%" md-raised-button
+                  color="accent" (click)="loginGitLab()">
+            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+            Use with GitLab
+          </button>
+        </div>
      <ul style="margin-left: 0; margin-top: 1em;">
        <li>All GitMate <a routerLink='/features' routerLinkActive='active'>features</a></li>
        <li *ngFor="let f of item.features">
