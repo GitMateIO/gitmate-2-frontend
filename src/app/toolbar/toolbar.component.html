@@ -13,7 +13,7 @@
         Features
       </button>
 
-      <button *ngIf="!userDefined()" md-menu-item routerLink="/pricing" routerLinkActive="active" >
+      <button *ngIf="enterprise_edition && !userDefined()" md-menu-item routerLink="/pricing" routerLinkActive="active" >
         Pricing
       </button>
 
@@ -42,7 +42,7 @@
         FEATURES
       </button>
 
-      <button *ngIf="!userDefined()" md-button routerLink="/pricing" routerLinkActive="active" class="nav-button" >
+      <button *ngIf="enterprise_edition && !userDefined()" md-button routerLink="/pricing" routerLinkActive="active" class="nav-button" >
         PRICING
       </button>
 

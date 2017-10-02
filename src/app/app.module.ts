@@ -27,8 +27,11 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 import { ApiService } from './api/api.service';
+import { EnterpriseGuardService } from './enterprise-guard.service';
+import { CommunityGuardService } from './community-guard.service';
 
 import { HomeViewComponent } from './home-view/home-view.component';
+import { HomeViewCommunityComponent } from './home-view-community/home-view-community.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { RepositoriesViewComponent } from './repositories-view/repositories-view.component';
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
@@ -45,14 +48,15 @@ import { PricingComponent } from './pricing/pricing.component';
 import { FeaturesComponent } from './features/features.component';
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeViewComponent},
+  {path: 'home', component: HomeViewComponent, canActivate: [EnterpriseGuardService]},
+  {path: 'community', component: HomeViewCommunityComponent, canActivate: [CommunityGuardService]},
   {path: 'security', component: SecurityComponent},
   {path: 'profile', component: ProfileViewComponent},
   {path: 'repositories', component: RepositoriesViewComponent},
   {path: 'repo/:id', component: PluginsComponent},
   {path: 'disclaimer', component: DisclaimerComponent},
   {path: 'security', component: SecurityComponent},
-  {path: 'pricing', component: PricingComponent},
+  {path: 'pricing', component: PricingComponent, canActivate: [EnterpriseGuardService]},
   {path: 'features', component: FeaturesComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
@@ -76,7 +80,8 @@ const appRoutes: Routes = [
     FooterComponent,
     SearchSelectComponent,
     PricingComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    HomeViewCommunityComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +109,8 @@ const appRoutes: Routes = [
   providers: [
     MdIconRegistry,
     ApiService,
+    EnterpriseGuardService,
+    CommunityGuardService
     ],
   bootstrap: [AppComponent]
 })

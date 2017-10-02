@@ -12,10 +12,16 @@ import { environment } from './../../environments/environment';
 export class ToolbarComponent {
   user: UserModel;
   search_bar_expanded = false;
+  enterprise_edition: boolean;
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     this.apiService.getUser().subscribe(user => this.user = user);
+    if ('edition' in environment && environment['edition'] === 'enterprise') {
+      this.enterprise_edition = true;
+    } else {
+      this.enterprise_edition = false;
+    }
   }
 
   userDefined() {
