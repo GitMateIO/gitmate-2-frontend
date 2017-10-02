@@ -31,6 +31,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ApiService } from './api/api.service';
 
 import { HomeViewComponent } from './home-view/home-view.component';
+import { HomeViewCommunityComponent } from './home-view-community/home-view-community.component';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { RepositoriesViewComponent } from './repositories-view/repositories-view.component';
 import { NotFoundViewComponent } from './not-found-view/not-found-view.component';
@@ -64,7 +65,7 @@ if ('edition' in environment && environment['edition'] === 'enterprise') {
   ];
 } else {
   appRoutes = [
-    {path: 'home', component: HomeViewComponent},
+    {path: 'home', component: HomeViewCommunityComponent},
     {path: 'security', component: SecurityComponent},
     {path: 'profile', component: ProfileViewComponent},
     {path: 'repositories', component: RepositoriesViewComponent},
@@ -95,7 +96,8 @@ if ('edition' in environment && environment['edition'] === 'enterprise') {
     FooterComponent,
     SearchSelectComponent,
     PricingComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    HomeViewCommunityComponent
   ],
   imports: [
     BrowserModule,
