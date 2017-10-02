@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -44,19 +46,36 @@ import { SearchSelectComponent } from './search-select/search-select.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { FeaturesComponent } from './features/features.component';
 
-const appRoutes: Routes = [
-  {path: 'home', component: HomeViewComponent},
-  {path: 'security', component: SecurityComponent},
-  {path: 'profile', component: ProfileViewComponent},
-  {path: 'repositories', component: RepositoriesViewComponent},
-  {path: 'repo/:id', component: PluginsComponent},
-  {path: 'disclaimer', component: DisclaimerComponent},
-  {path: 'security', component: SecurityComponent},
-  {path: 'pricing', component: PricingComponent},
-  {path: 'features', component: FeaturesComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path: '**', component: NotFoundViewComponent},
-];
+let appRoutes: Routes;
+
+if ('edition' in environment && environment['edition'] === 'enterprise') {
+  appRoutes = [
+    {path: 'home', component: HomeViewComponent},
+    {path: 'security', component: SecurityComponent},
+    {path: 'profile', component: ProfileViewComponent},
+    {path: 'repositories', component: RepositoriesViewComponent},
+    {path: 'repo/:id', component: PluginsComponent},
+    {path: 'disclaimer', component: DisclaimerComponent},
+    {path: 'security', component: SecurityComponent},
+    {path: 'pricing', component: PricingComponent},
+    {path: 'features', component: FeaturesComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full' },
+    {path: '**', component: NotFoundViewComponent},
+  ];
+} else {
+  appRoutes = [
+    {path: 'home', component: HomeViewComponent},
+    {path: 'security', component: SecurityComponent},
+    {path: 'profile', component: ProfileViewComponent},
+    {path: 'repositories', component: RepositoriesViewComponent},
+    {path: 'repo/:id', component: PluginsComponent},
+    {path: 'disclaimer', component: DisclaimerComponent},
+    {path: 'security', component: SecurityComponent},
+    {path: 'features', component: FeaturesComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full' },
+    {path: '**', component: NotFoundViewComponent},
+  ];
+}
 
 @NgModule({
   declarations: [
