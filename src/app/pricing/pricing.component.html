@@ -10,7 +10,23 @@
       We do ask projects with a commercial background to sign up
       for one of the plans.
     </h5>
-    <button class="big-button" style="width:70%" md-raised-button color="accent">Get Started for Free</button>
+
+    <br>
+
+    <h5 class="light">
+      Get Started For Free &#9992;
+    </h5>
+    <div style="display: flex; width: 40%; margin: auto;">
+      <button class="big-button" class="login-btn" md-raised-button color="accent" (click)="loginGitHub()">
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" style="line-height: 1.5"></md-icon>
+        With GitHub
+      </button>
+      <button class="big-button" class="login-btn" md-raised-button color="accent" (click)="loginGitLab()">
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" style="line-height: 1.5"></md-icon>
+        With GitLab
+      </button>
+    </div>  
+
  </div>
 </section>
 
@@ -27,29 +43,40 @@
 
 <md-grid-list class="features-xs" [cols]="pricing.length" rowHeight="2:3" style="margin-top: -3em; margin-bottom: -3em">
   <md-grid-tile *ngFor="let item of pricing">
-  	<md-card style="padding:10px; width:100%" [style.height.px]="item.height">
-  		<div>
-  			<h5 class="light center" style="margin-top: 1em;">{{item.title}}</h5>
-  			<h6 class="light center" style="color: grey; margin-bottom: 1em">{{ item.price }}</h6>
-  			<hr style="width: 12%; margin-left: auto; margin-right: auto;">
-  			<ul style="margin-left: 0; margin-top: 2em;">
-  				<li *ngFor="let h of item.highlights">{{h}}</li>
-  			</ul>
-  			<button class="big-button" md-raised-button color="accent" style="width: 100%;
-    margin-top: 2em;
-    margin-bottom: 1em;">
-            GET STARTED
-     </button>
+    <md-card style="padding:10px; width:100%" [style.height.px]="item.height">
+      <div>
+        <h5 class="light center" style="margin-top: 1em;">{{item.title}}</h5>
+        <h6 class="light center" style="color: grey; margin-bottom: 1em">{{ item.price }}</h6>
+        <hr style="width: 12%; margin-left: auto; margin-right: auto;">
+        <ul style="margin-left: 0; margin-top: 2em;">
+          <li *ngFor="let h of item.highlights">{{h}}</li>
+        </ul>
+        <br>
+         <h6 class="light" style="text-align: center;">
+         Get Started For Free
+        </h6>
+        <div style="display: flex;">
+          <button class="big-button" md-raised-button
+                color="accent" (click)="loginGitHub()" class="login-btn">
+          <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" style="line-height: 1.5"></md-icon>
+          With GitHub
+          </button>
+          <button class="big-button" md-raised-button
+                color="accent" (click)="loginGitLab()" class="login-btn">
+          <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" style="line-height: 1.5"></md-icon>
+          With GitLab
+          </button>
+        </div>
+        <br>
      <ul style="margin-left: 0; margin-top: 1em;">
        <li>All GitMate <a routerLink='/features' routerLinkActive='active'>features</a></li>
        <li *ngFor="let f of item.features">
          <div [innerHTML]="f"></div>
        </li>
-  			</ul>
-  		</div>
-  	</md-card>
+        </ul>
+      </div>
+    </md-card>
   </md-grid-tile>
-
 </md-grid-list>
 
 <div class="features-sm" *ngFor="let item of pricing">
@@ -61,11 +88,22 @@
       <ul style="margin-left: 0; margin-top: 2em;">
         <li *ngFor="let h of item.highlights">{{h}}</li>
       </ul>
-      <button class="big-button" md-raised-button color="accent" style="width: 100%;
-  margin-top: 2em;
-  margin-bottom: 1em;">
-          GET STARTED
-   </button>
+      <h6 class="light" style="text-align: center;">
+       Get Started For Free
+      </h6>
+      <div style="display: flex;">
+        <button class="big-button" md-raised-button
+              color="accent" (click)="loginGitHub()" class="login-btn">
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" class="login-btn-icon"></md-icon>
+        With GitHub
+        </button>
+        <button class="big-button" md-raised-button
+              color="accent" (click)="loginGitLab()" class="login-btn">
+        <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" class="login-btn-icon"></md-icon>
+        With GitLab
+        </button>
+      </div>
+      <br>
    <ul style="margin-left: 0; margin-top: 1em;">
      <li>All GitMate <a routerLink='/features' routerLinkActive='active'>features</a></li>
      <li *ngFor="let f of item.features">

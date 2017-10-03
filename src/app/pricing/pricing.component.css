@@ -66,6 +66,16 @@ ul {
   -webkit-padding-start: 20px;
 }
 
+.login-btn {
+  flex: 1;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.login-btn-icon {
+  line-height: 1.5;
+}
+
 @media screen and (max-width: 1060px){
 
   .features-xs {
