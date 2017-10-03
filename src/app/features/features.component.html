@@ -1,30 +1,38 @@
 <section>
   <div class="container header-section">
     <h3 class="light">
-      Features
+      What can <b>GitMate</b> do?
     </h3>
     <h5 class="light">
-      GitMate helps you right on Git{{ '{' }}Hub,Lab{{ '}' }} - just like a coworker would.
+      GitMate helps you right on
+      <a href="https://github.com"><i class="fa fa-github"></i></a> &
+      <a href="https://gitlab.com"><i class="fa fa-gitlab"></i></a>
+      - just like a coworker would.
     </h5>
  </div>
 </section>
 
 <br>
 
-<section *ngFor="let item of features">
-	<md-card class="feature-card">
-		<section class="center">
-	    <div class="section-heading" style="display: flex;" >
-	    	<div style="width: 70%">
-          <h5 class="light">{{item.title}}</h5>
-          <div [innerHTML]="item.description"></div>
+<section class="feature-card" *ngFor="let item of features">
+  <md-card>
+    <section class="center">
+      <div class="section-heading" style="display: flex;" >
+        <div class="feature-content">
+          <div class="feature-heading">
+            <h4>{{item.title}}</h4>
+            <div class="feature-upcoming" *ngIf="item.upcoming">
+              <img style="height:100px;" src="assets/images/upcoming.png">
+            </div>
+          </div>
+          <div class="feature-text" [innerHTML]="item.description"></div>
         </div>
-        <div style="float: right; width: 30%">
-          <img style="height:200px; float: right;" src="assets/images/{{item.img}}">
+        <div class="feature-icon">
+          <img style="height:300px;" src="assets/images/{{item.img}}">
         </div>
-	    </div>
-	  </section>
-	</md-card>
+      </div>
+    </section>
+  </md-card>
 </section>
 
 <br><br>

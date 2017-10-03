@@ -44,5 +44,58 @@ h5 {
 }
 
 .feature-card {
-	  border-bottom: 2px solid #eff0f1;
+  margin: 2vw;
+  border-bottom: 2px solid #eff0f1;
+}
+
+.feature-card .section-heading {
+  align-items: flex-start;
+}
+
+.feature-card .feature-heading {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.feature-card .feature-heading h4 {
+  text-transform: uppercase;
+  flex: 3;
+  font-size: 2rem;
+}
+
+.feature-card .feature-upcoming {
+  flex: 1;
+  padding: 10px;
+}
+
+.feature-card .feature-text {
+  color: #757575;
+  font-size: 1.4rem;
+  line-height: 30px;
+}
+
+.feature-card:nth-child(odd) {
+  background: white;
+}
+
+.feature-card:nth-child(odd) .section-heading {
+  flex-direction: row;
+}
+
+.feature-card:nth-child(even) .section-heading {
+  flex-direction: row-reverse;
+}
+
+.feature-card .feature-content {
+  flex: 3;
+  padding: 20px 50px;
+}
+
+.feature-card .feature-icon {
+  flex: 1;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
