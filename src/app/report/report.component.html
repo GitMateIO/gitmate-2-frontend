@@ -1,0 +1,35 @@
+<div>
+  <md-input-container>
+    <input mdInput placeholder="name of repo" [(ngModel)]="name">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="provider" [(ngModel)]="provider">
+  </md-input-container>
+  <button md-button (click)="get_report()">Get report</button>
+</div>
+
+<div *ngIf="status === 'new'">
+  click that button to see stuff
+</div>
+<div *ngIf="status === 'pending'">
+  <spinner></spinner>
+</div>
+<div *ngIf="status === 'done'">
+  <h4>Correct labels: {{response.label_correct*100 | number:'1.0-2'}}%</h4>
+  <h4>Additional labels: {{response.label_additional*100 | number:'1.0-2'}}%</h4>
+  <div *ngFor="let example of response.label_examples">
+    <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.number}}: {{example.title}}</a>
+    <p>gitmate: {{example.gitmate}}</p>
+    <p>project: {{example.project}}</p>
+  </div>
+  <h4>We predicted the participation of {{response.author_correct*100 | number:'1.0-2'}}% of active contributors</h4>
+  <br>
+  <h3>We found {{response.duplicate_total}} duplicates!!!!</h3>
+  <div *ngFor="let example of response.duplicate_examples">
+    <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.number}}: {{example.title}}</a>
+    <div *ngFor="let x of example.duplicates">
+      <a href="https://{{provider}}.com/{{name}}/issues/{{x.number}}" style="margin-left: 28px;">{{x.number}}: {{x.title}}</a> {{x.similarity*100 | number:'1.0-2'}}%
+      <br>
+    </div>
+  </div>
+</div>

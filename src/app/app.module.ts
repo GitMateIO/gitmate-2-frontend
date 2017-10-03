@@ -46,6 +46,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SearchSelectComponent } from './search-select/search-select.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { FeaturesComponent } from './features/features.component';
+import { ReportComponent } from './report/report.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent, canActivate: [EnterpriseGuardService]},
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
   {path: 'security', component: SecurityComponent},
   {path: 'pricing', component: PricingComponent, canActivate: [EnterpriseGuardService]},
   {path: 'features', component: FeaturesComponent},
+  {path: 'report', component: ReportComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
 ];
@@ -81,7 +83,8 @@ const appRoutes: Routes = [
     SearchSelectComponent,
     PricingComponent,
     FeaturesComponent,
-    HomeViewCommunityComponent
+    HomeViewCommunityComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
