@@ -35,6 +35,23 @@
     </div>
   </section>
 
+  <section class="center">
+    <div style="width:500px;margin-left: auto;margin-right: auto;margin-top: -3vw;margin-bottom: 3vw;">
+      <div class="center center-block section-heading">
+        See what we can do for your repository
+      </div>
+      <div>
+        <md-input-container style="width:66%;margin-right:12px;">
+          <input mdInput placeholder="repository url" [(ngModel)]="report_repo_url" (keydown)="reportKeyDown($event)">
+        </md-input-container>
+
+          <button md-raised-button color="accent" (click)="getReport()">
+            Create a report
+          </button>
+      </div>
+    </div>
+  </section>
+
   <section class="feature-detail-section">
     <div class="row">
       <div class="fds-content">

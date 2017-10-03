@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from './../../environments/environment';
 import { ApiService } from './../api/api.service';
 import { UserModel } from './../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-view',
@@ -10,7 +11,9 @@ import { UserModel } from './../models';
 })
 export class HomeViewComponent implements OnInit {
   user: UserModel;
-  constructor(private apiService: ApiService) {}
+  report_repo_url = '';
+  constructor(private apiService: ApiService,
+              private router: Router) {}
 
   ngOnInit() {
     this.apiService.getUser().subscribe(user => this.user = user);
@@ -33,4 +36,13 @@ export class HomeViewComponent implements OnInit {
     window.location.href = 'http://eepurl.com/cUXlJ5';
   }
 
+  getReport() {
+    this.router.navigate(['report', this.report_repo_url]);
+  }
+
+  reportKeyDown(event) {
+    if (event.key === 'Enter') {
+      this.getReport();
+    }
+  }
 }
