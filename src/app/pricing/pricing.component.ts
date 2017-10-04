@@ -25,28 +25,31 @@ export class PricingComponent implements OnInit {
   }
 
   pricing = [
-	  {
-	  	"title":"Basic",
-	  	"highlights" : ["Limited to 8 users per organization"],
-	  	"features" : [],
-	  	"price" : "Free",
-                "height": 380
-	  },
-	  {
-	  	"title":"Professional",
-	  	"highlights" : ["Limited to 200 users per organization"],
-	  	"features" : ["Priority Support"],
-	  	"price" : "29€ /dev /month",
-                "height": 420
-	  },
-	  {
-	  	"title":"Enterprise",
-	  	"highlights" : ["Unlimited users"],
-	  	"features" : ["Priority Support",
-                    "On-Premises Deployment possible"],
-	  	"price" : "49€ /dev /month",
-                "height": 380
-	  }
+    {
+      "title":"Basic",
+      "features" : ["Limited to 8 users per organization"],
+      "price": {"amount": "Free", "limit": null},
+      "height": 430
+    },
+    {
+      "title":"Professional",
+      "features": [
+        "Limited to 200 users per organization",
+        "Priority Support"
+      ],
+      "price" : {"amount": "29€", "limit": "user/month"},
+      "height": 480
+    },
+    {
+      "title":"Enterprise",
+      "features": [
+        "Unlimited users",
+        "Priority Support",
+        "On-premises deployment"
+      ],
+      "price" : {"amount": "49€", "limit": "user/month"},
+      "height": 430
+    }
   ]
 
 }

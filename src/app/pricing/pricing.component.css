@@ -53,17 +53,13 @@ h6 {
 }
 
 .feature-card {
-	border-bottom: 2px solid #eff0f1;
+  border-bottom: 2px solid #eff0f1;
 }
 
 ul {
   display: block;
-  list-style-type: disc;
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-padding-start: 20px;
+  list-style-type: none;
+  padding: 0;
 }
 
 .login-btn {
@@ -74,6 +70,67 @@ ul {
 
 .login-btn-icon {
   line-height: 1.5;
+}
+
+.feature-list li {
+  color: #727272;
+  padding: 5px 0px;
+}
+
+.feature .title {
+  color: grey;
+  font-weight: normal;
+  padding: 5px 0px;
+  font-size: 1.5rem;
+}
+
+.features-sm .title {
+  padding: 0;
+}
+
+.feature .price-amount {
+  font-size: 2.5rem;
+  margin: 5px 0px;
+}
+
+.features-sm .price-amount {
+  margin: 0;
+}
+
+.feature .price-limit {
+  font-weight: normal;
+}
+
+.feature md-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.features-sm md-card {
+  display: block;
+}
+
+.feature md-card .content {
+  flex: 1;
+}
+
+.feature md-card .signup {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.features-sm md-card .signup {
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.feature md-card .signup button {
+  font-size: 1em;
+}
+
+.features-sm md-card .signup button {
+  margin: 10px;
 }
 
 @media screen and (max-width: 1060px){
