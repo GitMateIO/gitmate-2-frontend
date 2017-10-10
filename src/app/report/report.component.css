@@ -5,5 +5,25 @@
 .value{
   font-size: 2.5rem;
   margin: 5px 20px;
-  color: #757575;
+  /* color: #757575; */
+  color: #173542;
+}
+.vendor-icon {
+  line-height: 20px;
+}
+.big-button {
+  text-align: left;
+  font-size: 14px;
+  line-height: 35px;
+  padding: 0 25px;
+  width: 190px;
+  margin: 5px 5px;
+}
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buttons {
+  display: inline-flex;
 }

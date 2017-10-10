@@ -18,88 +18,132 @@
 </div>
 <div *ngIf="status === 'done'">
   <md-card class="topic">
-    <md-card-title>
-      Automatic labels
+    <md-card-title style="display:flex;align-items:baseline;" >
+      <p>GitMate would have saved you</p>
+      <p class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings)*5/60 | number:'.0-0'}}</p>
+      <p>hours of work on your project</p>
     </md-card-title>
+    <md-card-subtitle>
+      Based on {{response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings}} actions GitMate would have taken for you, valued a 5 minutes each.
+    </md-card-subtitle>
+  </md-card>
+
+
+  <md-card class="topic">
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate would have set</p>
-      <p class="value">{{response.label_correct | number:'1.0-2'}}%</p>
-      <p>of the labels in your project as well as an additional</p>
-      <p class="value">{{response.label_additional | number:'1.0-2'}}%</p>
-      <p>.</p>
+      <p class="value">{{response.label_prediction_total_set}}</p>
+      <p>labels for you</p>
     </div>
-    <md-grid-list cols="4" rowHeight="64px">
+    <button md-button (click)="show_labels = !show_labels">show examples</button>
 
-      <md-grid-tile>Set by GitMate:</md-grid-tile>
-      <md-grid-tile [colspan]=2>Issue number and title:</md-grid-tile>
-      <md-grid-tile>Set by Project:</md-grid-tile>
+    <div *ngIf="show_labels">
+      <md-grid-list cols="3" rowHeight="64px">
 
+        <div *ngFor="let example of response.label_examples">
 
+          <md-grid-tile [colspan]=2>
+            <md-nav-list style="width:100%">
+              <md-list-item>
+                {{example.number}}:&nbsp;
+                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.title}}</a>
+              </md-list-item>
+            </md-nav-list>
+          </md-grid-tile>
 
-      <div *ngFor="let example of response.label_examples">
+          <md-grid-tile>
+            <md-chip-list>
+              <md-chip *ngFor="let label of example.gitmate">{{label}}</md-chip>
+            </md-chip-list>
+          </md-grid-tile>
 
-        <md-grid-tile>
-          <md-chip-list>
-            <md-chip *ngFor="let label of example.gitmate">{{label}}</md-chip>
-          </md-chip-list>
-        </md-grid-tile>
-
-        <md-grid-tile [colspan]=2>
-          <md-nav-list style="width:100%">
-            <md-list-item>
-              {{example.number}}:&nbsp;
-              <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.title}}</a>
-            </md-list-item>
-          </md-nav-list>
-        </md-grid-tile>
-
-        <md-grid-tile>
-          <md-chip-list>
-            <md-chip *ngFor="let label of example.project">{{label}}</md-chip>
-          </md-chip-list>
-        </md-grid-tile>
-
-      </div>
-    </md-grid-list>
+        </div>
+      </md-grid-list>
+    </div>
   </md-card>
 
   <md-card class="topic">
-    <md-card-title>
-      Duplicates
-    </md-card-title>
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate found</p>
       <p class="value">{{response.duplicate_total}}</p>
-      <p>groups of duplicates in your repository:</p>
+      <p>groups of duplicates in your repository</p>
     </div>
 
+    <button md-button (click)="show_dupes = !show_dupes">show examples</button>
 
-    <md-nav-list>
-      <div *ngFor="let example of response.duplicate_examples">
+    <div *ngIf="show_dupes">
+      <md-nav-list>
+        <div *ngFor="let example of response.duplicate_examples">
 
-        <md-list-item>
-          {{example.number}}:&nbsp;
-          <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" style="margin-left: 24px;">{{example.title}}</a>
-        </md-list-item>
+          <md-list-item>
+            {{example.number}}:&nbsp;
+            <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" style="margin-left: 24px;">{{example.title}}</a>
+          </md-list-item>
 
-        <md-list-item *ngFor="let x of example.duplicates" >
-          {{x.number}}:&nbsp;
-          <a href="https://{{provider}}.com/{{name}}/issues/{{x.number}}" style="margin-left: 24px;">{{x.title}}</a>
-          <p style="color: #757575">&nbsp;({{x.similarity*100 | number:'1.0-2'}}% similarity)</p>
-        </md-list-item>
-        <md-divider></md-divider>
-      </div>
-    </md-nav-list>
+          <md-list-item *ngFor="let x of example.duplicates" >
+            {{x.number}}:&nbsp;
+            <a href="https://{{provider}}.com/{{name}}/issues/{{x.number}}" style="margin-left: 24px;">{{x.title}}</a>
+            <p style="color: #757575">&nbsp;({{x.similarity*100 | number:'1.0-2'}}% similarity)</p>
+          </md-list-item>
+          <md-divider></md-divider>
+        </div>
+      </md-nav-list>
+    </div>
   </md-card>
+
 
   <md-card class="topic">
-    <md-card-title>
-      Mentioned Authors
-    </md-card-title>
     <div style="display:flex;align-items:flex-end;">
-      <p>GitMate could have alerted a helpful contributor for</p>
-      <p class="value">{{response.author_correct | number:'1.0-2'}}%</p>
-      <p>of your issues.</p>
+      <p>GitMate would have pinged</p>
+      <p class="value">{{response.author_prediction_correct_pings}}</p>
+      <p>developers in discussions they later contributed to</p>
+    </div>
+
+    <button md-button (click)="show_authors = !show_authors">show examples</button>
+
+    <div *ngIf="show_authors">
+      <md-grid-list cols="3" rowHeight="64px">
+
+        <div *ngFor="let example of response.author_prediction_examples">
+
+          <md-grid-tile [colspan]=2>
+            <md-nav-list style="width:100%">
+              <md-list-item>
+                {{example.number}}:&nbsp;
+                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.title}}</a>
+              </md-list-item>
+            </md-nav-list>
+          </md-grid-tile>
+
+          <md-grid-tile>
+            <md-chip-list>
+              <md-chip *ngFor="let author of example.gitmate">{{author}}</md-chip>
+            </md-chip-list>
+          </md-grid-tile>
+
+        </div>
+      </md-grid-list>
     </div>
   </md-card>
-</div>
+
+  <md-card style="text-align:center" *ngIf="!user">
+    <span>
+      Start saving time and keep your issue tracker clean!
+    </span>
+    <div style="text-align: center">
+      <div class="container center-block buttons">
+        <div>
+          <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+            Use with GitHub
+          </button>
+        </div>
+        <div>
+          <button class="big-button" md-raised-button color="accent" (click)="loginGitLab()">
+            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+            Use with GitLab
+          </button>
+        </div>
+      </div>
+    </div>
+    </md-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../api/api.service';
+import { UserModel } from './../models';
 import 'rxjs/add/operator/map';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { environment } from './../../environments/environment';
@@ -11,6 +12,10 @@ import { Http } from '@angular/http';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
+  show_labels: false;
+  show_dupes: false;
+  show_authors: false;
+  user: UserModel;
   repo_url = '';
   provider: string;
   name: string;
@@ -27,6 +32,7 @@ export class ReportComponent implements OnInit {
       this.repo_url = params['url'];
       this.get_report();
     });
+    this.apiService.getUser().subscribe(user => this.user = user);
   }
 
 
@@ -50,5 +56,13 @@ export class ReportComponent implements OnInit {
     if (event.key === 'Enter') {
       this.get_report();
     }
+  }
+  loginGitHub() {
+    window.location.href = environment.backend_url + '/auth/login/github/';
+  }
+
+
+  loginGitLab() {
+    window.location.href = environment.backend_url + '/auth/login/gitlab/';
   }
 }
