@@ -36,7 +36,12 @@
       <p>hours of work on your project</p>
     </md-card-title>
     <md-card-subtitle>
-      Based on {{response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings}} actions GitMate would have taken for you, valued a 5 minutes each.
+      <p>
+        Based on {{response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings}} actions GitMate would have taken for you, valued a 5 minutes each.
+      </p>
+      <p>
+        This analysis did not take issue comments into account, leading to inferior results compared with an active GitMate instance.
+      </p>
     </md-card-subtitle>
   </md-card>
 
@@ -109,6 +114,8 @@
       <p>GitMate would have pinged</p>
       <p class="value">{{response.author_prediction_correct_pings}}</p>
       <p>developers in discussions they later contributed to</p>
+    </div>
+    <div><font color=red style="font-size:small">The contributor prediction heavily relies on comment data that we didn't scrape for this report</font>
     </div>
 
     <button md-button (click)="show_authors = !show_authors">show examples</button>
