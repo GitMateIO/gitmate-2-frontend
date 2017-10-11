@@ -107,4 +107,12 @@ export class ApiService {
                            , {withCredentials: true})
     .map(response => <PluginModel[]>response.json().plugins);
   }
+
+  getReport(repo_name, provider) {
+    return this.http.get(this.apiurl +
+                         '/api/plugin/similar_ee/report/?repo=' + repo_name + '&provider=' +
+                         provider, { withCredentials: true }).map(response => response.json());
+
+  }
+
 }

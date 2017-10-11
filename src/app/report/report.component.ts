@@ -4,7 +4,6 @@ import { UserModel } from './../models';
 import 'rxjs/add/operator/map';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { environment } from './../../environments/environment';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-report',
@@ -20,11 +19,9 @@ export class ReportComponent implements OnInit {
   provider: string;
   name: string;
   response: any;
-  apiurl = environment.backend_url;
   status = 'new';
 
-  constructor(private http: Http,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private apiService: ApiService) { }
 
   ngOnInit() {
@@ -43,9 +40,7 @@ export class ReportComponent implements OnInit {
       const provider_split = clean_url.split(/\/(.+)/);
       this.provider = provider_split[0].replace('www.', '').replace('.com', '');
       this.name = provider_split[1].replace(/\/+$/, '');
-    return this.http.get(this.apiurl +
-                         '/api/plugin/similar_ee/report/?repo=' + this.name + '&provider=' +
-                         this.provider, { withCredentials: true }).map(response => response.json())
+      return this.apiService.getReport(this.name, this.provider)
     .subscribe(response => {
       this.response = response;
       this.status = 'done';
