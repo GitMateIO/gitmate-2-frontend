@@ -42,7 +42,7 @@ export class ReportComponent implements OnInit {
       const clean_url = protocoll_split[protocoll_split.length - 1 ];
       const provider_split = clean_url.split(/\/(.+)/);
       this.provider = provider_split[0].replace('www.', '').replace('.com', '');
-      this.name = provider_split[1];
+      this.name = provider_split[1].replace(/\/+$/, '');
     return this.http.get(this.apiurl +
                          '/api/plugin/similar_ee/report/?repo=' + this.name + '&provider=' +
                          this.provider, { withCredentials: true }).map(response => response.json())
