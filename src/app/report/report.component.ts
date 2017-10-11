@@ -36,11 +36,18 @@ export class ReportComponent implements OnInit {
 
   get_report() {
     this.status = 'pending';
+    if (this.repo_url.startsWith('git@')) {
+      const reduced_git_url = this.repo_url.replace('git@', '').replace('.com', '').replace('.git', '');
+      const colon_split = reduced_git_url.split(/:(.+)/);
+      this.provider = colon_split[0];
+      this.name = colon_split[1];
+    } else {
       const protocoll_split = this.repo_url.split('://');
       const clean_url = protocoll_split[protocoll_split.length - 1 ];
       const provider_split = clean_url.split(/\/(.+)/);
       this.provider = provider_split[0].replace('www.', '').replace('.com', '');
       this.name = provider_split[1].replace(/\/+$/, '');
+    }
       return this.apiService.getReport(this.name, this.provider)
     .subscribe(
       (data) => {
