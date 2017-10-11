@@ -41,7 +41,7 @@
   </md-card>
 
 
-  <md-card class="topic">
+  <md-card class="topic" *ngIf="response.label_prediction_total_set > 0">
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate would have set</p>
       <p class="value">{{response.label_prediction_total_set}}</p>
@@ -74,7 +74,7 @@
     </div>
   </md-card>
 
-  <md-card class="topic">
+  <md-card class="topic" *ngIf="response.duplicate_total > 0">
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate found</p>
       <p class="value">{{response.duplicate_total}}</p>
@@ -104,7 +104,7 @@
   </md-card>
 
 
-  <md-card class="topic">
+  <md-card class="topic" *ngIf="response.author_prediction_correct_pings > 0">
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate would have pinged</p>
       <p class="value">{{response.author_prediction_correct_pings}}</p>
