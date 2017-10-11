@@ -20,6 +20,7 @@ export class ReportComponent implements OnInit {
   name: string;
   response: any;
   status = 'new';
+  error_message = '';
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService) { }
@@ -41,10 +42,15 @@ export class ReportComponent implements OnInit {
       this.provider = provider_split[0].replace('www.', '').replace('.com', '');
       this.name = provider_split[1].replace(/\/+$/, '');
       return this.apiService.getReport(this.name, this.provider)
-    .subscribe(response => {
-      this.response = response;
+    .subscribe(
+      (data) => {
+      this.response = data;
       this.status = 'done';
-    });
+      },
+      (err) => {
+        this.status = 'error';
+        this.error_message = err._body;
+      });
   }
 
   reportKeyDown(event) {

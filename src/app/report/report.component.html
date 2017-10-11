@@ -4,18 +4,30 @@
     Report for the repository:
   </div>
   <md-input-container style="width:400px;" >
-    <input mdInput placeholder="Repository url" [(ngModel)]="repo_url" [disabled]="!(status==='done')" (keydown)="reportKeyDown($event)">
+    <input mdInput placeholder="Repository url" [(ngModel)]="repo_url" [disabled]="(status==='pending')" (keydown)="reportKeyDown($event)">
   </md-input-container>
-  <button md-button (click)="get_report()" [disabled]="!(status==='done')">
+  <button md-button (click)="get_report()" [disabled]="(status==='pending')">
     Reload
   </button>
   <div class="flex-expander"></div>
 </div>
 
+<div *ngIf="status === 'pending'" class="flex-bar">
+  <div class="flex-expander"></div>
+  <span>Your report is in progress. The first report for any repository will take longer due to the need to fetch the issue data.</span>
+  <div class="flex-expander"></div>
+</div>
+
+<div *ngIf="status === 'error'" class="flex-bar">
+  <div class="flex-expander"></div>
+  <span>Unfortunately there was an error: <font color="red">{{this.error_message}}</font></span>
+  <div class="flex-expander"></div>
+</div>
 
 <div *ngIf="status === 'pending'">
   <spinner></spinner>
 </div>
+
 <div *ngIf="status === 'done'">
   <md-card class="topic">
     <md-card-title style="display:flex;align-items:baseline;" >
