@@ -35,7 +35,6 @@
           <li *ngFor="let h of item.highlights">{{h}}</li>
         </ul>
         <ul class="feature-list center">
-          <li>All GitMate <a routerLink='/features' routerLinkActive='active'>features</a></li>
           <li *ngFor="let f of item.features">
             <div [innerHTML]="f"></div>
           </li>
