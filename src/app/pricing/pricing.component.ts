@@ -33,7 +33,7 @@ export class PricingComponent implements OnInit {
         "Community Support",
       ],
       "price": {"amount": "Free", "limit": "always!"},
-      "height": 430
+      "height": 460
     },
     {
       "title":"Professional",
@@ -43,7 +43,7 @@ export class PricingComponent implements OnInit {
         "Priority Support",
       ],
       "price" : {"amount": "29€", "limit": "/month"},
-      "height": 480
+      "height": 460
     },
     {
       "title":"Enterprise",
@@ -54,7 +54,7 @@ export class PricingComponent implements OnInit {
         "On-premises deployment"
       ],
       "price" : {"amount": "99€", "limit": "/month"},
-      "height": 430
+      "height": 460
     },
     {
       "title":"Unicorn",
@@ -65,8 +65,8 @@ export class PricingComponent implements OnInit {
         "Issue Analytics",
         "On-premises deployment"
       ],
-      "price" : {"amount": "contact us", "limit": "/month"},
-      "height": 430
+      "price" : {"amount": "Contact Us", "limit": "/month"},
+      "height": 460
     }
   ]
 

@@ -68,6 +68,10 @@ ul {
   margin-right: 0.2em;
 }
 
+.pricing-card-login-btn {
+  flex: 0.5;
+}
+
 .login-btn-icon {
   line-height: 1.5;
 }
@@ -80,7 +84,7 @@ ul {
 .feature .title {
   color: grey;
   font-weight: normal;
-  padding: 5px 0px;
+  padding: 15px 0px;
   font-size: 1.5rem;
 }
 
@@ -112,11 +116,12 @@ ul {
 }
 
 .feature md-card .content {
-  flex: 1;
+  flex: 0.9;
 }
 
 .feature md-card .signup {
   display: flex;
+  flex: 0.1;
   margin-bottom: 25px;
 }
 
@@ -126,7 +131,12 @@ ul {
 }
 
 .feature md-card .signup button {
-  font-size: 1em;
+  font-size: 0.8em;
+  line-height: 0 !important;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
 }
 
 .features-sm md-card .signup button {
