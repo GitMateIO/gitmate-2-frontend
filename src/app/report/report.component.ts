@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs/Rx';
 import { ApiService } from './../api/api.service';
 import { UserModel } from './../models';
 import 'rxjs/add/operator/map';
@@ -10,7 +11,7 @@ import { environment } from './../../environments/environment';
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css']
 })
-export class ReportComponent implements OnInit {
+export class ReportComponent implements OnInit, OnDestroy {
   show_labels: false;
   show_dupes: false;
   show_authors: false;
@@ -22,15 +23,23 @@ export class ReportComponent implements OnInit {
   status = 'new';
   error_message = '';
 
+  private timer;
+  private sub: Subscription;
+
   constructor(private route: ActivatedRoute,
               private apiService: ApiService) { }
 
   ngOnInit() {
+    this.timer = Observable.timer(5000);
     this.route.params.subscribe(params => {
       this.repo_url = params['url'];
-      this.get_report();
+      this.sub = this.timer.subscribe(t => this.get_report());
     });
     this.apiService.getUser().subscribe(user => this.user = user);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 
@@ -51,12 +60,18 @@ export class ReportComponent implements OnInit {
       return this.apiService.getReport(this.name, this.provider)
     .subscribe(
       (data) => {
-      this.response = data;
-      this.status = 'done';
+        this.response = data;
+        this.status = 'done';
+        this.sub.unsubscribe();
+        if (this.response.state !== 'done') {
+          this.sub = this.timer.subscribe(t => this.get_report());
+        }
       },
       (err) => {
         this.status = 'error';
         this.error_message = err._body;
+        this.response.state = 'error';
+        this.sub.unsubscribe();
       });
   }
 

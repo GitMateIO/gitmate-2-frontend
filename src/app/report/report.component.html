@@ -4,9 +4,9 @@
     Report for the repository:
   </div>
   <md-input-container style="width:400px;" >
-    <input mdInput placeholder="Repository url" [(ngModel)]="repo_url" [disabled]="(status==='pending')" (keydown)="reportKeyDown($event)">
+    <input mdInput placeholder="Repository url" [(ngModel)]="repo_url" (keydown)="reportKeyDown($event)">
   </md-input-container>
-  <button md-button (click)="get_report()" [disabled]="(status==='pending')">
+  <button md-button (click)="get_report()">
     Reload
   </button>
   <div class="flex-expander"></div>
@@ -20,9 +20,13 @@
     <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while scraping your data! restarting...</font></span>
     <span *ngIf="response.state === 'calc'">We are analysing your repository and calculating the report.</span>
     <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report! retrying...</font></span>
-    <md-progress-bar mode="indeterminate"></md-progress-bar>
+    <span *ngIf="response.state === 'error'"><font color="red">This repository doesn't exist or isn't publicly accessible</font></span>
+    <md-progress-bar mode="indeterminate" *ngIf="response.state !== 'error'"></md-progress-bar>
+    <md-progress-bar mode="determinate" value=0 *ngIf="response.state === 'error'"></md-progress-bar>
   </md-card>
+
 </div>
+
 
 <div *ngIf="status === 'done' && response.state ==='done'">
   <md-card class="topic">
