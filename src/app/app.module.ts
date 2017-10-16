@@ -15,6 +15,7 @@ import { MdInputModule } from '@angular/material';
 import { MdCheckboxModule } from '@angular/material';
 import { MdSlideToggleModule } from '@angular/material';
 import { MdProgressSpinnerModule } from '@angular/material';
+import { MdProgressBarModule } from '@angular/material';
 import { MdAutocompleteModule } from '@angular/material';
 import { MdGridListModule } from '@angular/material';
 import { MdSelectModule } from '@angular/material';
@@ -104,6 +105,7 @@ const appRoutes: Routes = [
     MdCheckboxModule,
     MdSlideToggleModule,
     MdProgressSpinnerModule,
+    MdProgressBarModule,
     MdAutocompleteModule,
     MdGridListModule,
     MdSelectModule,

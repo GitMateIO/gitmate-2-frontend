@@ -12,23 +12,19 @@
   <div class="flex-expander"></div>
 </div>
 
-<div *ngIf="status === 'pending'" class="flex-bar">
-  <div class="flex-expander"></div>
-  <span>Your report is in progress. The first report for any repository will take longer due to the need to fetch the issue data.</span>
-  <div class="flex-expander"></div>
+<div *ngIf="response">
+  <md-card class="topic" *ngIf="response.state!=='done'">
+    <md-card-title>Your report is in progress</md-card-title>
+    <span *ngIf="response.state === 'new'">This is the first time we are creating a report for {{name}}. This will take a while...</span>
+    <span *ngIf="response.state === 'scraping'">We are currently scraping your issues from {{provider}}.</span>
+    <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while scraping your data! restarting...</font></span>
+    <span *ngIf="response.state === 'calc'">We are analysing your repository and calculating the report.</span>
+    <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report! retrying...</font></span>
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+  </md-card>
 </div>
 
-<div *ngIf="status === 'error'" class="flex-bar">
-  <div class="flex-expander"></div>
-  <span>Unfortunately there was an error: <font color="red">{{this.error_message}}</font></span>
-  <div class="flex-expander"></div>
-</div>
-
-<div *ngIf="status === 'pending'">
-  <spinner></spinner>
-</div>
-
-<div *ngIf="status === 'done'">
+<div *ngIf="status === 'done' && response.state ==='done'">
   <md-card class="topic">
     <md-card-title style="display:flex;align-items:baseline;" >
       <p>GitMate would have saved you</p>
@@ -41,6 +37,9 @@
       </p>
       <p>
         This analysis did not take issue comments into account, leading to inferior results compared with an active GitMate instance.
+      </p>
+      <p>
+        state: {{response.state}}
       </p>
     </md-card-subtitle>
   </md-card>
@@ -144,25 +143,26 @@
       </md-grid-list>
     </div>
   </md-card>
+</div>
 
-  <md-card style="text-align:center" *ngIf="!user">
-    <span>
-      Start saving time and keep your issue tracker clean!
-    </span>
-    <div style="text-align: center">
-      <div class="container center-block buttons">
-        <div>
-          <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
-            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
-            Use with GitHub
-          </button>
-        </div>
-        <div>
-          <button class="big-button" md-raised-button color="accent" (click)="loginGitLab()">
-            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
-            Use with GitLab
-          </button>
-        </div>
+<md-card style="text-align:center" *ngIf="!user">
+  <span>
+    Start saving time and keep your issue tracker clean!
+  </span>
+  <div style="text-align: center">
+    <div class="container center-block buttons">
+      <div>
+        <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+          <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+          Use with GitHub
+        </button>
+      </div>
+      <div>
+        <button class="big-button" md-raised-button color="accent" (click)="loginGitLab()">
+          <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+          Use with GitLab
+        </button>
       </div>
     </div>
-    </md-card>
+  </div>
+</md-card>
