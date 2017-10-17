@@ -27,7 +27,9 @@ export class ReportComponent implements OnInit, OnDestroy {
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private apiService: ApiService) { }
+              private apiService: ApiService) {
+      this.response = {}
+    }
 
   ngOnInit() {
     this.timer = Observable.timer(5000);
