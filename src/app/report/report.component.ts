@@ -70,7 +70,7 @@ export class ReportComponent implements OnInit, OnDestroy {
       (err) => {
         this.status = 'error';
         this.error_message = err._body;
-        this.response.state = 'error';
+        this.response.state = 'reqerror';
         this.sub.unsubscribe();
       });
   }
