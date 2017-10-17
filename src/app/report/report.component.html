@@ -16,8 +16,8 @@
   <md-card class="topic" *ngIf="response.state!=='done'">
     <md-card-title>Your report is in progress</md-card-title>
     <span *ngIf="response.state === 'new'">This is the first time we are creating a report for {{name}}. This will take a while...</span>
-    <span *ngIf="response.state === 'scraping'">We are currently scraping your issues from {{provider}}.</span>
-    <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while scraping your data!</font></span>
+    <span *ngIf="response.state === 'scraping'">We are currently collecting your issues from {{provider}}.</span>
+    <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while collecting your data!</font></span>
     <span *ngIf="response.state === 'calc'">We are analysing your repository and calculating the report.</span>
     <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report!</font></span>
     <span *ngIf="response.state === 'reqerror'"><font color="red">Can't connect to the server or another unknown error - we're on it :/</font></span>
@@ -45,6 +45,27 @@
     </md-card-subtitle>
   </md-card>
 
+  <md-card class=topic style="text-align:center" *ngIf="!user">
+    <span>
+      Start saving time and keep your issue tracker clean!
+    </span>
+    <div style="text-align: center">
+      <div class="container center-block buttons">
+        <div>
+          <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
+            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
+            Use with GitHub
+          </button>
+        </div>
+        <div>
+          <button class="big-button" md-raised-button color="accent" (click)="loginGitLab()">
+            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
+            Use with GitLab
+          </button>
+        </div>
+      </div>
+    </div>
+  </md-card>
 
   <md-card class="topic" *ngIf="response.label_prediction_total_set > 0">
     <div style="display:flex;align-items:flex-end;">
@@ -115,7 +136,7 @@
       <p class="value">{{response.author_prediction_correct_pings}}</p>
       <p>developers in discussions they later contributed to</p>
     </div>
-    <div><font color=red style="font-size:small">The contributor prediction heavily relies on comment data that we didn't scrape for this report</font>
+    <div><font color=red style="font-size:small">An active GitMate instance will perform even better because it's able to analyse issue comments</font>
     </div>
 
     <button md-button (click)="show_authors = !show_authors">show examples</button>
