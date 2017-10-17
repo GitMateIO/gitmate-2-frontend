@@ -63,7 +63,7 @@
             <md-nav-list style="width:100%">
               <md-list-item>
                 {{example.number}}:&nbsp;
-                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.title}}</a>
+                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" target="_blank">{{example.title}}</a>
               </md-list-item>
             </md-nav-list>
           </md-grid-tile>
@@ -94,12 +94,12 @@
 
           <md-list-item>
             {{example.number}}:&nbsp;
-            <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" style="margin-left: 24px;">{{example.title}}</a>
+            <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" style="margin-left: 24px;" target="_blank">{{example.title}}</a>
           </md-list-item>
 
           <md-list-item *ngFor="let x of example.duplicates" >
             {{x.number}}:&nbsp;
-            <a href="https://{{provider}}.com/{{name}}/issues/{{x.number}}" style="margin-left: 24px;">{{x.title}}</a>
+            <a href="https://{{provider}}.com/{{name}}/issues/{{x.number}}" style="margin-left: 24px;" target="_blank">{{x.title}}</a>
             <p style="color: #757575">&nbsp;({{x.similarity*100 | number:'1.0-2'}}% similarity)</p>
           </md-list-item>
           <md-divider></md-divider>
@@ -129,7 +129,7 @@
             <md-nav-list style="width:100%">
               <md-list-item>
                 {{example.number}}:&nbsp;
-                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}">{{example.title}}</a>
+                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" target="_blank">{{example.title}}</a>
               </md-list-item>
             </md-nav-list>
           </md-grid-tile>
