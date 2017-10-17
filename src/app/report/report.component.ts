@@ -65,7 +65,7 @@ export class ReportComponent implements OnInit, OnDestroy {
         this.response = data;
         this.status = 'done';
         this.sub.unsubscribe();
-        if (this.response.state !== 'done') {
+        if (['reqerror', 'calcfail', 'scrapefail', 'done'].indexOf(this.response.state) < 0) {
           this.sub = this.timer.subscribe(t => this.get_report());
         }
       },

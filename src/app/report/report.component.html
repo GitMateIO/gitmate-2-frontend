@@ -17,13 +17,12 @@
     <md-card-title>Your report is in progress</md-card-title>
     <span *ngIf="response.state === 'new'">This is the first time we are creating a report for {{name}}. This will take a while...</span>
     <span *ngIf="response.state === 'scraping'">We are currently scraping your issues from {{provider}}.</span>
-    <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while scraping your data! restarting...</font></span>
+    <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while scraping your data!</font></span>
     <span *ngIf="response.state === 'calc'">We are analysing your repository and calculating the report.</span>
-    <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report! retrying...</font></span>
-    <span *ngIf="response.state === 'error'"><font color="red">This repository doesn't exist or isn't publicly accessible</font></span>
+    <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report!</font></span>
     <span *ngIf="response.state === 'reqerror'"><font color="red">Can't connect to the server or another unknown error - we're on it :/</font></span>
-    <md-progress-bar mode="indeterminate" *ngIf="response.state !== 'error'"></md-progress-bar>
-    <md-progress-bar mode="determinate" value=0 *ngIf="response.state === 'error'"></md-progress-bar>
+    <md-progress-bar mode="indeterminate" *ngIf="['reqerror', 'calcfail', 'scrapefail'].indexOf(response.state) < 0"></md-progress-bar>
+    <md-progress-bar mode="determinate" value=0 *ngIf="['reqerror', 'calcfail', 'scrapefail'].indexOf(response.state) >= 0"></md-progress-bar>
   </md-card>
 
 </div>
