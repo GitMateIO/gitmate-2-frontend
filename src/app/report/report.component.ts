@@ -28,11 +28,11 @@ export class ReportComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService) {
-      this.response = {}
+      this.response = {};
     }
 
   ngOnInit() {
-    this.timer = Observable.timer(5000);
+    this.timer = Observable.timer(100, 5000);
     this.route.params.subscribe(params => {
       this.repo_url = params['url'];
       this.sub = this.timer.subscribe(t => this.get_report());
@@ -64,8 +64,9 @@ export class ReportComponent implements OnInit, OnDestroy {
       (data) => {
         this.response = data;
         this.status = 'done';
-        this.sub.unsubscribe();
-        if (['reqerror', 'calcfail', 'scrapefail', 'done'].indexOf(this.response.state) < 0) {
+        if (['reqerror', 'calcfail', 'scrapefail', 'done'].indexOf(this.response.state) >= 0) {
+          this.sub.unsubscribe();
+        } else if (this.sub.closed === true) {
           this.sub = this.timer.subscribe(t => this.get_report());
         }
       },
