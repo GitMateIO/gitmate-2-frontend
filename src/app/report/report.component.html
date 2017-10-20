@@ -4,9 +4,9 @@
     Report for the repository:
   </div>
   <md-input-container style="width:400px;" >
-    <input mdInput placeholder="Repository url" [(ngModel)]="repo_url" (keydown)="reportKeyDown($event)">
+    <input mdInput placeholder="Repository url" [(ngModel)]="repo_textfield" (keydown)="reportKeyDown($event)">
   </md-input-container>
-  <button md-button (click)="get_report()">
+  <button md-button (click)="reload()">
     Reload
   </button>
   <div class="flex-expander"></div>

@@ -17,6 +17,7 @@ export class ReportComponent implements OnInit, OnDestroy {
   show_authors: false;
   user: UserModel;
   repo_url = '';
+  repo_textfield = '';
   provider: string;
   name: string;
   response: any;
@@ -27,6 +28,7 @@ export class ReportComponent implements OnInit, OnDestroy {
   private sub: Subscription;
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private apiService: ApiService) {
       this.response = {};
     }
@@ -35,6 +37,7 @@ export class ReportComponent implements OnInit, OnDestroy {
     this.timer = Observable.timer(100, 5000);
     this.route.params.subscribe(params => {
       this.repo_url = params['url'];
+      this.repo_textfield = params['url'];
       this.sub = this.timer.subscribe(t => this.get_report());
     });
     this.apiService.getUser().subscribe(user => this.user = user);
@@ -66,8 +69,6 @@ export class ReportComponent implements OnInit, OnDestroy {
         this.status = 'done';
         if (['reqerror', 'calcfail', 'scrapefail', 'done'].indexOf(this.response.state) >= 0) {
           this.sub.unsubscribe();
-        } else if (this.sub.closed === true) {
-          this.sub = this.timer.subscribe(t => this.get_report());
         }
       },
       (err) => {
@@ -78,9 +79,14 @@ export class ReportComponent implements OnInit, OnDestroy {
       });
   }
 
+  reload() {
+    this.repo_url = this.repo_textfield;
+    this.router.navigate(['report', this.repo_url]);
+  }
+
   reportKeyDown(event) {
     if (event.key === 'Enter') {
-      this.get_report();
+      this.reload();
     }
   }
   loginGitHub() {
