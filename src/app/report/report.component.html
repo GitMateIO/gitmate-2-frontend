@@ -33,7 +33,7 @@
     <md-card-title style="display:flex;align-items:baseline;" >
       <p>GitMate would have saved you</p>
       <p class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings)*5/60 | number:'.0-0'}}</p>
-      <p>hours of work on your project</p>
+      <p>hours of work on your project.</p>
     </md-card-title>
     <md-card-subtitle>
       <p>
@@ -71,7 +71,7 @@
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate would have set</p>
       <p class="value">{{response.label_prediction_total_set}}</p>
-      <p>labels for you</p>
+      <p>labels for you.</p>
     </div>
     <button md-button (click)="show_labels = !show_labels">show examples</button>
 
@@ -104,7 +104,7 @@
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate found</p>
       <p class="value">{{response.duplicate_total}}</p>
-      <p>groups of duplicates in your repository</p>
+      <p>groups of duplicates in your repository.</p>
     </div>
 
     <button md-button (click)="show_dupes = !show_dupes">show examples</button>
@@ -134,9 +134,9 @@
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate would have pinged</p>
       <p class="value">{{response.author_prediction_correct_pings}}</p>
-      <p>developers in discussions they later contributed to</p>
+      <p>developers in discussions they later contributed to.</p>
     </div>
-    <div><font color=red style="font-size:small">An active GitMate instance will perform even better because it's able to analyse issue comments</font>
+    <div><font color=#03a9f4 >An active GitMate instance will perform even better because it's able to analyse issue comments.</font>
     </div>
 
     <button md-button (click)="show_authors = !show_authors">show examples</button>
