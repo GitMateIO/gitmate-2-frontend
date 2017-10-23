@@ -80,8 +80,15 @@ export class ReportComponent implements OnInit, OnDestroy {
   }
 
   reload() {
-    this.repo_url = this.repo_textfield;
-    this.router.navigate(['report', this.repo_url]);
+    if (this.repo_textfield === this.repo_url) {
+      if (this.sub.closed === true) {
+        this.sub = this.timer.subscribe(t => this.get_report());
+      }
+      this.response = {};
+    } else {
+      this.repo_url = this.repo_textfield;
+      this.router.navigate(['report', this.repo_url]);
+    }
   }
 
   reportKeyDown(event) {
@@ -89,6 +96,7 @@ export class ReportComponent implements OnInit, OnDestroy {
       this.reload();
     }
   }
+
   loginGitHub() {
     window.location.href = environment.backend_url + '/auth/login/github/';
   }
