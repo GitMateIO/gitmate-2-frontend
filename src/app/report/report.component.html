@@ -20,9 +20,10 @@
     <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while collecting your data!</font></span>
     <span *ngIf="response.state === 'calculating'">We are analysing your repository and calculating the report.</span>
     <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report!</font></span>
+    <span *ngIf="response.state === 'error'">Unfortunately there was an error: <font color="red">{{error_message}}</font></span>
     <span *ngIf="response.state === 'reqerror'"><font color="red">Can't connect to the server or another unknown error - we're on it :/</font></span>
-    <md-progress-bar mode="indeterminate" *ngIf="['reqerror', 'calcfail', 'scrapefail'].indexOf(response.state) < 0"></md-progress-bar>
-    <md-progress-bar mode="determinate" value=0 *ngIf="['reqerror', 'calcfail', 'scrapefail'].indexOf(response.state) >= 0"></md-progress-bar>
+    <md-progress-bar mode="indeterminate" *ngIf="['error', 'reqerror', 'calcfail', 'scrapefail'].indexOf(response.state) < 0"></md-progress-bar>
+    <md-progress-bar mode="determinate" value=0 *ngIf="['error', 'reqerror', 'calcfail', 'scrapefail'].indexOf(response.state) >= 0"></md-progress-bar>
   </md-card>
 
 </div>

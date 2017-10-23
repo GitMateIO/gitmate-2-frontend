@@ -72,9 +72,14 @@ export class ReportComponent implements OnInit, OnDestroy {
         }
       },
       (err) => {
+        console.log(err);
         this.status = 'error';
         this.error_message = err._body;
-        this.response.state = 'reqerror';
+        if (err.status === 404 || err.status === 400) {
+          this.response.state = 'error';
+        } else {
+          this.response.state = 'reqerror';
+        }
         this.sub.unsubscribe();
       });
   }
