@@ -29,7 +29,7 @@
 
 
 <div *ngIf="status === 'done' && response.state ==='done'">
-  <md-card class="topic">
+  <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings !== 0">
     <md-card-title style="display:flex;align-items:baseline;" >
       <p>GitMate would have saved you</p>
       <p class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings)*5/60 | number:'.0-0'}}</p>
@@ -45,7 +45,16 @@
     </md-card-subtitle>
   </md-card>
 
-  <md-card class=topic style="text-align:center" *ngIf="!user">
+  <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings === 0" >
+    <md-card-title style="display:flex;align-items:baseline;" >
+      <p>GitMate would not have saved you any time :(</p>
+    </md-card-title>
+    <md-card-subtitle>
+      <p>GitMate needs some data to work with, and most likely your repository is too small. The analysis should start yielding results once you have at least 3 frequently used labels and 3 contributors who open or comment on issues.</p>
+    </md-card-subtitle>
+  </md-card>
+
+  <md-card class=topic style="text-align:center" *ngIf="!user && response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings !== 0">
     <span>
       Start saving time and keep your issue tracker clean!
     </span>
