@@ -27,3 +27,22 @@
 .buttons {
   display: inline-flex;
 }
+
+@media only screen and (max-width: 435px) {
+  .buttons {
+      display: block;
+  }
+  .mat-card-title {
+    text-align: center;
+  }
+  .value {
+    margin: 0;
+    color: #173542;
+  }
+  .flex-bar {
+    display: grid !important;
+  }
+  .flex-bar md-input-container {
+    margin-top: 1em;
+  } 
+}
