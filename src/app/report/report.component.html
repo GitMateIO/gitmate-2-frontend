@@ -85,27 +85,21 @@
     <button md-button (click)="show_labels = !show_labels">show examples</button>
 
     <div *ngIf="show_labels">
-      <md-grid-list cols="3" rowHeight="64px">
-
-        <div *ngFor="let example of response.label_examples">
-
-          <md-grid-tile [colspan]=2>
-            <md-nav-list style="width:100%">
-              <md-list-item>
-                {{example.number}}:&nbsp;
-                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" target="_blank">{{example.title}}</a>
-              </md-list-item>
-            </md-nav-list>
-          </md-grid-tile>
-
-          <md-grid-tile>
+      <div *ngFor="let example of response.label_examples">
+        <div class="labelslist">
+          <div class="issue-meta">
+            <div class="issue-highlight">
+              {{example.number}}:&nbsp;
+              <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" target="_blank">{{example.title}}</a>
+            </div>  
+          </div>
+          <div class="issue-labels">
             <md-chip-list>
               <md-chip *ngFor="let label of example.gitmate">{{label}}</md-chip>
             </md-chip-list>
-          </md-grid-tile>
-
+          </div>
         </div>
-      </md-grid-list>
+      </div>
     </div>
   </md-card>
 

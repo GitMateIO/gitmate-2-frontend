@@ -27,6 +27,27 @@
 .buttons {
   display: inline-flex;
 }
+.labelslist {
+  display: flex;
+  margin-top: 1em;
+}
+.labelslist .issue-meta {
+  flex: 0.5;
+}
+.labelslist a {
+  text-decoration: none;
+  color: inherit;
+}
+.labelslist .issue-highlight {
+  padding: 1em;
+  margin-right: 1em;
+}
+.labelslist .issue-highlight:hover {
+  background: rgba(0,0,0,.04);
+}
+.labelslist .issue-labels {
+  flex: 0.5;
+}
 
 @media only screen and (max-width: 435px) {
   .buttons {
