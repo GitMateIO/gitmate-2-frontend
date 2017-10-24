@@ -19,6 +19,7 @@
     <span *ngIf="response.state === 'scraping'">We are currently collecting your issues from {{provider}}.</span>
     <span *ngIf="response.state === 'scrapefail'"><font color="red">There has been an error while collecting your data!</font></span>
     <span *ngIf="response.state === 'calculating'">We are analysing your repository and calculating the report.</span>
+    <span *ngIf="response.state === 'recalc'"><font color="#03a9f4">Those results are cached - we're currently updating the report.</font></span>
     <span *ngIf="response.state === 'calcfail'"><font color="red">There has been an error while calculating your report!</font></span>
     <span *ngIf="response.state === 'error'">Unfortunately there was an error: <font color="red">{{error_message}}</font></span>
     <span *ngIf="response.state === 'reqerror'"><font color="red">Can't connect to the server or another unknown error - we're on it :/</font></span>
