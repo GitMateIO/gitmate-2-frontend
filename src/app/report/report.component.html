@@ -31,13 +31,13 @@
 
 
 <div *ngIf="status === 'done' && response.state ==='done'">
-  <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings !== 0">
+  <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
     <md-card-title style="display:flex;align-items:baseline;" >
-      <p>GitMate would have saved you <span class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings)*5/60 | number:'.0-0'}}</span> hours of work on your project</p>
+      <p>GitMate would have saved you <span class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total)*5/60 | number:'.0-0'}}</span> hours of work on your project</p>
     </md-card-title>
     <md-card-subtitle>
       <p>
-        Based on {{response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings}} actions GitMate would have taken for you, valued a 5 minutes each.
+        Based on {{response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total}} actions GitMate would have taken for you, valued a 5 minutes each.
       </p>
       <p>
         This analysis did not take issue comments into account, leading to inferior results compared with an active GitMate instance.
@@ -45,7 +45,7 @@
     </md-card-subtitle>
   </md-card>
 
-  <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings === 0" >
+  <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total === 0" >
     <md-card-title style="display:flex;align-items:baseline;" >
       <p>GitMate would not have saved you any time :(</p>
     </md-card-title>
@@ -54,7 +54,7 @@
     </md-card-subtitle>
   </md-card>
 
-  <md-card class=topic style="text-align:center" *ngIf="!user && response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings !== 0">
+  <md-card class=topic style="text-align:center" *ngIf="!user && response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
     <span>
       Start saving time and keep your issue tracker clean!
     </span>
@@ -172,6 +172,29 @@
 
         </div>
       </md-grid-list>
+    </div>
+  </md-card>
+
+  <md-card class="topic" *ngIf="response.stale_total > 0">
+    <div style="display:flex;align-items:flex-end;">
+      <p>GitMate has detected
+      <span class="value">{{response.stale_total}}</span>
+      issues that haven't seen any updates in one month.</p>
+    </div>
+
+    <div>
+      <p>GitMate can automatically close stale issues that match certain criteria, e.g. if information is missing. This way you can stop going through old issues while maintaining an up to date issue database.</p>
+    </div>
+
+    <button md-button (click)="show_stale = !show_stale">show examples</button>
+
+    <div *ngIf="show_stale">
+      <md-nav-list>
+          <md-list-item *ngFor="let example of response.stale_examples">
+            {{example.number}}:&nbsp;
+            <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" style="margin-left: 24px;" target="_blank">{{example.title}}</a>
+          </md-list-item>
+        </md-nav-list>
     </div>
   </md-card>
 </div>

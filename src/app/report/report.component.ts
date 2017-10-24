@@ -15,6 +15,7 @@ export class ReportComponent implements OnInit, OnDestroy {
   show_labels: false;
   show_dupes: false;
   show_authors: false;
+  show_stale: false;
   user: UserModel;
   repo_url = '';
   repo_textfield = '';
