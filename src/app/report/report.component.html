@@ -30,7 +30,7 @@
 </div>
 
 
-<div *ngIf="status === 'done' && response.state ==='done'">
+<div *ngIf="status === 'done' && ['done', 'recalc'].indexOf(response.state) >= 0">
   <md-card class="topic" *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
     <md-card-title style="display:flex;align-items:baseline;" >
       <p>GitMate would have saved you <span class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total)*5/60 | number:'.0-0'}}</span> hours of work on your project</p>
