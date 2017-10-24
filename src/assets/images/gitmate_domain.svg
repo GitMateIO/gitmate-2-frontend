@@ -14,7 +14,7 @@
    viewBox="0 0 77.204713 77.205063"
    version="1.1"
    id="svg82"
-   sodipodi:docname="gitmate_circle.svg"
+   sodipodi:docname="gitmate_domain.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
   <defs
      id="defs76">
@@ -35,7 +35,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-164.65739"
+     inkscape:cx="-491.08596"
      inkscape:cy="143.59097"
      inkscape:document-units="mm"
      inkscape:current-layer="g28"
@@ -57,7 +57,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

@@ -50,6 +50,7 @@ import { SearchSelectComponent } from './search-select/search-select.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { FeaturesComponent } from './features/features.component';
 import { ReportComponent } from './report/report.component';
+import { PressComponent } from './press/press.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeViewComponent, canActivate: [EnterpriseGuardService]},
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
   {path: 'security', component: SecurityComponent},
   {path: 'pricing', component: PricingComponent, canActivate: [EnterpriseGuardService]},
   {path: 'features', component: FeaturesComponent},
+  {path: 'press', component: PressComponent},
   {path: 'report/:url', component: ReportComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', component: NotFoundViewComponent},
@@ -87,7 +89,8 @@ const appRoutes: Routes = [
     PricingComponent,
     FeaturesComponent,
     HomeViewCommunityComponent,
-    ReportComponent
+    ReportComponent,
+    PressComponent
   ],
   imports: [
     BrowserModule,
