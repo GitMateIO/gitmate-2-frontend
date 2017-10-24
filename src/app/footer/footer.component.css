@@ -32,3 +32,12 @@ a {
   color: #757575;
   padding-bottom: 10px;
 }
+
+@media only screen and (max-width: 435px) {
+  .footer {
+    display: block;
+  }
+  .footer-column .title {
+    margin-top: 2em;
+  }
+}
