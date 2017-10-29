@@ -32,7 +32,23 @@ export class PluginsComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .switchMap((params: Params) => this.apiService.getPlugins(params['id']))
-      .subscribe((plugins: PluginModel[]) => this.plugins = plugins);
+      .subscribe((plugins: PluginModel[]) => {
+        this.plugins = plugins;
+        for (const plugin of this.plugins) {
+          if (plugin.name === 'similar_ee' && plugin.active === false) {
+            plugin.settings[0].value = false;
+            plugin.settings[2].value = false;
+            plugin.settings[4].value = false;
+            this.apiService.setPluginSetting(plugin.name, this.repo.id, plugin.settings[0].name, false).subscribe(resp => {
+              this.apiService.setPluginSetting(plugin.name, this.repo.id, plugin.settings[2].name, false).subscribe(res => {
+                this.apiService.setPluginSetting(plugin.name, this.repo.id, plugin.settings[4].name, false).subscribe(re => {
+                  this.plugins = re;
+                });
+              });
+            });
+          }
+        }
+      });
 
     this.route.params
       .switchMap((params: Params) => this.apiService.getRepo(params['id']))

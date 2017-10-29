@@ -94,7 +94,7 @@ export class ApiService {
     .map(response => <PluginModel[]>response.json().plugins);
   }
 
-  setPluginSetting(plugin_name: string, repoid: number, setting_name: string, setting_value: string) {
+  setPluginSetting(plugin_name: string, repoid: number, setting_name: string, setting_value: any) {
     var obj ={};
     obj[setting_name] = setting_value;
     return this.http.patch(this.apiurl + '/api/plugins/' + repoid + '/',
