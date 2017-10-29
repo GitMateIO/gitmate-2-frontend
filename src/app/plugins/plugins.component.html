@@ -37,7 +37,67 @@
 <md-tab-group *ngIf="plugins">
   <md-tab *ngFor="let section of [[['issue'], 'Issue Management'], [['pull_request', 'analysis'], 'Other']]" label="{{section[1]}}">
     <div *ngFor="let plugin of plugins">
-      <md-card *ngIf="section[0].indexOf(plugin.plugin_category) >= 0">
+      <div *ngIf="section[0].indexOf(plugin.plugin_category) >= 0 && plugin.name === 'similar_ee'">
+
+        <md-card>
+          <md-card-title>
+            <label>
+              {{plugin.settings[4].description}}
+              <md-slide-toggle
+                [(ngModel)]="plugin.settings[4].value"
+                (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[4].name, plugin.settings[4].value)"
+                style="float:right;padding-top:10px">
+              </md-slide-toggle>
+            </label>
+          </md-card-title>
+          <md-card-subtitle>
+            Mention similar issues in a comment of a new issue.
+          </md-card-subtitle>
+        </md-card>
+
+        <md-card>
+          <md-card-title>
+            <label>
+              {{plugin.settings[0].description}}
+              <md-slide-toggle
+                [(ngModel)]="plugin.settings[0].value"
+                (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[0].name, plugin.settings[0].value)"
+                style="float:right;padding-top:10px">
+              </md-slide-toggle>
+            </label>
+          </md-card-title>
+          <md-card-subtitle>
+            Automatically set appropriate labels on new issues.
+          </md-card-subtitle>
+          <md-input-container *ngIf="plugin.settings[0].value">
+            <input mdInput placeholder="{{plugin.settings[1].description}}" [(ngModel)]="plugin.settings[1].value" (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[1].name, plugin.settings[1].value)">
+          </md-input-container>
+        </md-card>
+
+        <md-card>
+          <md-card-title>
+            <label>
+              {{plugin.settings[2].description}}
+              <md-slide-toggle
+                [(ngModel)]="plugin.settings[2].value"
+                (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[2].name, plugin.settings[2].value)"
+                style="float:right;padding-top:10px">
+              </md-slide-toggle>
+            </label>
+          </md-card-title>
+          <md-card-subtitle>
+            Mention related contributors in a comment of a new issue.
+          </md-card-subtitle>
+          <md-input-container *ngIf="plugin.settings[2].value">
+            <input mdInput placeholder="{{plugin.settings[3].description}}" [(ngModel)]="plugin.settings[3].value" (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[3].name, plugin.settings[3].value)">
+          </md-input-container>
+        </md-card>
+
+      </div>
+    </div>
+
+    <div *ngFor="let plugin of plugins">
+      <md-card *ngIf="section[0].indexOf(plugin.plugin_category) >= 0 && plugin.name !== 'similar_ee'">
         <md-card-title>
           <label>
             {{plugin.title}}

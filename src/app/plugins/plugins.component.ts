@@ -148,4 +148,13 @@ export class PluginsComponent implements OnInit {
                     });
     });
   }
+
+  setting_change_maybe_toggle_plugin(plugin: any,
+                                     setting_name: string,
+                                     setting_value: any) {
+    this.setting_change(plugin.name, setting_name, setting_value);
+    if (plugin.active !== (plugin.settings[0].value || plugin.settings[2].value || plugin.settings[4].value)) {
+      this.toggle(plugin);
+    }
+  }
 }
