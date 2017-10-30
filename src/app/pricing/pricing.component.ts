@@ -26,14 +26,24 @@ export class PricingComponent implements OnInit {
 
   pricing = [
     {
-      "title":"Basic",
+      "title":"Free",
       "features": [
         "Handle up to 50 issues/month",
         "Limited to 8 users per organization",
         "Community Support",
       ],
       "price": {"amount": "Free", "limit": "always!"},
-      "height": 460
+      "height": 440
+    },
+    {
+      "title":"Startup",
+      "features": [
+        "Handle up to 100 issues/month",
+        "Limited to 20 users per organization",
+        "Priority Support",
+      ],
+      "price" : {"amount": "39€", "limit": "/month"},
+      "height": 400
     },
     {
       "title":"Professional",
@@ -42,8 +52,8 @@ export class PricingComponent implements OnInit {
         "Unlimited users",
         "Priority Support",
       ],
-      "price" : {"amount": "29€", "limit": "/month"},
-      "height": 460
+      "price" : {"amount": "79€", "limit": "/month"},
+      "height": 400
     },
     {
       "title":"Enterprise",
@@ -51,10 +61,9 @@ export class PricingComponent implements OnInit {
         "Handle up to 500 issues/month",
         "Unlimited users",
         "Priority Support",
-        "On-premises deployment"
       ],
-      "price" : {"amount": "99€", "limit": "/month"},
-      "height": 460
+      "price" : {"amount": "149€", "limit": "/month"},
+      "height": 400
     },
     {
       "title":"Unicorn",
@@ -66,7 +75,7 @@ export class PricingComponent implements OnInit {
         "On-premises deployment"
       ],
       "price" : {"amount": "Contact Us", "limit": "/month"},
-      "height": 460
+      "height": 400
     }
   ]
 

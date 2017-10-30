@@ -23,7 +23,7 @@
   </div>
 </section>
 
-<md-grid-list class="features-xs feature" [cols]="pricing.length" rowHeight="2:3">
+<md-grid-list class="features-xs feature" [cols]="pricing.length" rowHeight="440px">
   <md-grid-tile *ngFor="let item of pricing">
     <md-card style="padding:10px; width:100%" [style.height.px]="item.height">
       <div class="content">
@@ -39,14 +39,6 @@
             <div [innerHTML]="f"></div>
           </li>
         </ul>
-      </div>
-      <div class="signup">
-        <button class="big-button" class="pricing-card-login-btn" md-raised-button color="accent" (click)="loginGitHub()">
-          SignUp with GitHub
-        </button>
-        <button class="big-button" class="pricing-card-login-btn" md-raised-button color="accent" (click)="loginGitLab()">
-          SignUp with GitLab
-        </button>
       </div>
     </md-card>
   </md-grid-tile>
@@ -67,14 +59,6 @@
           <div [innerHTML]="f"></div>
         </li>
       </ul>
-    </div>
-    <div class="signup">
-      <button class="big-button" class="login-btn" md-raised-button color="accent" (click)="loginGitHub()">
-        SignUp with GitLab
-      </button>
-      <button class="big-button" class="login-btn" md-raised-button color="accent" (click)="loginGitLab()">
-        SignUp with GitLab
-      </button>
     </div>
   </md-card>
 </div>
