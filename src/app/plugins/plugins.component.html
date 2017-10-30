@@ -35,7 +35,7 @@
 </div>
 
 <md-tab-group *ngIf="plugins">
-  <md-tab *ngFor="let section of [[['issue'], 'Issue Management'], [['pull_request', 'analysis'], 'Other']]" label="{{section[1]}}">
+  <md-tab *ngFor="let section of [[['issue'], 'Issue Management'], [['pull_request', 'analysis'], 'Review']]" label="{{section[1]}}">
     <div *ngFor="let plugin of plugins">
       <div *ngIf="section[0].indexOf(plugin.plugin_category) >= 0 && plugin.name === 'similar_ee'">
 
