@@ -12,7 +12,7 @@ body {
   padding: 0px;
   min-height: 100vh; /* workaround for long container */
   font-family: Roboto;
-  background: #eff0f1;
+  background: #eeeeee;
   display: flex;
   flex-direction: column;
 }
