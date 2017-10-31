@@ -6,6 +6,10 @@ md-input-container{
   width: 100%;
 }
 
+md-card-title {
+  text-transform: capitalize;
+}
+
 textarea{
   resize: vertical;
 }
