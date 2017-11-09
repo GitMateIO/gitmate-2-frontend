@@ -32,7 +32,7 @@ export class HomeViewComponent implements OnInit {
     window.location.href = environment.backend_url + '/auth/login/gitlab/';
   }
 
-  loginBitbucket() {
+  loginJira() {
     window.location.href = 'http://eepurl.com/cUXlJ5';
   }
 
