@@ -76,6 +76,10 @@
     </div>
   </md-card>
 
+  <md-card class="topic" *ngIf="response.label_prediction_total_set === 0">
+    <p>This repository contains too few recurring labels for a meaningful label prediction</p>
+  </md-card>
+
   <md-card class="topic" *ngIf="response.label_prediction_total_set > 0">
     <div style="display:flex;align-items:flex-end;">
       <p>GitMate would have set
@@ -101,6 +105,10 @@
         </div>
       </div>
     </div>
+  </md-card>
+
+  <md-card class="topic" *ngIf="response.duplicate_total === 0">
+    <p>GitMate did not find any duplicate issues in this repository</p>
   </md-card>
 
   <md-card class="topic" *ngIf="response.duplicate_total > 0">
@@ -132,6 +140,10 @@
     </div>
   </md-card>
 
+
+  <md-card class="topic" *ngIf="response.author_prediction_correct_pings === 0">
+    <p>There are too few active contributors with enough contributions for a prediction</p>
+  </md-card>
 
   <md-card class="topic" *ngIf="response.author_prediction_correct_pings > 0">
     <div style="display:flex;align-items:flex-end;">
@@ -167,6 +179,10 @@
         </div>
       </md-grid-list>
     </div>
+  </md-card>
+
+  <md-card class="topic" *ngIf="response.stale_total === 0">
+    <p>There are no issues in this repository that haven't seen any updates in the last month</p>
   </md-card>
 
   <md-card class="topic" *ngIf="response.stale_total > 0">
