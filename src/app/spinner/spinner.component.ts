@@ -44,6 +44,7 @@ export class SpinnerComponent implements OnInit {
     'Clearing my throat...',
     'Deciphering your intentions...',
     'Hit F0 to continue...',
+    'HTTP 418 - waiting for YOU to brew coffee...',
   ]
 
   constructor() {
