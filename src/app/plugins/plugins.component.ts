@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import {MdSnackBar} from '@angular/material';
 
 import { ApiService } from './../api/api.service';
+import { UserModel } from './../models';
 import { RepoModel, PluginModel, SettingModel } from './../models';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { environment } from './../../environments/environment';
@@ -13,6 +14,7 @@ import { environment } from './../../environments/environment';
   styleUrls: ['./plugins.component.css']
 })
 export class PluginsComponent implements OnInit {
+  user: UserModel;
   repoid: number;
   plugins: PluginModel[];
   repo: RepoModel;
@@ -30,6 +32,7 @@ export class PluginsComponent implements OnInit {
     public snackBar: MdSnackBar) { }
 
   ngOnInit() {
+    this.apiService.getUser().subscribe(user => this.user = user);
     this.route.params
       .switchMap((params: Params) => this.apiService.getPlugins(params['id']))
       .subscribe((plugins: PluginModel[]) => {

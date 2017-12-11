@@ -34,6 +34,19 @@
 
 </div>
 
+<div *ngIf="repo && user">
+  <p *ngIf="repo.user === user.username"> Attention: GitMate will perform actions in this repository using your account!</p>
+  <p *ngIf="repo.user !== user.username"> GitMate will perform actions in this repository using the account of {{repo.user}}.</p>
+  <p> To use a dedicated user account for GitMate:</p>
+    <ul>
+      <li>Create a new user account on GitHub or GitLab</li>
+      <li>Give this user owner privileges to your repository</li>
+      <li>Enable GitMate for this user</li>
+      <li>Choose the target user in the top right corner of this page</li>
+    </ul>
+
+</div>
+
 <md-tab-group *ngIf="plugins">
   <md-tab *ngFor="let section of [[['issue'], 'Issue Management'], [['pull_request', 'analysis'], 'Review']]" label="{{section[1]}}">
     <div *ngFor="let plugin of plugins">
