@@ -1,4 +1,5 @@
 import { Component,  EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ApiService } from './../api/api.service';
 import { RepoModel } from './../models';
@@ -20,7 +21,8 @@ export class RepositoryComponent implements OnInit {
 
   spin = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,
+              private router: Router) { }
 
   toggle() {
     this.spin = true;
@@ -30,6 +32,7 @@ export class RepositoryComponent implements OnInit {
           this.repo = repo;
           this.spin = false;
           this.active_toggled.emit('enabled');
+          this.router.navigate(['/repo', this.repo.id]);
         }
       );
     } else {
