@@ -44,13 +44,12 @@
         See what we can do for your repository
       </div>
       <div>
-        <md-input-container style="width:66%;margin-right:12px;">
+        <md-input-container style="width:50%; margin-right:12px;">
           <input mdInput placeholder="repository url" [(ngModel)]="report_repo_url" (keydown)="reportKeyDown($event)">
         </md-input-container>
-
-          <button md-raised-button color="accent" (click)="getReport()">
-            Create a report
-          </button>
+        <button md-raised-button color="accent" (click)="getReport()">
+          Create a report
+        </button>
       </div>
     </div>
   </section>
