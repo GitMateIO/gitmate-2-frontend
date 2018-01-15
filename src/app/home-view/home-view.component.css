@@ -81,6 +81,7 @@ section {
 .section-heading {
   font-family: Roboto;
   padding-top: 0.5em;
+  padding-bottom: 0.5em;
   line-height: 1.5;
   font-weight: 300;
   font-size: 28px;
@@ -89,7 +90,6 @@ section {
 
 .section-content {
   font-family: Roboto;
-  padding-top: 0.5em;
   line-height: 1.5;
   font-weight: 300;
   font-size: 22px;
@@ -115,7 +115,7 @@ section {
 
 .header-block {
   margin-top: 40px !important;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   padding-left: 5vw;
   padding-right: 5vw;
 }
