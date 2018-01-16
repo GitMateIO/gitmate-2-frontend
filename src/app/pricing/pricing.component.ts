@@ -62,7 +62,7 @@ export class PricingComponent implements OnInit {
         "Unlimited users",
         "Priority Support",
       ],
-      "price" : {"amount": "149€", "limit": "/month"},
+      "price" : {"amount": "199€", "limit": "/month"},
       "height": 400
     },
     {
