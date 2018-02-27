@@ -66,6 +66,9 @@
           <md-card-subtitle>
             Mention similar issues in a comment of a new issue.
           </md-card-subtitle>
+          <label *ngIf="plugin.settings[4].value">{{plugin.settings[5].description}}
+            <md-slide-toggle [(ngModel)]="plugin.settings[5].value" (change)="setting_change(plugin.name, plugin.settings[5].name, plugin.settings[5].value)" style="float:right;padding-top:2px"></md-slide-toggle>
+          </label>
         </md-card>
 
         <md-card>
@@ -83,7 +86,7 @@
             Automatically set appropriate labels on new issues.
           </md-card-subtitle>
           <md-input-container *ngIf="plugin.settings[0].value">
-            <input mdInput placeholder="{{plugin.settings[1].description}}" [(ngModel)]="plugin.settings[1].value" (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[1].name, plugin.settings[1].value)">
+            <input mdInput placeholder="{{plugin.settings[1].description}}" [(ngModel)]="plugin.settings[1].value" (change)="setting_change(plugin, plugin.settings[1].name, plugin.settings[1].value)">
           </md-input-container>
         </md-card>
 
@@ -102,7 +105,7 @@
             Mention related contributors in a comment of a new issue.
           </md-card-subtitle>
           <md-input-container *ngIf="plugin.settings[2].value">
-            <input mdInput placeholder="{{plugin.settings[3].description}}" [(ngModel)]="plugin.settings[3].value" (change)="setting_change_maybe_toggle_plugin(plugin, plugin.settings[3].name, plugin.settings[3].value)">
+            <input mdInput placeholder="{{plugin.settings[3].description}}" [(ngModel)]="plugin.settings[3].value" (change)="setting_change(plugin, plugin.settings[3].name, plugin.settings[3].value)">
           </md-input-container>
         </md-card>
 
