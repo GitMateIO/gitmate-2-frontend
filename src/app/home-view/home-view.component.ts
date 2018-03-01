@@ -33,7 +33,7 @@ export class HomeViewComponent implements OnInit {
   }
 
   loginJira() {
-    window.location.href = 'http://eepurl.com/cUXlJ5';
+    window.location.href = 'https://eepurl.com/cUXlJ5';
   }
 
   getReport() {
