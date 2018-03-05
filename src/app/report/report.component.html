@@ -29,100 +29,32 @@
 
 </div>
 
-
-<div *ngIf="status === 'done' && ['done', 'recalc'].indexOf(response.state) >= 0">
-  <md-card class="topic" *ngIf="(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total)*5/60 >= 20">
+<div *ngIf="response && ['done', 'recalc'].indexOf(response.state) >= 0">
+  <md-card class="topic" *ngIf="response.duplicate_total >= 5">
     <md-card-title style="display:flex;align-items:baseline;" >
-      <p>GitMate would have saved you <span class="value">{{(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total)*5/60 | number:'.0-0'}}</span> hours of work on your project</p>
+      <p>GitMate would have saved you <span class="value">{{response.duplicate_total * 35}}€</span> by finding duplicates!</p>
     </md-card-title>
-    <md-card-subtitle>
-      <p>
-        Based on {{response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total}} actions GitMate would have taken for you, valued a 5 minutes each.
-      </p>
-      <p>
-        This analysis did not take issue comments into account, leading to inferior results compared with an active GitMate instance.
-      </p>
-    </md-card-subtitle>
-  </md-card>
 
-  <md-card class="topic" *ngIf="(response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total)*5/60 < 20" >
-    <md-card-title style="display:flex;align-items:baseline;" >
-      <p>There are not enough issues for a meaningful analysis.</p>
-    </md-card-title>
-    <md-card-subtitle>
-      <p>GitMate needs some data to work with, and your repository seems to be too small for a meaningful analysis.
-        The analysis should start yielding results once you have at least 5 frequently used labels and 5 contributors who open or comment on issues.</p>
-      <p *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
-        It seems that we found some insights on the data that you have - just scroll down to see it.
+    <div style="display:flex;align-items:flex-end;">
+      <p>
+        GitMate found
+        <span class="value">{{response.duplicate_total}}</span>
+        groups of duplicates in your repository.
       </p>
-    </md-card-subtitle>
-  </md-card>
-
-  <md-card class=topic style="text-align:center" *ngIf="!user && response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
-    <span>
-      Start saving time and keep your issue tracker clean!
-    </span>
-    <div style="text-align: center">
-      <div class="container center-block buttons">
-        <div>
-          <button class="big-button" md-raised-button color="accent" (click)="loginGitHub()">
-            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-github" ></md-icon>
-            Use with GitHub
-          </button>
-        </div>
-        <div>
-          <button class="big-button" md-raised-button color="accent" (click)="loginGitLab()">
-            <md-icon class="vendor-icon" fontSet="fa" fontIcon="fa-gitlab" ></md-icon>
-            Use with GitLab
-          </button>
-        </div>
+      <div *ngIf="response.duplicate_open/response.duplicate_total < 0.25">
+        <p>
+          <span class="value">{{response.duplicate_open}}</span> of these are open right now.
+        </p>
+      </div>
+      <div *ngIf="response.duplicate_open/response.duplicate_total > 0.25">
+        <p>
+          <span class="value">{{response.duplicate_open/response.duplicate_total*100|number:'.0-0'}}%</span> of these are open right now.
+        </p>
       </div>
     </div>
-  </md-card>
 
-  <md-card class="topic" *ngIf="response.label_prediction_total_set === 0">
-    <p>This repository contains too few recurring labels for a meaningful label prediction</p>
-  </md-card>
-
-  <md-card class="topic" *ngIf="response.label_prediction_total_set > 0">
-    <div style="display:flex;align-items:flex-end;">
-      <p>GitMate would have set
-      <span class="value">{{response.label_prediction_total_set}}</span>
-      labels for you.</p>
-    </div>
-    <button md-button (click)="show_labels = !show_labels">show examples</button>
-
-    <div *ngIf="show_labels">
-      <div *ngFor="let example of response.label_examples">
-        <div class="labelslist">
-          <div class="issue-meta">
-            <div class="issue-highlight">
-              {{example.number}}:&nbsp;
-              <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" target="_blank">{{example.title}}</a>
-            </div>
-          </div>
-          <div class="issue-labels">
-            <md-chip-list>
-              <md-chip *ngFor="let label of example.gitmate">{{label}}</md-chip>
-            </md-chip-list>
-          </div>
-        </div>
-      </div>
-    </div>
-  </md-card>
-
-  <md-card class="topic" *ngIf="response.duplicate_total === 0">
-    <p>There don't seem to be any duplicates in this repository</p>
-  </md-card>
-
-  <md-card class="topic" *ngIf="response.duplicate_total > 0">
-    <div style="display:flex;align-items:flex-end;">
-      <p>GitMate found
-      <span class="value">{{response.duplicate_total}}</span>
-      groups of duplicates in your repository.</p>
-    </div>
-
-    <button md-button (click)="show_dupes = !show_dupes">show examples</button>
+    <button md-button *ngIf="!show_dupes" (click)="show_dupes = true">show examples</button>
+    <button md-button *ngIf="show_dupes" (click)="show_dupes = false">hide examples</button>
 
     <div *ngIf="show_dupes">
       <md-nav-list>
@@ -144,69 +76,19 @@
     </div>
   </md-card>
 
-
-  <md-card class="topic" *ngIf="response.author_prediction_correct_pings === 0">
-    <p>There are too few active contributors with enough contributions for a prediction</p>
+  <md-card class="topic" *ngIf="response.duplicate_total < 5" >
+    <md-card-title style="display:flex;align-items:baseline;" >
+      <p>There are not enough issues for a meaningful analysis.</p>
+    </md-card-title>
+    <md-card-subtitle>
+      <p>GitMate needs some data to work with, and your repository seems to be too small for a meaningful analysis.
+        The analysis should start yielding results once you have at least 5 frequently used labels and 5 contributors who open or comment on issues.</p>
+      <p *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
+        It seems that we found some insights on the data that you have - just scroll down to see it.
+      </p>
+    </md-card-subtitle>
   </md-card>
 
-  <md-card class="topic" *ngIf="response.author_prediction_correct_pings > 0">
-    <div style="display:flex;align-items:flex-end;">
-      <p>GitMate would have pinged
-      <span class="value">{{response.author_prediction_correct_pings}}</span>
-      developers in discussions they later contributed to.</p>
-    </div>
-    <div><font color=#03a9f4 >An active GitMate instance will perform even better because it's able to analyse issue comments.</font>
-    </div>
-
-    <button md-button (click)="show_authors = !show_authors">show examples</button>
-
-    <div *ngIf="show_authors">
-      <md-grid-list cols="3" rowHeight="64px">
-
-        <div *ngFor="let example of response.author_prediction_examples">
-
-          <md-grid-tile [colspan]=2>
-            <md-nav-list style="width:100%">
-              <md-list-item>
-                {{example.number}}:&nbsp;
-                <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" target="_blank">{{example.title}}</a>
-              </md-list-item>
-            </md-nav-list>
-          </md-grid-tile>
-
-          <md-grid-tile>
-            <md-chip-list>
-              <md-chip *ngFor="let author of example.gitmate">{{author}}</md-chip>
-            </md-chip-list>
-          </md-grid-tile>
-
-        </div>
-      </md-grid-list>
-    </div>
-  </md-card>
-
-  <md-card class="topic" *ngIf="response.stale_total > 0">
-    <div style="display:flex;align-items:flex-end;">
-      <p>GitMate has detected
-      <span class="value">{{response.stale_total}}</span>
-      issues that haven't seen any updates in one month.</p>
-    </div>
-
-    <div>
-      <p>GitMate can automatically close stale issues that match certain criteria, e.g. if information is missing. This way you can stop going through old issues while maintaining an up to date issue database.</p>
-    </div>
-
-    <button md-button (click)="show_stale = !show_stale">show examples</button>
-
-    <div *ngIf="show_stale">
-      <md-nav-list>
-          <md-list-item *ngFor="let example of response.stale_examples">
-            {{example.number}}:&nbsp;
-            <a href="https://{{provider}}.com/{{name}}/issues/{{example.number}}" style="margin-left: 24px;" target="_blank">{{example.title}}</a>
-          </md-list-item>
-        </md-nav-list>
-    </div>
-  </md-card>
 </div>
 
 <md-card style="text-align:center" *ngIf="!user">
