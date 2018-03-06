@@ -53,10 +53,7 @@
       </div>
     </div>
 
-    <button md-button *ngIf="!show_dupes" (click)="show_dupes = true">show examples</button>
-    <button md-button *ngIf="show_dupes" (click)="show_dupes = false">hide examples</button>
-
-    <div *ngIf="show_dupes">
+    <div>
       <md-nav-list>
         <div *ngFor="let example of response.duplicate_examples">
 
@@ -81,10 +78,8 @@
       <p>There are not enough issues for a meaningful analysis.</p>
     </md-card-title>
     <md-card-subtitle>
-      <p>GitMate needs some data to work with, and your repository seems to be too small for a meaningful analysis.
-        The analysis should start yielding results once you have at least 5 frequently used labels and 5 contributors who open or comment on issues.</p>
-      <p *ngIf="response.label_prediction_total_set + response.duplicate_total + response.author_prediction_correct_pings + response.stale_total !== 0">
-        It seems that we found some insights on the data that you have - just scroll down to see it.
+      <p>
+        GitMate needs some data to work with, and your repository seems to be too small for a meaningful analysis.
       </p>
     </md-card-subtitle>
   </md-card>
