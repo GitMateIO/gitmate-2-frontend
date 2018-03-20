@@ -41,7 +41,7 @@ import { NotFoundViewComponent } from './not-found-view/not-found-view.component
 import { PluginsComponent } from './plugins/plugins.component';
 import { RepositoryComponent } from './repository/repository.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
-import { DisclaimerComponent } from './disclaimer/disclaimer.component';
+import { ImprintComponent } from './imprint/imprint.component';
 import { DictSettingComponent } from './dict-setting/dict-setting.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SecurityComponent } from './security/security.component';
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   {path: 'profile', component: ProfileViewComponent},
   {path: 'repositories', component: RepositoriesViewComponent},
   {path: 'repo/:id', component: PluginsComponent},
-  {path: 'disclaimer', component: DisclaimerComponent},
+  {path: 'imprint', component: ImprintComponent},
   {path: 'security', component: SecurityComponent},
   {path: 'pricing', component: PricingComponent, canActivate: [EnterpriseGuardService]},
   {path: 'features', component: FeaturesComponent},
@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     PluginsComponent,
     RepositoryComponent,
     SearchbarComponent,
-    DisclaimerComponent,
+    ImprintComponent,
     DictSettingComponent,
     SpinnerComponent,
     SecurityComponent,
